@@ -1,5 +1,5 @@
 .footer {
-    background-color: #125667;
+    background-color: var(--c90);
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -7,7 +7,7 @@
 }
 
 .rectangle {
-    background-color: #053947;
+    background-color: var(--c95);
     width: 100vw;
     height: 2rem;
 }

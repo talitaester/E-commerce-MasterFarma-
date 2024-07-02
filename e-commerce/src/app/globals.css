@@ -3,11 +3,25 @@
   padding: 0;
 }
 
+:root {
+  --c05: #EBFFFE;
+  --c10: #CDFFFF;
+  --c20: #A1FDFF;
+  --c30: #60F8FF;
+  --c40: #18EAF8;
+  --c50: #00CCDE;
+  --c60: #00A2B9;
+  --c70: #088196;
+  --c80: #10677A;
+  --c90: #125667;
+  --c95: #053947;
+}
+
 html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #EBFFFE;
+  background-color: var(--c05);
 }
 
 body {
