@@ -11,16 +11,18 @@ type Props = {
   params: { id: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
+
  
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
-  const page = await client.getSingle("pagina_inicial")
+  const page = await client.getSingle("settings")
 
   return {
-    title: page.data.meta_title,
+    title: page.data.site_title || "MasterFarma Fallback",
+    description: page.data.meta_description || "MasterFarma é a melhor farmácia.",
     openGraph: {
-      images: ['/some-specific-page-image.jpg', ...previousImages],
+      images: [page.data.og_image.url || "/logo-grande.svg"],
     },
   }
 }

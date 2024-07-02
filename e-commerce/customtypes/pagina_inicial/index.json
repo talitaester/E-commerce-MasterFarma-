@@ -1,16 +1,27 @@
 {
   "format": "page",
   "id": "pagina_inicial",
-  "label": "Página Inicial",
+  "label": "pagina_inicial",
   "repeatable": false,
   "status": true,
   "json": {
     "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "carrossel": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
