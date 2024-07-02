@@ -22,10 +22,7 @@
     align-items: center;
     justify-content: center;
     color: #EBFFFE;
-}
-
-.IconeHeader {
-    align-self: center;
+    font-weight: bold;
 }
 
 .searchForm {
@@ -45,19 +42,14 @@
   }
   
   .searchInput:focus {
-    border-color: #125667;
+    border-color: black;
   }
 
   .searchInput::placeholder {
     color: #125667;
-    font-style: bold;
+    font-weight: bolder;
     font-size: 1rem;
   }
-  
-  .searchInput:focus::placeholder {
-    color: #125667;
-  }
-  
 
   .searchButton {
     background: none;
@@ -85,6 +77,15 @@
         border-radius: 20px;
         padding: .75rem 5rem .75rem .75rem;
         margin-top: .5rem;
+      }
+
+      .searchInput::placeholder, .headerOption {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      .searchButton {
+        top: 35%;
       }
 }
 
