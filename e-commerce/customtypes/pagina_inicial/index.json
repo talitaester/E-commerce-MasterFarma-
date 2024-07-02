@@ -1,14 +1,28 @@
 {
   "format": "page",
   "id": "pagina_inicial",
+  "label": "pagina_inicial",
+  "repeatable": false,
+  "status": true,
   "json": {
     "Main": {
-      "slices": {
+      "title": {
+        "type": "Text",
         "config": {
-          "choices": {}
-        },
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "carrossel": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
@@ -38,8 +52,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "Página Inicial",
-  "repeatable": false,
-  "status": true
+  }
 }

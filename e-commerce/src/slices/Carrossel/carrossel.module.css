@@ -1,0 +1,42 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1221px;
+    max-height: 534px;
+    margin: auto;
+    overflow: hidden;
+
+  }
+  
+  .carouselItem {
+    display: none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area */
+  }
+  
+  .carouselItemActive {
+    display: block;
+  }
+
+  
+  .carouselDots {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dotActive {
+    background-color: #717171;
+  }
+  
