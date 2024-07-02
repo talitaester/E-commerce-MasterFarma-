@@ -9,8 +9,8 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href=''>
-          <Image className={styles.logoHeader} src='/logo-pequena.svg' alt='Logo' width={150} height={35} />
+        <Link href='' className={styles.logo}>
+          <Image className={styles.logoHeader} src='/logo-media.svg' alt='Logo' width={317} height={60} />
         </Link>
 
         <form className={styles.searchForm}>
