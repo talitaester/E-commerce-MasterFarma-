@@ -39,7 +39,7 @@ export default function Footer() {
                     <img src="/logo-media.svg" alt="Logo"/>
                 </picture>
             </div>
-            <p className={styles.copyright}>Copyright © 2024</p>
+            <p className={styles.copyright}>Copyright © {new Date().getFullYear()}</p>
         </footer>
     )
 }
