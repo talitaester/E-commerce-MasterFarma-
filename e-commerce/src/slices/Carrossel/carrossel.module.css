@@ -1,11 +1,8 @@
 .carousel {
     position: relative;
     width: 100%;
-    max-width: 1221px;
-    max-height: 534px;
     margin: auto;
     overflow: hidden;
-
   }
   
   .carouselItem {
@@ -13,30 +10,49 @@
     text-align: center;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire area */
+    object-fit: cover;
   }
   
   .carouselItemActive {
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 
   
   .carouselDots {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     text-align: center;
     padding: 10px 0;
+    margin-bottom: 6rem;
   }
   
   .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
+    height: 16px;
+    width: 16px;
+    margin: 0 4px;
+    background-color: var(--c60);
     border-radius: 50%;
-    display: inline-block;
     cursor: pointer;
   }
   
   .dotActive {
-    background-color: #717171;
+    background-color: var(--c95);
   }
+
+  .imageWrapper {
+    margin-top: 6rem;
+    width: 1221px; /* 48 in Tailwind */
+    height: 534px;
+    overflow: hidden;
+    border-radius: 40px; /* large radius in Tailwind */
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
   

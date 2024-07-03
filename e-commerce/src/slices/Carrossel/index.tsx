@@ -33,7 +33,12 @@ const Carrossel = ({ slice }: CarrosselProps): JSX.Element => {
           key={index}
           className={`${styles.carouselItem} ${index === currentSlide ? styles.carouselItemActive : ''}`}
         >
-          <PrismicNextImage field={image}/>
+          <div className={`${styles.imageWrapper}`}>
+            <PrismicNextImage
+              field={image}
+              className={`${styles.image}`}
+            />
+          </div>
         </div>
       ))}
       <div className={styles.carouselDots}>
