@@ -1,5 +1,6 @@
+/* Base styles */
 .produto {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     background-color: var(--c60);
@@ -21,8 +22,8 @@
 
 .precos {
     position: relative;
-  }
-  
+}
+
 .corte {
     position: absolute;
     background-color: black;
@@ -32,4 +33,28 @@
     top: 15px;
     left: 0;
     z-index: 99;
-  }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
+/* alternative styles */
+
+ .horizontal .produto {
+        flex-direction: row;
+        width: 600px;
+        height: 305px;
+}
+
+.horizontal .conteudo {
+        flex-direction: row;
+        margin: 24px 24px;
+}
+
+.horizontal .container {
+        display: flex;
+        flex-direction: column; 
+}

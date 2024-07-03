@@ -12,8 +12,45 @@
     font-weight: bolder;
 }
 
-.exibicao {
+.carrosselOfertas {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-color: var(--c60) transparent;
+    scrollbar-width: thin;
+    margin: 24px 0 0 0;
+}
+
+.carrosselOfertas::-webkit-scrollbar {
+    height: 6px;
+}
+
+.carrosselOfertas::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.carrosselOfertas::-webkit-scrollbar-thumb {
+    background-color: var(--c60);
+    border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .carrosselOfertas {
+        gap: .75rem;
+    }
+
+    .section {
+        margin: 0 2rem 4rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrosselOfertas {
+        gap: .5rem;
+    }
+
+    .section {
+        margin: 0 1rem 2rem 1rem;
+    }
 }
