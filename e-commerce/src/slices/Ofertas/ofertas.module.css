@@ -1,0 +1,19 @@
+.section {
+    display:flex;
+    justify-content: center;
+    margin: 0 4rem 6rem 4rem;
+    flex-direction: column;
+}
+
+.titulo {
+    text-align: center;
+    color: var(--c95);
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.exibicao {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}

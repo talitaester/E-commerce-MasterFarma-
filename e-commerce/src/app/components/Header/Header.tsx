@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-          <Link href='' className={styles.logo}>
+          <Link href='/' className={styles.logo}>
             <picture className={styles.logoHeader}> 
               <source media="(max-width: 600px)" srcSet="/logo-pequena.svg" width={150} height={35}/>
               <img src='/logo-media.svg' alt='Logo' width={317} height={60} />
