@@ -77,6 +77,10 @@
     .logoHeader {
         margin-right: 0;
     }
+
+    .container {
+      gap: .5rem;
+  }
     
     .IconeHeader {
         height: 20px !important;
@@ -101,10 +105,4 @@
       .searchButton {
         top: 35%;
       }
-}
-
-@media (max-width: 300px) {
-    .container {
-        gap: .5rem;
-    }
 }

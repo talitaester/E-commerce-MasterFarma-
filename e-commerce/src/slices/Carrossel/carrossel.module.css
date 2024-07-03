@@ -17,7 +17,6 @@
     display: flex;
     justify-content: center;
   }
-
   
   .carouselDots {
     display: flex;
@@ -40,13 +39,14 @@
   .dotActive {
     background-color: var(--c95);
   }
-
+  
+  /* Default size for larger screens */
   .imageWrapper {
-    margin-top: 6rem;
-    width: 1221px; /* 48 in Tailwind */
-    height: 534px;
+    margin: 6rem 4rem 0 4rem;
+    width: 1280px;
+    height: 720px;
     overflow: hidden;
-    border-radius: 40px; /* large radius in Tailwind */
+    border-radius: 40px;
   }
   
   .image {
@@ -55,4 +55,33 @@
     object-fit: cover;
   }
   
+  /* Medium screens (e.g., tablets) */
+  @media (max-width: 1024px) {
+    .imageWrapper {
+      margin: 4rem 2rem 0 2rem;
+      width: 90%;
+      height: auto;
+      border-radius: 20px;
+    }
+  }
+  
+  /* Small screens (e.g., phones) */
+  @media (max-width: 480px) {
+    .imageWrapper {
+      margin: 2rem 1rem 0 1rem;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  
+    .carouselDots {
+      margin-bottom: 2rem;
+    }
+  
+    .dot {
+      height: 8px;
+      width: 8px;
+      margin: 0 2px;
+    }
+  }
   
