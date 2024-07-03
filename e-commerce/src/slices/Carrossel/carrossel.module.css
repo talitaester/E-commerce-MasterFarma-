@@ -63,6 +63,10 @@
       height: auto;
       border-radius: 20px;
     }
+
+    .carouselDots {
+      margin-bottom: calc(4rem - 10px);
+    }
   }
   
   /* Small screens (e.g., phones) */
@@ -75,7 +79,7 @@
     }
   
     .carouselDots {
-      margin-bottom: 2rem;
+      margin-bottom: calc(2rem - 10px);;
     }
   
     .dot {

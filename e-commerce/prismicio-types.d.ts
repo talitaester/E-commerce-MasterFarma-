@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PaginaInicialDocumentDataSlicesSlice = CarrosselSlice;
+type PaginaInicialDocumentDataSlicesSlice = SessoesSlice | CarrosselSlice;
 
 /**
  * Content for pagina_inicial documents
@@ -231,6 +231,36 @@ export type CarrosselSlice = prismic.SharedSlice<
   CarrosselSliceVariation
 >;
 
+/**
+ * Default variation for Sessoes Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SessoesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Sessoes*
+ */
+type SessoesSliceVariation = SessoesSliceDefault;
+
+/**
+ * Sessoes Shared Slice
+ *
+ * - **API ID**: `sessoes`
+ * - **Description**: Sessoes
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SessoesSlice = prismic.SharedSlice<
+  "sessoes",
+  SessoesSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -251,6 +281,9 @@ declare module "@prismicio/client" {
       CarrosselSliceDefaultPrimary,
       CarrosselSliceVariation,
       CarrosselSliceDefault,
+      SessoesSlice,
+      SessoesSliceVariation,
+      SessoesSliceDefault,
     };
   }
 }
