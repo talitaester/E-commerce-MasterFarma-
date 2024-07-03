@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "sessoes": {
+              "type": "SharedSlice"
+            },
             "carrossel": {
               "type": "SharedSlice"
             }

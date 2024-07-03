@@ -9,9 +9,12 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href='' className={styles.logo}>
-          <Image className={styles.logoHeader} src='/logo-media.svg' alt='Logo' width={317} height={60} />
-        </Link>
+          <Link href='' className={styles.logo}>
+            <picture className={styles.logoHeader}> 
+              <source media="(max-width: 600px)" srcSet="/logo-pequena.svg" width={150} height={35}/>
+              <img src='/logo-media.svg' alt='Logo' width={317} height={60} />
+            </picture>
+          </Link>
 
         <form className={styles.searchForm}>
             <input className={styles.searchInput} type='text' placeholder='O que você deseja?' />
