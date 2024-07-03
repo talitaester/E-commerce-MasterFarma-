@@ -31,3 +31,21 @@ body {
 main {
   flex: 1;
 }
+
+h6 {
+  color: var(--c05);
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+h2 {
+  color: var(--c95);
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+p {
+  color: var(--c05);
+  font-size: 20px;
+  font-weight: 400;
+}

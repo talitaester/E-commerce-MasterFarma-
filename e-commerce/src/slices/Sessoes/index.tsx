@@ -44,45 +44,45 @@ const Sessoes = ({ slice }: SessoesProps): JSX.Element => {
     >
       <div ref={carrosselRef} className={styles.carrosselSessoes}>
         <span className={styles.sessao}>
-          <Link href=""  className={styles.circle}>
+          <Link href="/"  className={styles.circle}>
             <img src='/pilula.svg' alt='pílula' className={styles.icon} />
           </Link>
-          <Link href="" className={styles.title}>Medicamentos</Link>
+          <Link href="/" className={styles.title}>Medicamentos</Link>
         </span>
 
         <span className={styles.sessao}>
-          <Link href="" className={styles.circle}>
+          <Link href="/" className={styles.circle}>
             <img src='/pesos.svg' alt='pesos' className={styles.icon} />
           </Link>
-          <Link href="" className={styles.title}>Suplementos</Link>
+          <Link href="/" className={styles.title}>Suplementos</Link>
         </span>
 
         <span className={styles.sessao}>
-          <Link href="" className={styles.circle}>
+          <Link href="/" className={styles.circle}>
             <img src='/maos.svg' alt='maos' className={styles.icon} />
           </Link>
           <Link href="" className={styles.title}>Higiene</Link>
         </span>
 
         <span className={styles.sessao}>
-          <Link href="" className={styles.circle}>
+          <Link href="/" className={styles.circle}>
             <img src='/batom.svg' alt='batom' className={styles.icon} />
           </Link>
-          <Link href="" className={styles.title}>Beleza</Link>
+          <Link href="/" className={styles.title}>Beleza</Link>
         </span>
 
         <span className={styles.sessao}>
-          <Link href="" className={styles.circle}>
+          <Link href="/" className={styles.circle}>
             <img src='/bebe.svg' alt='bebe' className={styles.icon} />
           </Link>
-          <Link href="" className={styles.title}>Bebês</Link>
+          <Link href="/" className={styles.title}>Bebês</Link>
         </span>
 
         <span className={styles.sessao}>
-          <Link href="" className={styles.circle}>
+          <Link href="/" className={styles.circle}>
             <img src='/spray.svg' alt='spray' className={styles.icon} />
           </Link>
-          <Link href="" className={styles.title}>Perfumaria</Link>
+          <Link href="/" className={styles.title}>Perfumaria</Link>
         </span>
       </div>
     </section>

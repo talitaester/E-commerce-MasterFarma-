@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PaginaInicialDocumentDataSlicesSlice = SessoesSlice | CarrosselSlice;
+type PaginaInicialDocumentDataSlicesSlice =
+  | OfertasSlice
+  | SessoesSlice
+  | CarrosselSlice;
 
 /**
  * Content for pagina_inicial documents
@@ -232,6 +235,51 @@ export type CarrosselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Ofertas → Default → Primary*
+ */
+export interface OfertasSliceDefaultPrimary {
+  /**
+   * Titulo field in *Ofertas → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ofertas.default.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Ofertas Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OfertasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OfertasSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Ofertas*
+ */
+type OfertasSliceVariation = OfertasSliceDefault;
+
+/**
+ * Ofertas Shared Slice
+ *
+ * - **API ID**: `ofertas`
+ * - **Description**: Ofertas
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OfertasSlice = prismic.SharedSlice<
+  "ofertas",
+  OfertasSliceVariation
+>;
+
+/**
  * Default variation for Sessoes Slice
  *
  * - **API ID**: `default`
@@ -281,6 +329,10 @@ declare module "@prismicio/client" {
       CarrosselSliceDefaultPrimary,
       CarrosselSliceVariation,
       CarrosselSliceDefault,
+      OfertasSlice,
+      OfertasSliceDefaultPrimary,
+      OfertasSliceVariation,
+      OfertasSliceDefault,
       SessoesSlice,
       SessoesSliceVariation,
       SessoesSliceDefault,
