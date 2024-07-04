@@ -1,7 +1,6 @@
 .section {
-    display:flex;
+    display: flex;
     justify-content: center;
-    margin: 0 4rem 6rem 4rem;
     flex-direction: column;
 }
 
@@ -19,38 +18,22 @@
     overflow-x: auto;
     scrollbar-color: var(--c60) transparent;
     scrollbar-width: thin;
-    margin: 24px 0 0 0;
+    margin: 4rem 4rem 6rem 4rem;
 }
 
-.carrosselOfertas::-webkit-scrollbar {
-    height: 6px;
-}
-
-.carrosselOfertas::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.carrosselOfertas::-webkit-scrollbar-thumb {
-    background-color: var(--c60);
-    border-radius: 10px;
-}
-
-@media (max-width: 1024px) {
-    .carrosselOfertas {
-        gap: .75rem;
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 30px;
     }
-
-    .section {
-        margin: 0 2rem 4rem 2rem;
+    .carrosselOfertas {
+        gap: .5rem;
+        margin: 2rem 1rem 3rem 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .carrosselOfertas {
         gap: .5rem;
-    }
-
-    .section {
-        margin: 0 1rem 2rem 1rem;
+        margin: 1rem 1rem 2rem 1rem;
     }
 }

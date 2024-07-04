@@ -8,19 +8,6 @@
   margin: 0 4rem 6rem 4rem;
 }
 
-.carrosselSessoes::-webkit-scrollbar {
-  height: 6px;
-}
-
-.carrosselSessoes::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.carrosselSessoes::-webkit-scrollbar-thumb {
-  background-color: var(--c60);
-  border-radius: 10px;
-}
-
 .sessao {
   display: flex;
   flex-direction: column;
@@ -28,19 +15,19 @@
 }
 
 .icon {
-  padding: 10%; /* Adjust padding to make it responsive */
-  max-width: 40%; /* Ensure the image doesn't exceed its container */
+  padding: 10%;
+  max-width: 40%;
 }
 
 .circle {
   background-color: var(--c60);
   border-radius: 50%;
-  width: 184px; /* Adjust the size of the circle */
-  height: 184px; /* Adjust the size of the circle */
+  width: 184px;
+  height: 184px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5px; /* Adjust margin between circles */
+  margin-bottom: 5px;
 }
 
 .title {
