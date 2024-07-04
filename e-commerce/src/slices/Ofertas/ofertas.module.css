@@ -26,14 +26,15 @@
         font-size: 30px;
     }
     .carrosselOfertas {
-        gap: .5rem;
-        margin: 2rem 1rem 3rem 1rem;
+        margin: 2rem 2rem 4rem 2rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480pxpx) {
+    .titulo {
+        font-size: 15px;
+    }
     .carrosselOfertas {
-        gap: .5rem;
         margin: 1rem 1rem 2rem 1rem;
     }
 }
