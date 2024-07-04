@@ -1,7 +1,6 @@
 .section {
-    display:flex;
+    display: flex;
     justify-content: center;
-    margin: 0 4rem 6rem 4rem;
     flex-direction: column;
 }
 
@@ -12,8 +11,29 @@
     font-weight: bolder;
 }
 
-.exibicao {
+.carrosselOfertas {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-color: var(--c60) transparent;
+    scrollbar-width: thin;
+    margin: 4rem 4rem 6rem 4rem;
+}
+
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 30px;
+    }
+    .carrosselOfertas {
+        gap: .5rem;
+        margin: 2rem 1rem 3rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrosselOfertas {
+        gap: .5rem;
+        margin: 1rem 1rem 2rem 1rem;
+    }
 }

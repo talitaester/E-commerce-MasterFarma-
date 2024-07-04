@@ -61,7 +61,7 @@ const Sessoes = ({ slice }: SessoesProps): JSX.Element => {
           <Link href="/" className={styles.circle}>
             <img src='/maos.svg' alt='maos' className={styles.icon} />
           </Link>
-          <Link href="" className={styles.title}>Higiene</Link>
+          <Link href="/" className={styles.title}>Higiene</Link>
         </span>
 
         <span className={styles.sessao}>
