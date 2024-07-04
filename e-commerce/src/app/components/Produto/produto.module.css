@@ -11,12 +11,15 @@
 
 .imagemProduto {
     border-radius: 40px;
+    width: 258px;
+    height: 258px;
 }
 
 .conteudo {
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    height: 100%;
+    justify-content: space-between;
     margin: 19px 15px;
 }
 
@@ -38,7 +41,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
 .nomeProduto {
@@ -72,73 +75,112 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
-    .container {
-        gap: 0.5rem;
-    }
-    
-    .conteudo {
-        gap: 0.5rem;
-        margin: 14.25px 11.25px;
-    }
-
     .produto {
-        width: 100%;
-        height: 100%;
-        border-radius: 20px;
+        width: calc(288px * 0.9);
+        height: calc(542px * 0.9);
+        border-radius: calc(40px * 0.9);
     }
 
     .imagemProduto {
-        width: 100%;
-        height: auto;
-        border-radius: 20px;
+        width: calc(258px * 0.9);
+        height: calc(258px * 0.9);
+        border-radius: calc(40px * 0.9);
     }
 
-    .nomeProduto, .precoAtual, .parcelas {
-        font-size: 100%;
+    .conteudo {
+        gap: calc(1.5rem * 0.9);
+        margin: calc(19px * 0.9) calc(15px * 0.9);
     }
 
     .corte {
-        width: 90px;
-        height: 2px;
+        width: calc(105px * 0.9);
+        height: calc(3px * 0.9);
+        top: calc(15px * 0.9);
+    }
+
+    .nomeProduto {
+        font-size: calc(1.5rem * 0.9);
+    }
+    
+    .precoAtual {
+        font-size: calc(2.5rem * 0.9);
+    }
+    
+    .parcelas {
+        font-size: calc(1.2rem * 0.9);
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        gap: 0.5rem;
-    }
-    
-    .conteudo {
-        gap: 0.5rem;
-        margin: 9.5px 7.5px;
+    .produto {
+        width: calc(288px * 0.75);
+        height: calc(542px * 0.75);
+        border-radius: calc(40px * 0.75);
     }
 
     .imagemProduto {
-        border-radius: 12px;
+        width: calc(258px * 0.75);
+        height: calc(258px * 0.75);
+        border-radius: calc(40px * 0.75);
     }
-    
-    .produto {
-        border-radius: 12px;
+
+    .conteudo {
+        gap: calc(1.5rem * 0.75);
+        margin: calc(19px * 0.75) calc(15px * 0.75);
     }
 
     .corte {
-        width: 70px;
-        top: 12px;
+        width: calc(105px * 0.75);
+        height: calc(3px * 0.75);
+        top: calc(15px * 0.75);
+    }
+
+    .nomeProduto {
+        font-size: calc(1.5rem * 0.75);
+    }
+    
+    .precoAtual {
+        font-size: calc(2.5rem * 0.75);
+    }
+    
+    .parcelas {
+        font-size: calc(1.2rem * 0.75);
     }
 }
 
 @media (max-width: 320px) {
-    .container {
-        gap: 0.3rem;
+    .produto {
+        width: calc(288px * 0.6);
+        height: calc(542px * 0.6);
+        border-radius: calc(40px * 0.6);
     }
-    
+
+    .imagemProduto {
+        width: calc(258px * 0.6);
+        height: calc(258px * 0.6);
+        border-radius: calc(40px * 0.6);
+    }
+
     .conteudo {
-        gap: 0.3rem;
-        margin: 8px 6px;
+        gap: calc(1.5rem * 0.6);
+        margin: calc(19px * 0.6) calc(15px * 0.6);
     }
 
     .corte {
-        width: 60px;
-        top: 10px;
+        width: calc(105px * 0.6);
+        height: calc(3px * 0.6);
+        top: calc(15px * 0.6);
+    }
+
+    .nomeProduto {
+        font-size: calc(1.5rem * 0.6);
+    }
+    
+    .precoAtual {
+        font-size: calc(2.5rem * 0.6);
+    }
+    
+    .parcelas {
+        font-size: calc(1.2rem * 0.6);
     }
 }
