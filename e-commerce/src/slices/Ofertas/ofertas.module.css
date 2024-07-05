@@ -4,6 +4,11 @@
     flex-direction: column;
 }
 
+.elemento {
+    display: flex;
+    justify-content: center;
+}
+
 .titulo {
     text-align: center;
     color: var(--c95);
@@ -13,13 +18,29 @@
 
 .carrosselOfertas {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    overflow-x: auto;
-    scrollbar-color: var(--c60) transparent;
-    scrollbar-width: thin;
+    justify-self: center;
+    flex-direction: column;
     margin: 4rem 4rem 6rem 4rem;
 }
+
+.swiperPagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .swiperPaginationBullet {
+    background: var(--c60);
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .swiperPaginationBulletActive {
+    background: var(--c95);
+  }
 
 @media (max-width: 768px) {
     .titulo {
@@ -30,11 +51,16 @@
     }
 }
 
-@media (max-width: 480pxpx) {
+@media (max-width: 480px) {
     .titulo {
         font-size: 15px;
     }
     .carrosselOfertas {
         margin: 1rem 1rem 2rem 1rem;
+    }
+    .swiperPaginationBullet {
+        height: 8px;
+        width: 8px;
+        margin-top: 2px;
     }
 }

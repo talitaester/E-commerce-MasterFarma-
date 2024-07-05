@@ -74,44 +74,7 @@
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
-    .produto {
-        width: calc(288px * 0.9);
-        height: calc(542px * 0.9);
-        border-radius: calc(40px * 0.9);
-    }
-
-    .imagemProduto {
-        width: calc(258px * 0.9);
-        height: calc(258px * 0.9);
-        border-radius: calc(40px * 0.9);
-    }
-
-    .conteudo {
-        gap: calc(1.5rem * 0.9);
-        margin: calc(19px * 0.9) calc(15px * 0.9);
-    }
-
-    .corte {
-        width: calc(105px * 0.9);
-        height: calc(3px * 0.9);
-        top: calc(15px * 0.9);
-    }
-
-    .nomeProduto {
-        font-size: calc(1.5rem * 0.9);
-    }
-    
-    .precoAtual {
-        font-size: calc(2.5rem * 0.9);
-    }
-    
-    .parcelas {
-        font-size: calc(1.2rem * 0.9);
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
     .produto {
         width: calc(288px * 0.75);
         height: calc(542px * 0.75);
@@ -127,6 +90,10 @@
     .conteudo {
         gap: calc(1.5rem * 0.75);
         margin: calc(19px * 0.75) calc(15px * 0.75);
+    }
+
+    .container {
+        gap: calc(1.5rem * 0.75);
     }
 
     .corte {
@@ -148,7 +115,7 @@
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 780px) {
     .produto {
         width: calc(288px * 0.6);
         height: calc(542px * 0.6);
@@ -164,6 +131,10 @@
     .conteudo {
         gap: calc(1.5rem * 0.6);
         margin: calc(19px * 0.6) calc(15px * 0.6);
+    }
+
+    .container {
+        gap: calc(1.5rem * 0.6);
     }
 
     .corte {
@@ -182,5 +153,46 @@
     
     .parcelas {
         font-size: calc(1.2rem * 0.6);
+    }
+}
+
+@media (max-width: 400px) {
+    .produto {
+        width: calc(288px * 0.4);
+        height: calc(542px * 0.4);
+        border-radius: calc(40px * 0.4);
+    }
+
+    .imagemProduto {
+        width: calc(258px * 0.4);
+        height: calc(258px * 0.4);
+        border-radius: calc(40px * 0.4);
+    }
+
+    .conteudo {
+        gap: calc(1.5rem * 0.4);
+        margin: calc(19px * 0.4) calc(15px * 0.4);
+    }
+
+    .container {
+        gap: calc(1.5rem * 0.4);
+    }
+
+    .corte {
+        width: calc(105px * 0.4);
+        height: calc(3px * 0.4);
+        top: calc(15px * 0.4);
+    }
+
+    .nomeProduto {
+        font-size: calc(1.5rem * 0.4);
+    }
+    
+    .precoAtual {
+        font-size: calc(2.5rem * 0.4);
+    }
+    
+    .parcelas {
+        font-size: calc(1.2rem * 0.4);
     }
 }

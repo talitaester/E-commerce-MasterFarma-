@@ -1,10 +1,12 @@
-'use client'
+'use client';
 
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from '@prismicio/next';
-import { useState } from 'react';
-import styles from "./carrossel.module.css"
+import styles from "./carrossel.module.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import { Navigation, Pagination } from 'swiper/modules';
 
 /**
  * Props for `Carrossel`.
@@ -15,8 +17,6 @@ export type CarrosselProps = SliceComponentProps<Content.CarrosselSlice>;
  * Component for "Carrossel" Slices.
  */
 const Carrossel = ({ slice }: CarrosselProps): JSX.Element => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const imageFields = [
     slice.primary.imagem_1,
     slice.primary.imagem_2,
@@ -28,28 +28,30 @@ const Carrossel = ({ slice }: CarrosselProps): JSX.Element => {
 
   return (
     <div className={styles.carousel}>
-      {imageFields.map((image, index) => (
-        <div
-          key={index}
-          className={`${styles.carouselItem} ${index === currentSlide ? styles.carouselItemActive : ''}`}
-        >
-          <div className={`${styles.imageWrapper}`}>
-            <PrismicNextImage
-              field={image}
-              className={`${styles.image}`}
-            />
-          </div>
-        </div>
-      ))}
-      <div className={styles.carouselDots}>
-        {imageFields.map((_, index) => (
-          <span
-            key={index}
-            className={`${styles.dot} ${index === currentSlide ? styles.dotActive : ''}`}
-            onClick={() => setCurrentSlide(index)}
-          ></span>
+      <Swiper
+        modules={[Navigation, Pagination]}
+        slidesPerView={1}
+        spaceBetween={0}
+        pagination={{
+          clickable: true,
+          el: `.${styles.carouselDots}`,
+          bulletClass: styles.dot,
+          bulletActiveClass: styles.dotActive,
+        }}
+        className={styles.carouselContainer}
+      >
+        {imageFields.map((image, index) => (
+          <SwiperSlide key={index} className={styles.swiperSlide}>
+            <div className={styles.imageWrapper}>
+              <PrismicNextImage
+                field={image}
+                className={styles.image}
+              />
+            </div>
+          </SwiperSlide>
         ))}
-      </div>
+        <div className={styles.carouselDots}></div>
+      </Swiper>
     </div>
   );
 };
