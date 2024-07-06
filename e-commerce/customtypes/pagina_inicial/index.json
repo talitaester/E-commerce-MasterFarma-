@@ -18,6 +18,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "compre_junto": {
+              "type": "SharedSlice"
+            },
+            "marcas": {
+              "type": "SharedSlice"
+            },
             "ofertas": {
               "type": "SharedSlice"
             },

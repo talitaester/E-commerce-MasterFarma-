@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo_marcas": {
+				"__TYPE__": "FieldContent",
+				"value": "space",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

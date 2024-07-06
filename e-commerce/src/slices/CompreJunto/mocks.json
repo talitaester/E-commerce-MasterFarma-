@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo_compre_junto": {
+				"__TYPE__": "FieldContent",
+				"value": "man",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

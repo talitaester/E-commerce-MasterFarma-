@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PaginaInicialDocumentDataSlicesSlice =
+  | CompreJuntoSlice
+  | MarcasSlice
   | OfertasSlice
   | SessoesSlice
   | CarrosselSlice;
@@ -235,6 +237,123 @@ export type CarrosselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *CompreJunto → Default → Primary*
+ */
+export interface CompreJuntoSliceDefaultPrimary {
+  /**
+   * Título Compre Junto field in *CompreJunto → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: compre_junto.default.primary.titulo_compre_junto
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo_compre_junto: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for CompreJunto Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompreJuntoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CompreJuntoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CompreJunto*
+ */
+type CompreJuntoSliceVariation = CompreJuntoSliceDefault;
+
+/**
+ * CompreJunto Shared Slice
+ *
+ * - **API ID**: `compre_junto`
+ * - **Description**: CompreJunto
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompreJuntoSlice = prismic.SharedSlice<
+  "compre_junto",
+  CompreJuntoSliceVariation
+>;
+
+/**
+ * Default variation for MaisVendidos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MaisVendidosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *MaisVendidos*
+ */
+type MaisVendidosSliceVariation = MaisVendidosSliceDefault;
+
+/**
+ * MaisVendidos Shared Slice
+ *
+ * - **API ID**: `mais_vendidos`
+ * - **Description**: MaisVendidos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MaisVendidosSlice = prismic.SharedSlice<
+  "mais_vendidos",
+  MaisVendidosSliceVariation
+>;
+
+/**
+ * Primary content in *Marcas → Default → Primary*
+ */
+export interface MarcasSliceDefaultPrimary {
+  /**
+   * Título Marcas field in *Marcas → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marcas.default.primary.titulo_marcas
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo_marcas: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Marcas Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MarcasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MarcasSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Marcas*
+ */
+type MarcasSliceVariation = MarcasSliceDefault;
+
+/**
+ * Marcas Shared Slice
+ *
+ * - **API ID**: `marcas`
+ * - **Description**: Marcas
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MarcasSlice = prismic.SharedSlice<"marcas", MarcasSliceVariation>;
+
+/**
  * Primary content in *Ofertas → Default → Primary*
  */
 export interface OfertasSliceDefaultPrimary {
@@ -329,6 +448,17 @@ declare module "@prismicio/client" {
       CarrosselSliceDefaultPrimary,
       CarrosselSliceVariation,
       CarrosselSliceDefault,
+      CompreJuntoSlice,
+      CompreJuntoSliceDefaultPrimary,
+      CompreJuntoSliceVariation,
+      CompreJuntoSliceDefault,
+      MaisVendidosSlice,
+      MaisVendidosSliceVariation,
+      MaisVendidosSliceDefault,
+      MarcasSlice,
+      MarcasSliceDefaultPrimary,
+      MarcasSliceVariation,
+      MarcasSliceDefault,
       OfertasSlice,
       OfertasSliceDefaultPrimary,
       OfertasSliceVariation,
