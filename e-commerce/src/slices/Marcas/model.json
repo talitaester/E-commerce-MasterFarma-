@@ -1,0 +1,26 @@
+{
+  "id": "marcas",
+  "type": "SharedSlice",
+  "name": "Marcas",
+  "description": "Marcas",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo_marcas": {
+          "type": "Text",
+          "config": {
+            "label": "Título Marcas",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

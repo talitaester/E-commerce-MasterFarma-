@@ -1,0 +1,116 @@
+.section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 4rem 4rem 6rem 4rem;
+}
+
+.titulo {
+    text-align: center;
+    color: var(--c95);
+    font-size: 50px;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+}
+
+.conjuntoKits {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.kit {
+    position: relative;
+}
+
+.nomeProduto {
+    padding: 19px 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: var(--c60);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0 0 30px 30px
+}
+
+.img {
+    border-radius: 30px;
+}
+
+@media (max-width: 1360px) {
+    .nomeProduto {
+        padding: calc(19px * 0.75) 0;
+        border-radius: 0 0 25px 25px;
+        font-size: calc(34.6px * 0.75);
+    }
+
+    .img {
+        height: calc(438px * 0.75);
+        width: calc(392px * 0.75);
+    }
+}
+
+@media (max-width: 1280px) {
+    .section {
+        margin: 0 2rem 4rem 2rem;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .nomeProduto {
+        padding: calc(19px * 0.6) 0;
+        border-radius: 0 0 20px 20px;
+        font-size: calc(34.6px * 0.6);
+    }
+
+    .img {
+        height: calc(438px * 0.6);
+        width: calc(392px * 0.6);
+    }
+}
+
+@media (max-width: 830px) {
+    .kit:last-child {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 30px;
+    }
+    .nomeProduto {
+        padding: calc(19px * 0.5) 0;
+        font-size: calc(34.6px * 0.5);
+    }
+    .img {
+        height: calc(438px * 0.5);
+        width: calc(392px * 0.5);
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        margin: 0 .5rem 2rem .5rem;
+    }
+    .titulo {
+        font-size: 15px;
+        margin-bottom: 1rem;
+    }
+    .nomeProduto {
+        padding: 6.5px 0;
+        border-radius: 0 0 15px 15px;
+        font-size: 13px;
+    }
+    .img {
+        height: 152px;
+        width: 136px;
+    }
+    .conjuntoKits {
+        gap: 16px;
+    }
+}

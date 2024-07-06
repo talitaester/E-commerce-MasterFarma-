@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo_mais_vendidos": {
+				"__TYPE__": "FieldContent",
+				"value": "chief",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

@@ -33,7 +33,7 @@
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure image covers the area while maintaining aspect ratio */
+  object-fit: cover;
 }
 
 .carouselDots {
@@ -85,13 +85,13 @@
   }
 
   .carouselDots {
+    gap: 4px;
     margin-bottom: calc(2rem - 10px);
   }
 
   .dot {
     height: 8px;
     width: 8px;
-    margin: 0 2px;
   }
 
   .image {

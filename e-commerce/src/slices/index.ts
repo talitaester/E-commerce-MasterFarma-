@@ -4,6 +4,9 @@ import dynamic from "next/dynamic";
 
 export const components = {
   carrossel: dynamic(() => import("./Carrossel")),
+  compre_junto: dynamic(() => import("./CompreJunto")),
+  mais_vendidos: dynamic(() => import("./MaisVendidos")),
+  marcas: dynamic(() => import("./Marcas")),
   ofertas: dynamic(() => import("./Ofertas")),
   sessoes: dynamic(() => import("./Sessoes")),
 };
