@@ -24,24 +24,29 @@
 }
 
 .swiperPagination {
-    display: flex;
+    display: none;
     gap: 8px;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 16px;
   }
   
-  .swiperPaginationBullet {
+.swiperPaginationBullet {
     background: var(--c60);
     width: 16px;
     height: 16px;
     border-radius: 20px;
     cursor: pointer;
-  }
+}
   
   .swiperPaginationBulletActive {
     background: var(--c95);
   }
 
+@media (max-width: 1300px) {
+    .swiperPagination {
+        display: flex;
+      }
+}
 @media (max-width: 768px) {
     .titulo {
         font-size: 30px;
@@ -58,9 +63,12 @@
     .carrosselOfertas {
         margin: 1rem 1rem 2rem 1rem;
     }
+    .swiperPagination {
+        gap: 4px;
+        margin-top: 8px;
+      }
     .swiperPaginationBullet {
         height: 8px;
         width: 8px;
-        margin-top: 2px;
     }
 }
