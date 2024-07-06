@@ -66,6 +66,9 @@
 .horizontal .conteudo {
     flex-direction: row;
     margin: 24px 24px;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
 }
 
 .horizontal .container {
@@ -73,8 +76,47 @@
     flex-direction: column;
 }
 
+@media (max-width: 1360px) {
+    .horizontal .produto {
+        width: calc(600px*0.75);
+        height: calc(305px*0.75);
+    }
+
+    .horizontal .conteudo {
+        flex-direction: row;
+        margin: calc(24px*0.75) calc(24px*0.75);
+        align-items: center;
+        justify-content: center;
+        gap: calc(18px*0.75);
+    }
+
+    .horizontal .imagemProduto {
+        width: calc(258px * 0.75);
+        height: calc(258px * 0.75);
+        border-radius: calc(40px * 0.75);
+    }
+
+    .horizontal .conteudo {
+        gap: calc(1.5rem * 0.75);
+        margin: calc(19px * 0.75) calc(15px * 0.75);
+    }
+
+    .horizontal .nomeProduto {
+        font-size: calc(1.5rem * 0.75);
+    }
+    
+    .horizontal .precoAtual {
+        font-size: calc(2.5rem * 0.75);
+    }
+    
+    .horizontal .parcelas {
+        font-size: calc(1.2rem * 0.75);
+    }
+}
+
 /* Responsive styles */
 @media (max-width: 1024px) {
+    
     .produto {
         width: calc(288px * 0.75);
         height: calc(542px * 0.75);
@@ -153,6 +195,47 @@
     
     .parcelas {
         font-size: calc(1.2rem * 0.6);
+    }
+}
+
+@media (max-width: 480px) {
+    .horizontal .produto {
+        width: calc(600px * 0.4);
+        height: calc(305px * 0.4);
+        border-radius: calc(40px * 0.4);
+    }
+
+    .horizontal .imagemProduto {
+        width: calc(258px * 0.4);
+        height: calc(258px * 0.4);
+        border-radius: calc(40px * 0.4);
+    }
+
+    .horizontal .conteudo {
+        gap: calc(1.5rem * 0.4);
+        margin: calc(19px * 0.4) calc(15px * 0.4);
+    }
+
+    .horizontal .container {
+        gap: calc(1.5rem * 0.4);
+    }
+
+    .horizontal .corte {
+        width: calc(105px * 0.4);
+        height: calc(3px * 0.4);
+        top: calc(15px * 0.4);
+    }
+
+    .horizontal .nomeProduto {
+        font-size: calc(1.5rem * 0.4);
+    }
+    
+    .horizontal .precoAtual {
+        font-size: calc(2.5rem * 0.4);
+    }
+    
+    .horizontal .parcelas {
+        font-size: calc(1.2rem * 0.4);
     }
 }
 

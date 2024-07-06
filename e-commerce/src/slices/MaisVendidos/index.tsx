@@ -1,5 +1,8 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import styles from "./maisVendidos.module.css"
+import alternative from "../../app/components/Produto/produto.module.css"
+import Produto from "@/app/components/Produto/Produto";
 
 /**
  * Props for `MaisVendidos`.
@@ -14,9 +17,20 @@ const MaisVendidos = ({ slice }: MaisVendidosProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className={styles.section}
     >
-      Placeholder component for mais_vendidos (variation: {slice.variation})
-      Slices
+      <div className={styles.titulo}>{slice.primary.titulo_mais_vendidos}</div>
+
+      <div className={styles.produtos}>
+        <div className={`${alternative.produtos} ${alternative.horizontal}`}>
+          <Produto />
+        </div>
+
+        <div className={`${alternative.produtos} ${alternative.horizontal}`}>
+          <Produto />
+        </div>
+      </div>
+
     </section>
   );
 };

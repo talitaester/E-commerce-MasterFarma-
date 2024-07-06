@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PaginaInicialDocumentDataSlicesSlice =
+  | MaisVendidosSlice
   | CompreJuntoSlice
   | MarcasSlice
   | OfertasSlice
@@ -282,6 +283,21 @@ export type CompreJuntoSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *MaisVendidos → Default → Primary*
+ */
+export interface MaisVendidosSliceDefaultPrimary {
+  /**
+   * Título Mais Vendidos field in *MaisVendidos → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mais_vendidos.default.primary.titulo_mais_vendidos
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo_mais_vendidos: prismic.KeyTextField;
+}
+
+/**
  * Default variation for MaisVendidos Slice
  *
  * - **API ID**: `default`
@@ -290,7 +306,7 @@ export type CompreJuntoSlice = prismic.SharedSlice<
  */
 export type MaisVendidosSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<MaisVendidosSliceDefaultPrimary>,
   never
 >;
 
@@ -453,6 +469,7 @@ declare module "@prismicio/client" {
       CompreJuntoSliceVariation,
       CompreJuntoSliceDefault,
       MaisVendidosSlice,
+      MaisVendidosSliceDefaultPrimary,
       MaisVendidosSliceVariation,
       MaisVendidosSliceDefault,
       MarcasSlice,

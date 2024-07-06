@@ -10,7 +10,17 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "titulo_mais_vendidos": {
+          "type": "Text",
+          "config": {
+            "label": "Título Mais Vendidos",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
