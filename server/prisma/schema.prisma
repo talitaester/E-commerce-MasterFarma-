@@ -12,11 +12,41 @@ datasource db {
 
 
 model Product {
-  id                     Int                 @id @default(autoincrement())
-  name                   String              @unique
-  code                   Int                 @unique
-  price                  Float
-  category               String
-  createdAt              DateTime            @default(now())
-  updatedAt              DateTime            @updatedAt
+  id            Int             @id @default(autoincrement())
+  name          String          @unique
+  code          Int             @unique
+  price         Float
+  category      String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  pedidos       Order[]
 }
+
+model User {
+  name          String
+  email         String          @unique
+  password      String
+  carrinho      Order[]
+  isAdmin       Boolean         @default(false)
+}
+
+model Order {
+  id            Int             @id @default(autoincrement())
+  userEmail     String          
+  user          User            @relation(fields: [userEmail], references: [email])
+  productId     Int
+  product       Product         @relation(fields: [productId], references: [id])
+  quant         Int
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+//enum Categoria {
+//  MEDICAMENTO
+//  SUPLEMENTO
+//  HIGIENE
+//  BELEZA
+//  BEBES
+//  PERFUMARIA
+//  MISCELANEA
+//}
