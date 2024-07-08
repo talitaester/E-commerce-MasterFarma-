@@ -11,7 +11,7 @@ export default function LogIn() {
 
 
     return (
-        <div className="caixaLogSign">
+        <div className="caixaLogSign login">
             <form> {/** onSubmit={handleSubmit}; ainda falta mexer com token */}
                 <h2>Inicie sua sessão na MasterFarma:</h2>
                 <label htmlFor="email">Digite seu endereço de Email:</label>

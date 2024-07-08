@@ -38,7 +38,7 @@ export default function SignUp() {
     }
 
     return (
-        <div className="caixaLogSign">
+        <div className="caixaLogSign signup">
             <form onSubmit={handleSubmit}>
                 <h2>Crie sua Conta MasterFarma:</h2>
                 <label htmlFor="name">Digite seu nome completo:</label>
