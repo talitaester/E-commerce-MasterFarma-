@@ -1,8 +1,8 @@
 "use client"
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"
 import "./style.css"
-import { useState } from "react";
+import { useState } from "react"
 
 export default function LogIn() {
     const [email, setEmail] = useState('')
