@@ -1,3 +1,5 @@
+"use client"
+
 import { useRouter } from "next/router";
 import "./style.css"
 import { useState } from "react";
