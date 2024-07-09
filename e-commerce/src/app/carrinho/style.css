@@ -2,6 +2,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px 36px;
 }
 #tituloCarrinho {
     display: flex;
@@ -20,10 +21,15 @@ h1 {
     flex-direction: row;
     gap: 24px;
 }
+.itensCarrinho {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 .moduloPedido {
     display: flex;
     flex-direction: column;
-    width: 288px;
+    width: 264px;
     background-color: var(--c95);
     color: var(--c05);
     border-radius: 30px;
@@ -31,23 +37,33 @@ h1 {
     gap: 21px;
 }
 label {
-    font-size: 1.25em;
+    font-size: 1.4rem;
 }
 form {
     display: flex;
     flex-direction: column;
+    gap: 16px;
 }
-input {
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+main input {
     background-color: var(--c05);
     height: 40px;
+    width: 70%;
     border-radius: 15px;
     border: none;
     padding: 8px 12px;
+    font-size: 1em;
+    font-family: "Montserrat";
+    font-weight: 500;
 }
 .inputMaisOK {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 5%;
     align-items: center;
 }
 .btnOK {
@@ -58,11 +74,54 @@ input {
     font-size: 1.5em;
     border-radius: 15px;
     height: 52px;
+    width: 25%;
     padding: 8px 12px;
     border-color: var(--c05);
+    cursor: pointer;
 }
 .divisoria {
     background-color: var(--c05);
     height: 2px;
     width: 100%;
+}
+
+.resumo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.resumo label {
+    text-align: center;
+}
+.resumo strong {
+    font-size: 1.5rem;
+}
+.textoMaisPreco {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.btnGrande {
+    border-radius: 30px;
+    width: 100%;
+    height: 58px;
+    font-weight: bolder;
+    border-color: white;
+    font-family: "Montserrat";
+    cursor: pointer;
+}
+.btnGrande.princi {
+    background-color: var(--c95);
+    color: white;
+}
+.btnGrande.princi:hover {
+    background-color: var(--c90);
+}
+.btnGrande.secund {
+    background-color: white;
+    color: var(--c95);
+}
+.btnGrande.secund:hover {
+    background-color: var(--c05);
 }

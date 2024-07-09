@@ -1,5 +1,6 @@
 "use client"
 
+import ItemCarrinho from "../components/ItemCarrinho/ItemCarrinho"
 import "./style.css"
 import { useState } from "react"
 
@@ -15,34 +16,39 @@ export default function LogIn() {
             </div>
             <div className="carrinho">
                 <div className="itensCarrinho">
-                    {/**Aqui entram os itens */}
+                    <ItemCarrinho />
+                    <ItemCarrinho />
                 </div>
                 <div className="moduloPedido">
                     <form>
-                        <label htmlFor="cep">Calcule o valor do frete</label>
-                        <div className="inputMaisOK">
-                            <input
-                                type="cep"
-                                placeholder="Digite seu CEP"
-                                value={cep}
-                                onChange={(e) => setCep(e.target.value)}
-                            />
-                            <button className="btnOK">Ok</button>
+                        <div>
+                            <label htmlFor="cep">Calcule o valor do frete</label>
+                            <div className="inputMaisOK">
+                                <input
+                                    type="cep"
+                                    placeholder="Digite seu CEP"
+                                    value={cep}
+                                    onChange={(e) => setCep(e.target.value)}
+                                />
+                                <button className="btnOK">Ok</button>
+                            </div>
                         </div>
-                        <label htmlFor="cupom">Cupom de desconto</label>
-                        <div className="inputMaisOK">
-                            <input
-                                type="cupom"
-                                placeholder="Digite seu cupom"
-                                value={cupom}
-                                onChange={(e) => setCupom(e.target.value)}
-                            />
-                            <button className="btnOK">Ok</button>
+                        <div>
+                            <label htmlFor="cupom">Cupom de desconto</label>
+                            <div className="inputMaisOK">
+                                <input
+                                    type="cupom"
+                                    placeholder="Digite seu cupom"
+                                    value={cupom}
+                                    onChange={(e) => setCupom(e.target.value)}
+                                />
+                                <button className="btnOK">Ok</button>
+                            </div>
                         </div>
                     </form>
                     <div className="divisoria"></div>
                     <div className="resumo">
-                        <p>Resumo do pedido</p>
+                        <label>Resumo do pedido</label>
                         <div className="textoMaisPreco">
                             <p>Subtotal</p>
                             <strong>R$119,60 {/** Mudar para preço dinâmico */}</strong>
@@ -57,8 +63,8 @@ export default function LogIn() {
                             <strong>R$119,60 {/** Mudar para preço dinâmico */}</strong>
                         </div>
                     </div>
-                    <button className="botaoPrincipal con">Continuar comprando</button>
-                    <button className="botaoPrincipal fin">Finalizar compra</button>
+                    <button className="btnGrande princi">Continuar comprando</button>
+                    <button className="btnGrande secund">Finalizar compra</button>
                 </div>
             </div>
             <h1>Vistos recentemente</h1>
