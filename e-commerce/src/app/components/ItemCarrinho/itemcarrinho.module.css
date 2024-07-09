@@ -132,7 +132,7 @@
     align-items: center;
 }
 
-/* Responsive styles */
+/*
 @media (max-width: 1024px) {
     
     .produto {
@@ -256,3 +256,4 @@
         font-size: calc(1.2rem * 0.4);
     }
 }
+*/
