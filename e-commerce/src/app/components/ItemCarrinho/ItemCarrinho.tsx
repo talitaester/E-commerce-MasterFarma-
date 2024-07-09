@@ -10,7 +10,7 @@ export default function ItemCarrinho() {
     return (
         <div className={styles.produto}>
             <div className={styles.conteudo}>
-              <div>
+              <div className={styles.conteudoOriginal}>
                 <Image className={styles.imagemProduto} src="/produto.png" alt="produto" width="258" height="258"></Image>
                 
                 <div className={styles.container}>
@@ -25,16 +25,16 @@ export default function ItemCarrinho() {
                   </div>
                 </div>
               </div>
-              <div className="editarItem">
-                <div className="caracteristicasItem">
-                  <div className="mudarQuant">
-                    <button className="maisMenos" onClick={() => setQuant(quant-1)}> - </button>
-                    <div className="quantidade">{quant}</div>
-                    <button className="maisMenos" onClick={() => setQuant(quant+1)}> + </button>
+              <div className={styles.editarItem}>
+                <div className={styles.caracteristicasItem}>
+                  <div className={styles.mudarQuant}>
+                    <button className={styles.maisMenos} onClick={() => setQuant(quant-1)}> − </button>
+                    <div className={styles.quantidade}>{quant}</div>
+                    <button className={styles.maisMenos} onClick={() => setQuant(quant+1)}> + </button>
                   </div>
-                  <div className="subtotal">
+                  <div className={styles.subtotal}>
                     <label>Subtotal</label>
-                    <div className="subtotalReais">R${(preco*quant).toFixed(2)}</div>
+                    <div className={styles.subtotalReais}>R${(preco*quant).toFixed(2)}</div>
                   </div>
                 </div>
                 <img src={"/Lixeira.svg"} alt="remover item do carrinho" />

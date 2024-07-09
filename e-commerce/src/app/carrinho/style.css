@@ -30,6 +30,7 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 264px;
+    height: 557px;
     background-color: var(--c95);
     color: var(--c05);
     border-radius: 30px;
