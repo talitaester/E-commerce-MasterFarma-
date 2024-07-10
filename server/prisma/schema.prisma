@@ -15,31 +15,38 @@ model Product {
   id            Int             @id @default(autoincrement())
   name          String          @unique
   code          Int             @unique
+  oldPrice      Float           @default(0)
   price         Float
+  images        Image[]
   category      String
   createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  pedidos       Order[]
+  // pedidos       Order[]
 }
 
-model User {
-  name          String
-  email         String          @unique
-  password      String
-  carrinho      Order[]
-  isAdmin       Boolean         @default(false)
-}
-
-model Order {
+model Image {
   id            Int             @id @default(autoincrement())
-  userEmail     String          
-  user          User            @relation(fields: [userEmail], references: [email])
+  url           String          
   productId     Int
   product       Product         @relation(fields: [productId], references: [id])
-  quant         Int
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
 }
+
+// model User {
+//   name          String
+//   email         String          @unique
+//   password      String
+//   carrinho      Order[]
+//   isAdmin       Boolean         @default(false)
+// }
+
+// model Order {
+//   id            Int             @id @default(autoincrement())
+//   userEmail     String          
+//   user          User            @relation(fields: [userEmail], references: [email])
+//   product       Product[]        //array do tipo produto que armazena todos os produtos do pedido 
+//   quant         Int
+//   createdAt     DateTime        @default(now())
+//   updatedAt     DateTime        @updatedAt
+// }
 
 //enum Categoria {
 //  MEDICAMENTO
