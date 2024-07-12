@@ -1,4 +1,8 @@
 import styles from "./footer.module.css"
+import Image from "next/image"
+import logoGrande from "/public/logo-grande.svg"
+import logoMedia from "/public/logo-media.svg"
+import logoPequena from "/public/logo-pequena.svg"
 import Link from "next/link"
 
 export default function Footer() {
@@ -33,13 +37,13 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-
+                
                 <picture>
                     <source media="(max-width: 430px)" srcSet="/logo-pequena.svg" />
                     <img src="/logo-media.svg" alt="Logo"/>
                 </picture>
             </div>
-            <p className={styles.copyright}>Copyright © {new Date().getFullYear()}</p>
+            <p className={styles.copyright}>Copyright © 2024</p>
         </footer>
     )
 }

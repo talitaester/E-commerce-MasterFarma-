@@ -3,25 +3,11 @@
   padding: 0;
 }
 
-:root {
-  --c05: #EBFFFE;
-  --c10: #CDFFFF;
-  --c20: #A1FDFF;
-  --c30: #60F8FF;
-  --c40: #18EAF8;
-  --c50: #00CCDE;
-  --c60: #00A2B9;
-  --c70: #088196;
-  --c80: #10677A;
-  --c90: #125667;
-  --c95: #053947;  
-}
-
 html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--c05);
+  background-color: #EBFFFE;
 }
 
 body {
@@ -30,28 +16,4 @@ body {
 
 main {
   flex: 1;
-}
-
-h6 {
-  color: var(--c05);
-  font-size: 24px;
-  font-weight: bolder;
-}
-
-h2 {
-  color: var(--c95);
-  font-size: 49.8px;
-  font-weight: bolder;
-}
-
-p {
-  color: var(--c05);
-  font-size: 20px;
-  font-weight: 400;
-}
-
-h4 {
-  color: var(--c05);
-  font-size: 34.6px;
-  font-weight: bolder;
 }

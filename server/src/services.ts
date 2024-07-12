@@ -81,7 +81,8 @@ export const getProductByCode = async (code: number) => {
   });
 };
 
-// Remover imagens por índices
+// Remover imagens por índices 
+// Nesse caso é usado o indice na imagen no array de imagens
 export const removeImagesByIndices = async (productCode: number, indices: number[]) => {
   const product = await prisma.product.findUnique({
     where: { code: productCode },
