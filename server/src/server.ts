@@ -6,6 +6,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use(cors({
+  origin: 'http://localhost:3001', // Alvo específico
+  credentials: true // Permitir credenciais
+}));
+
 // Rota para adicionar um produto
 app.post('/products', async (req: Request, res: Response) => {
   const { name, code, price, oldPrice, category, images } = req.body;
