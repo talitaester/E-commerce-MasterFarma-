@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from '../../../axios';
+import Produto from '../components/Produto/Produto'; // Importa o componente Produto
 import './style.css';
 
 interface Product {
@@ -36,11 +37,9 @@ export default function Pesquisa() {
     try {
       let response;
 
-      // Verifica se há uma busca por nome ou se há categorias selecionadas
       if (query && query.trim()) {
         response = await axios.get(`/products/name/${query}`);
         if (response.data) {
-          // Filtra os produtos de acordo com as categorias selecionadas
           const filteredProducts = response.data.filter((product: Product) =>
             selectedCategories.length === 0 || selectedCategories.includes(product.category)
           );
@@ -95,20 +94,21 @@ export default function Pesquisa() {
                 </div>
               ))}
             </div>
-            {/* O restante do código de filtros e ordenação permanece igual */}
           </form>
         </div>
         <div className="gradeResultados">
           {products.map(product => (
-            <div key={product.id} className="produto">
-              <img src={product.images[0]?.url} alt={product.name} />
-              <h3>{product.name}</h3>
-              <p>R${product.price.toFixed(2)}</p>
-            </div>
+            <Produto
+              key={product.id}
+              nome={product.name}
+              precoAntigo={`R$${product.oldPrice.toFixed(2)}`}
+              precoAtual={`R$${product.price.toFixed(2)}`}
+              parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
+              imagemSrc={product.images[0]?.url}
+            />
           ))}
         </div>
       </div>
-      {/* Seção você também pode gostar */}
     </>
   );
 }
