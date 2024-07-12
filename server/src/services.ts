@@ -81,6 +81,8 @@ export const getProductByCode = async (code: number) => {
   });
 };
 
+
+
 // Remover imagens por índices
 export const removeImagesByIndices = async (productCode: number, indices: number[]) => {
   const product = await prisma.product.findUnique({
@@ -106,5 +108,70 @@ export const removeImagesByIndices = async (productCode: number, indices: number
     }
   });
 
+  
+
   return { message: `${imageIdsToDelete.length} imagens removidas com sucesso` };
+};
+
+
+// Adicionar um produto ao carrinho
+export const addToCart = async (productId: number) => {
+  // Procurar um carrinho existente
+  let cart = await prisma.cart.findFirst();
+
+  // Se não houver carrinho, criar um
+  if (!cart) {
+    cart = await prisma.cart.create({
+      data: {}
+    });
+  }
+
+  // Adicionar o produto ao carrinho
+  return await prisma.cartProduct.create({
+    data: {
+      cartId: cart.id,
+      productId: productId
+    },
+    include: { product: true }
+  });
+};
+
+// Remover um produto do carrinho
+export const removeFromCart = async (productId: number) => {
+  const cart = await prisma.cart.findFirst({
+    include: {
+      products: true
+    }
+  });
+
+  if (!cart) {
+    throw new Error('Carrinho não encontrado');
+  }
+
+  return await prisma.cartProduct.deleteMany({
+    where: {
+      cartId: cart.id,
+      productId: productId
+    }
+  });
+};
+
+
+// Verificar itens no carrinho
+export const getCartItems = async () => {
+  const cart = await prisma.cart.findFirst({
+    include: {
+      products: {
+        include: {
+          product: true
+        }
+      }
+    }
+  });
+
+  if (!cart) {
+    return [];
+  }
+
+  return cart.products.map(cp => cp.product);
 };
