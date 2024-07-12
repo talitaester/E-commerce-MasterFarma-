@@ -1,71 +1,114 @@
-import "./style.css"
+"use client";
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import axios from '../../../axios';
+import Produto from '../components/Produto/Produto'; // Importa o componente Produto
+import './style.css';
 
-export default function Pesquisa(){
-    return (
-        <>
-            <h1>Exibindo resultados para “xxxxxxxxx”</h1>
-            <div className="gradePesquisa">
-                <div className="filtros">
-                    <form>
-                        <h2>Filtrar por categoria</h2>
-                        <div className="opcoesForm">
-                            <div>
-                                <input type="checkbox" id="categoria1" name="categoria1" value="Medicamentos" />
-                                <label htmlFor="Medicamentos">Medicamentos</label>
-                            </div><div>
-                                <input type="checkbox" id="categoria2" name="categoria2" value="Suplementos" />
-                                <label htmlFor="Suplementos">Suplementos</label>
-                            </div><div>
-                                <input type="checkbox" id="categoria3" name="categoria3" value="Higiene" />
-                                <label htmlFor="Higiene">Higiene</label>
-                            </div><div>
-                                <input type="checkbox" id="categoria4" name="categoria4" value="Beleza" />
-                                <label htmlFor="Beleza">Beleza</label>
-                            </div><div>
-                                <input type="checkbox" id="categoria5" name="categoria5" value="Bebês" />
-                                <label htmlFor="Bebês">Bebês</label>
-                            </div><div>
-                                <input type="checkbox" id="categoria6" name="categoria6" value="Perfumaria" />
-                                <label htmlFor="Perfumaria">Perfumaria</label>
-                            </div>
-                        </div>
-                        <h2>Filtrar por preço</h2>
-                        <div className="opcoesForm">
-                            <div>
-                                <input type="radio" id="ate50" name="filtrar_preco" value="Até 50 Reais" />
-                                <label htmlFor="ate50">Até R$50,00</label>
-                            </div><div>
-                                <input type="radio" id="ate50" name="filtrar_preco" value="Até 100 Reais" />
-                                <label htmlFor="ate100">Até R$100,00</label>
-                            </div><div>
-                                <input type="radio" id="ate200" name="filtrar_preco" value="Até 200 Reais" />
-                                <label htmlFor="ate200">Até R$200,00</label>
-                            </div><div>
-                                <input type="radio" id="acima200" name="filtrar_preco" value="Acima de 200 Reais" />
-                                <label htmlFor="acima200">Acima de R$200,00</label>
-                            </div><div>
-                                <input type="radio" id="reseta_preco" name="filtrar_preco" value="Reset" />
-                                <label htmlFor="reseta_preco">Resetar seleção</label>
-                            </div>
-                        </div>
-                        <h2>Ordenar por</h2>
-                        <div className="opcoesForm">
-                            <div>
-                                <input type="radio" id="relevancia" name="ordenar_por" value="Relevância" />
-                                <label htmlFor="relevancia">Relevância</label>
-                            </div><div>
-                                <input type="radio" id="preco" name="ordenar_por" value="Preço" />
-                                <label htmlFor="preco">Preço</label>
-                            </div><div>
-                                <input type="radio" id="reseta_ordenacao" name="ordenar_por" value="Reset" />
-                                <label htmlFor="ordenacao">Resetar seleção</label>
-                            </div>
-                        </div>
-                    </form>
+interface Product {
+  id: number;
+  name: string;
+  code: number;
+  price: number;
+  oldPrice: number;
+  category: string;
+  images: { url: string }[];
+}
+
+export default function Pesquisa() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query');
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategories(prev => {
+      if (prev.includes(category)) {
+        return prev.filter(c => c !== category);
+      } else {
+        return [...prev, category];
+      }
+    });
+  };
+
+  const fetchProducts = async () => {
+    try {
+      let response;
+
+      if (query && query.trim()) {
+        response = await axios.get(`/products/name/${query}`);
+        if (response.data) {
+          const filteredProducts = response.data.filter((product: Product) =>
+            selectedCategories.length === 0 || selectedCategories.includes(product.category)
+          );
+          setProducts(filteredProducts);
+        }
+      } else if (selectedCategories.length > 0) {
+        const categories = selectedCategories.join(',');
+        response = await axios.get(`/products/category/${categories}`);
+        setProducts(response.data);
+      } else {
+        setProducts([]);
+        return;
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Erro ao buscar produtos:', error);
+        setError(error.message);
+      } else {
+        console.error('Erro desconhecido:', error);
+        setError('Erro ao buscar produtos');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [query, selectedCategories]);
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <>
+      <h1>Exibindo resultados para “{query || selectedCategories.join(', ')}”</h1>
+      <div className="gradePesquisa">
+        <div className="filtros">
+          <form>
+            <h2>Filtrar por categoria</h2>
+            <div className="opcoesForm">
+              {['Medicamentos', 'Suplementos', 'Higiene', 'Beleza', 'Bebês', 'Perfumaria'].map(category => (
+                <div key={category}>
+                  <input
+                    type="checkbox"
+                    id={category}
+                    value={category}
+                    checked={selectedCategories.includes(category)}
+                    onChange={() => handleCategoryChange(category)}
+                  />
+                  <label htmlFor={category}>{category}</label>
                 </div>
-                {/** adicionar grid pegando do banco de dados todos os produtos */}
+              ))}
             </div>
-            {/** Seção você também pode gostar */}
-        </>
-    )
+          </form>
+        </div>
+        <div className="gradeResultados">
+          {products.map(product => (
+            <Produto
+              key={product.id}
+              nome={product.name}
+              precoAntigo={`R$${product.oldPrice.toFixed(2)}`}
+              precoAtual={`R$${product.price.toFixed(2)}`}
+              parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
+              imagemSrc={product.images[0]?.url}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
