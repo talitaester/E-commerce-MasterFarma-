@@ -9,7 +9,7 @@ export default function LogIn() {
     const [cupom, setCupom] = useState('')
 
     return (
-        <main>
+        <div className="principal">
             <div id="tituloCarrinho">
                 <img src={"CarrinhoPlus.svg"} />
                 <h1>Seu carrinho de compras</h1>
@@ -63,14 +63,16 @@ export default function LogIn() {
                             <strong>R$119,60 {/** Mudar para preço dinâmico */}</strong>
                         </div>
                     </div>
-                    <button className="btnGrande princi">Continuar comprando</button>
-                    <button className="btnGrande secund">Finalizar compra</button>
+                    <div className="botoezoes">
+                        <button className="btnGrande princi">Continuar comprando</button>
+                        <button className="btnGrande secund">Finalizar compra</button>
+                    </div>
                 </div>
             </div>
             <h1>Vistos recentemente</h1>
             {/** ... */}
             <h1>Você também pode gostar</h1>
             {/** ... */}
-        </main>
+        </div>
     )
 }
