@@ -24,13 +24,13 @@ export default function Carrinho() {
 
         fetchProdutos();
     }, []);
-
+/*
     const calcularSubtotal = () => {
         return produtos.reduce((total, produto) => {
             return total + (produto.subtotal || 0); // Se subtotal não existir, usa 0
         }, 0);
     };
-
+*/
     return (
         <main>
             <div id="tituloCarrinho">
@@ -79,7 +79,7 @@ export default function Carrinho() {
                         <label>Resumo do pedido</label>
                         <div className="textoMaisPreco">
                             <p>Subtotal</p>
-                            <strong>R${calcularSubtotal().toFixed(2)}</strong>
+                            <strong>R$20{/*calcularSubtotal().toFixed(2)*/}</strong>
                         </div>
                         <div className="textoMaisPreco">
                             <p>Entrega</p>
@@ -88,7 +88,7 @@ export default function Carrinho() {
                         <div className="divisoria"></div>
                         <div className="textoMaisPreco">
                             <p>Total</p>
-                            <strong>R${calcularSubtotal().toFixed(2)}</strong>
+                            <strong>R$R$20{/*calcularSubtotal().toFixed(2)*/}</strong>
                         </div>
                     </div>
                     <Link href='/'>
