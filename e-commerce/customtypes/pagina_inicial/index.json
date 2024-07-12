@@ -1,43 +1,14 @@
 {
   "format": "page",
   "id": "pagina_inicial",
-  "label": "pagina_inicial",
-  "repeatable": false,
-  "status": true,
   "json": {
     "Main": {
-      "title": {
-        "type": "Text",
-        "config": {
-          "label": "Title",
-          "placeholder": ""
-        }
-      },
       "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "mais_vendidos": {
-              "type": "SharedSlice"
-            },
-            "compre_junto": {
-              "type": "SharedSlice"
-            },
-            "marcas": {
-              "type": "SharedSlice"
-            },
-            "ofertas": {
-              "type": "SharedSlice"
-            },
-            "sessoes": {
-              "type": "SharedSlice"
-            },
-            "carrossel": {
-              "type": "SharedSlice"
-            }
-          }
-        }
+          "choices": {}
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -67,5 +38,8 @@
         "type": "Image"
       }
     }
-  }
+  },
+  "label": "Página Inicial",
+  "repeatable": false,
+  "status": true
 }
