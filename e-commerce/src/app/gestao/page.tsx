@@ -82,15 +82,61 @@ export default function Gestao() {
                         />
                     </div>
 
-                    <div className="forms">
+                    <div className="product-form">
+                        <div className="form-group">
+                            <label htmlFor="productName"><h6>Nome do produto</h6></label>
+                            <input type="text" id="productName" placeholder="Nome do produto" />
+                        </div>
+                        <div className="prices">
+                            <div className="price-input">
+                                <label htmlFor="oldPrice"><h6>Preço antigo</h6></label>
+                                <input type="text" id="oldPrice" placeholder="R$0,00" />    
+                            </div>
+                            <div className="price-input">
+                                <label htmlFor="oldPrice"><h6>Preço atual</h6></label>
+                                <input type="text" id="oldPrice" placeholder="R$0,00" />    
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="code"><h6>Código</h6></label>
+                            <input type="text" id="code" placeholder="00000000" />
+                        </div>
+                        <div className="form-group">
+                            <label><h6>Categoria</h6></label>
+                            <div className="checkbox-group">
+                                <label className="input">
+                                    <input type="checkbox" name="category" value="medicamentos" />
+                                    Medicamentos
+                                </label>
+                                <label className="input">
+                                    <input type="checkbox" name="category" value="suplementos" />
+                                    Suplementos
+                                </label>
+                                <label className="input">
+                                    <input type="checkbox" name="category" value="higiene" />
+                                    Higiene
+                                </label>
+                                <label className="input">
+                                    <input type="checkbox" name="category" value="beleza" />
+                                    Beleza
+                                </label>
+                                <label className="input">
+                                    <input type="checkbox" name="category" value="bebes" />
+                                    Bebês
+                                </label>
+                                <label className="input">
+                                    <input type="checkbox" name="category" value="perfumaria" />
+                                    Perfumaria
+                                </label>
+                            </div>
+                        </div>
                         <div className="botoes">
                             <button className="cancelar"><h6>Cancelar</h6></button>
                             <button className="confirmar" onClick={handleImageUpload}><h6>Confirmar</h6></button>
                         </div>
                     </div>
+                    
                 </div>
-
-
             </div>
         </div>
     );
