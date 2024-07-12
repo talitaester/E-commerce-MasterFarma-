@@ -1,24 +1,51 @@
-"use client"
+"use client";
 
-import ItemCarrinho from "../components/ItemCarrinho/ItemCarrinho"
-import "./style.css"
-import { useState } from "react"
+import ItemCarrinho from "../components/ItemCarrinho/ItemCarrinho";
+import "./style.css";
+import { useState, useEffect } from "react";
 import Link from 'next/link';
+import axios from '../../../axios';
 
-export default function LogIn() {
-    const [cep, setCep] = useState('')
-    const [cupom, setCupom] = useState('')
+export default function Carrinho() {
+    const [cep, setCep] = useState('');
+    const [cupom, setCupom] = useState('');
+    const [produtos, setProdutos] = useState([]); // Inicializado como array vazio
+
+    useEffect(() => {
+        const fetchProdutos = async () => {
+            try {
+                const response = await axios.get('/cart');
+                setProdutos(response.data || []); // Garante que seja um array
+                console.log('Produtos do carrinho:', response.data);
+            } catch (error) {
+                console.error('Erro ao buscar produtos:', error);
+            }
+        };
+
+        fetchProdutos();
+    }, []);
+
+    const calcularSubtotal = () => {
+        return produtos.reduce((total, produto) => {
+            return total + (produto.subtotal || 0); // Se subtotal não existir, usa 0
+        }, 0);
+    };
 
     return (
         <main>
             <div id="tituloCarrinho">
-                <img src={"CarrinhoPlus.svg"} />
+                <img src={"CarrinhoPlus.svg"} alt="Carrinho" />
                 <h1>Seu carrinho de compras</h1>
             </div>
             <div className="carrinho">
                 <div className="itensCarrinho">
-                    <ItemCarrinho />
-                    <ItemCarrinho />
+                    {produtos.length > 0 ? (
+                        produtos.map((produto) => (
+                            <ItemCarrinho  produto={produto} />
+                        ))
+                    ) : (
+                        <p>Nenhum produto no carrinho.</p>
+                    )}
                 </div>
                 <div className="moduloPedido">
                     <form>
@@ -26,7 +53,7 @@ export default function LogIn() {
                             <label htmlFor="cep">Calcule o valor do frete</label>
                             <div className="inputMaisOK">
                                 <input
-                                    type="cep"
+                                    type="text"
                                     placeholder="Digite seu CEP"
                                     value={cep}
                                     onChange={(e) => setCep(e.target.value)}
@@ -38,7 +65,7 @@ export default function LogIn() {
                             <label htmlFor="cupom">Cupom de desconto</label>
                             <div className="inputMaisOK">
                                 <input
-                                    type="cupom"
+                                    type="text"
                                     placeholder="Digite seu cupom"
                                     value={cupom}
                                     onChange={(e) => setCupom(e.target.value)}
@@ -52,16 +79,16 @@ export default function LogIn() {
                         <label>Resumo do pedido</label>
                         <div className="textoMaisPreco">
                             <p>Subtotal</p>
-                            <strong>R$119,60 {/** Mudar para preço dinâmico */}</strong>
+                            <strong>R${calcularSubtotal().toFixed(2)}</strong>
                         </div>
                         <div className="textoMaisPreco">
                             <p>Entrega</p>
-                            <strong>R$0,00 </strong>
+                            <strong>R$0,00</strong>
                         </div>
                         <div className="divisoria"></div>
                         <div className="textoMaisPreco">
                             <p>Total</p>
-                            <strong>R$119,60 {/** Mudar para preço dinâmico */}</strong>
+                            <strong>R${calcularSubtotal().toFixed(2)}</strong>
                         </div>
                     </div>
                     <Link href='/'>
@@ -75,5 +102,5 @@ export default function LogIn() {
             <h1>Você também pode gostar</h1>
             {/** ... */}
         </main>
-    )
+    );
 }

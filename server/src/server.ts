@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-  origin: 'http://localhost:3001', // Alvo específico
+  origin: 'http://localhost:3000', // Alvo específico
   credentials: true // Permitir credenciais
 }));
 
