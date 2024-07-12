@@ -76,6 +76,46 @@
     flex-direction: column;
 }
 
+.editButton {
+    width: 195px;
+    height: 54px;
+    padding: 8px 14px;
+    gap: 10px;
+    border-radius: 15px;
+    background-color: var(--c95);
+    border: none;
+    box-sizing: border-box;
+}
+
+.produto.editable {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--c60);
+    border-radius: 40px;
+    width: 288px;
+    height: 602px;
+}
+
+.edit {
+    display: flex;
+    gap: 5px;
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--c05);
+    width: 54px;
+    height: 54px;
+    border: none;
+    padding: 0;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+
 @media (max-width: 1360px) {
     .horizontal .produto {
         width: calc(600px*0.75);
@@ -123,6 +163,29 @@
         border-radius: calc(40px * 0.75);
     }
 
+    .produto.editable {
+        width: calc(288px * 0.75);
+        height: calc(602px * 0.75);
+        border-radius: calc(40px * 0.75);
+    }
+
+    .editButton {
+        width: calc(195px * 0.75);
+        height: calc(54px * 0.75);
+        padding: calc(8px * 0.75) calc(14px * 0.75);
+        border-radius: calc(15px * 0.75);
+    }
+
+    .delete {
+        width: calc(54px * 0.75);
+        height: calc(54px * 0.75);
+    }
+
+    .lixo {
+        width: calc(26px * 0.75);
+        height: calc(28px * 0.75);
+    }
+
     .imagemProduto {
         width: calc(258px * 0.75);
         height: calc(258px * 0.75);
@@ -144,7 +207,7 @@
         top: calc(15px * 0.75);
     }
 
-    .nomeProduto {
+    .nomeProduto, .editName {
         font-size: calc(1.5rem * 0.75);
     }
     
@@ -162,6 +225,29 @@
         width: calc(288px * 0.6);
         height: calc(542px * 0.6);
         border-radius: calc(40px * 0.6);
+    }
+
+    .produto.editable {
+        width: calc(288px * 0.6);
+        height: calc(602px * 0.6);
+        border-radius: calc(40px * 0.6);
+    }
+
+    .editButton {
+        width: calc(195px * 0.6);
+        height: calc(54px * 0.6);
+        padding: calc(8px * 0.6) calc(14px * 0.6);
+        border-radius: calc(15px * 0.6);
+    }
+
+    .delete {
+        width: calc(54px * 0.6);
+        height: calc(54px * 0.6);
+    }
+
+    .lixo {
+        width: calc(26px * 0.6);
+        height: calc(28px * 0.6);
     }
 
     .imagemProduto {
@@ -185,7 +271,7 @@
         top: calc(15px * 0.6);
     }
 
-    .nomeProduto {
+    .nomeProduto, .editName {
         font-size: calc(1.5rem * 0.6);
     }
     
@@ -246,6 +332,29 @@
         border-radius: calc(40px * 0.4);
     }
 
+    .produto.editable {
+        width: calc(288px * 0.4);
+        height: calc(602px * 0.4);
+        border-radius: calc(40px * 0.4);
+    }
+
+    .editButton {
+        width: calc(195px * 0.4);
+        height: calc(54px * 0.4);
+        padding: calc(8px * 0.4) calc(14px * 0.4);
+        border-radius: calc(15px * 0.4);
+    }
+
+    .delete {
+        width: calc(54px * 0.4);
+        height: calc(54px * 0.4);
+    }
+
+    .lixo {
+        width: calc(26px * 0.4);
+        height: calc(28px * 0.4);
+    }
+
     .imagemProduto {
         width: calc(258px * 0.4);
         height: calc(258px * 0.4);
@@ -267,7 +376,7 @@
         top: calc(15px * 0.4);
     }
 
-    .nomeProduto {
+    .nomeProduto, .editName {
         font-size: calc(1.5rem * 0.4);
     }
     

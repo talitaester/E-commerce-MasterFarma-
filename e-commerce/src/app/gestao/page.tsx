@@ -4,6 +4,12 @@ import { useRef, useState } from "react";
 import "./style.css";
 import Image from "next/image";
 import axios from "axios";
+import Produto from "../components/Produto/Produto";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Pagination, Navigation, Grid } from "swiper/modules";
 
 export default function Gestao() {
     const [images, setImages] = useState<(File | null)[]>(Array(5).fill(null));
@@ -41,6 +47,18 @@ export default function Gestao() {
         }
     };
 
+    const products = [
+        { id: 1, name: "Produto 1", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 2, name: "Produto 2", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 3, name: "Produto 3", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 4, name: "Produto 4", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 5, name: "Produto 5", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 6, name: "Produto 6", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 7, name: "Produto 7", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 8, name: "Produto 8", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+        { id: 9, name: "Produto 9", precoAntigo: "R$49,90", precoAtual: "R$29,90", parcelas: "Ou 3x de 9,99", imagemSrc: "/produto.png" },
+    ];
+
     return (
         <div className="pagina">
             <h1 className="pagTitulo">Gestão dos produtos</h1>
@@ -48,7 +66,6 @@ export default function Gestao() {
                 <h4 className="containerTitulo">Criar Produto</h4>
                 <div className="content">
                     <div className="images-container">
-
                         <div className="line">
                             {Array(4).fill(null).map((_, i) => (
                                 <div key={i + 1} className="little-container" onClick={() => fileInputRefs.current[i + 1]?.click()}>
@@ -135,7 +152,37 @@ export default function Gestao() {
                             <button className="confirmar" onClick={handleImageUpload}><h6>Confirmar</h6></button>
                         </div>
                     </div>
-                    
+                </div>
+            </div>
+
+            <div className="produtosListados">
+                <Swiper
+                    modules={[Grid, Navigation, Pagination]}
+                    slidesPerView={4}
+                    grid={{
+                    rows: 2,
+                    }}
+                    spaceBetween={30}
+                    navigation
+                    pagination={{ clickable: true, el: '.custom-pagination' }}
+                >
+                    {products.map((product, index) => (
+                        <SwiperSlide key={index} className="produto-slide">
+                            <Produto
+                                nome={product.name}
+                                precoAntigo={product.precoAntigo}
+                                precoAtual={product.precoAtual}
+                                parcelas={product.parcelas}
+                                imagemSrc={product.imagemSrc}
+                                editable={true}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                <div className="custom-pagination-container">
+                    <div className="swiper-button-prev custom-arrow"></div>
+                    <div className="custom-pagination"></div>
+                    <div className="swiper-button-next custom-arrow"></div>
                 </div>
             </div>
         </div>
