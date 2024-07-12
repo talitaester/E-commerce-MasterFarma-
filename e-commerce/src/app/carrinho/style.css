@@ -33,7 +33,7 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 288px;
-    height: 604px;
+    height: 612px;
     background-color: var(--c95);
     color: var(--c05);
     border-radius: 30px;
@@ -51,7 +51,7 @@ form {
 form div {
     display: flex;
     flex-direction: column;
-    gap: 8px
+    gap: 8px;
 }
 .principal input {
     background-color: var(--c05);
@@ -112,7 +112,7 @@ form div {
 .btnGrande {
     border-radius: 30px;
     width: 100%;
-    height: 58px;
+    height: 54px;
     font-weight: bolder;
     border-color: white;
     font-family: "Montserrat";
