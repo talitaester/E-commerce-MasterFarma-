@@ -1,0 +1,87 @@
+.pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.menuCriacao {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--c95);
+    padding: 4rem;
+    border-radius: 4rem;
+    width: 80%;
+    max-width: 1224px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.pagTitulo {
+    margin: 6rem auto 3rem;
+    font-size: 60px;
+}
+
+.containerTitulo {
+    margin-bottom: 1rem;
+}
+
+.images-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 40px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.image-placeholder, .image-preview {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 1rem;
+}
+
+.little-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.little-image-preview, .little-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.forms {
+    flex-grow: 1;
+}
+
+.botoes {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    padding: 20px 41px;
+    background: none;
+    border-radius: 20px;
+}

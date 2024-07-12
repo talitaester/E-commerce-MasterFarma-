@@ -24,10 +24,10 @@ export default function Header() {
         </form>
 
 
-        <div className={styles.headerOption}>
+        <Link href="/login" className={styles.headerOption}>
           <Image className={styles.IconeHeader} src={entrar} alt='entrar' width={32} height={32} />
           Entrar
-        </div>
+        </Link>
 
         <div className={styles.headerOption}>
           <Image className={styles.IconeHeader} src={carrinho} alt='carrinho' width={32} height={32} />

@@ -38,6 +38,12 @@ h6 {
   font-weight: bolder;
 }
 
+h1 {
+  text-align: center;
+  color: var(--c95);
+  font-weight: 800;
+}
+
 h2 {
   color: var(--c95);
   font-size: 49.8px;
