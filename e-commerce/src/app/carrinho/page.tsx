@@ -3,6 +3,7 @@
 import ItemCarrinho from "../components/ItemCarrinho/ItemCarrinho"
 import "./style.css"
 import { useState } from "react"
+import Link from 'next/link';
 
 export default function LogIn() {
     const [cep, setCep] = useState('')
@@ -63,7 +64,9 @@ export default function LogIn() {
                             <strong>R$119,60 {/** Mudar para preço dinâmico */}</strong>
                         </div>
                     </div>
-                    <button className="btnGrande princi">Continuar comprando</button>
+                    <Link href='/'>
+                        <button className="btnGrande princi">Continuar comprando</button>
+                    </Link>
                     <button className="btnGrande secund">Finalizar compra</button>
                 </div>
             </div>
