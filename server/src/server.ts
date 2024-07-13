@@ -1,15 +1,25 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { addProduct, removeProduct, editProduct, getProductsByCategory, getProductsByName, getProductByCode, removeImagesByIndices, addToCart, removeFromCart, getCartItems } from './services';
+import {getAllProducts, updateCartQuantity, addProduct, removeProduct, editProduct, getProductsByCategory, getProductsByName, getProductByCode, removeImagesByIndices, addToCart, removeFromCart, getCartItems } from './services';
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-  origin: 'http://localhost:3001', // Alvo específico
-  credentials: true // Permitir credenciais
+  origin: 'http://localhost:3000', // Permitir apenas esse domínio
+  credentials: true // Permitir cookies e credenciais
 }));
+
+// Rota para buscar todos os produtos
+app.get('/products', async (req: Request, res: Response) => {
+  try {
+    const products = await getAllProducts();
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+});
 
 // Rota para adicionar um produto
 app.post('/products', async (req: Request, res: Response) => {
@@ -123,8 +133,26 @@ app.get('/cart', async (req: Request, res: Response) => {
     res.status(500).json({ error: (error as Error).message });
   }
 });
+
+// Rota para atualizar a quantidade de um produto no carrinho
+app.put('/cart/:cartProductId/quantity', async (req: Request, res: Response) => {
+  const { cartProductId } = req.params;
+  const { quant } = req.body;
+
+  try {
+    const updatedCartProduct = await updateCartQuantity(Number(cartProductId), quant);
+    res.status(200).json(updatedCartProduct);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+})
+
+
+
+
+
 // Iniciar o servidor
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

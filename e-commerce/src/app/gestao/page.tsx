@@ -1,10 +1,11 @@
 'use client';
 
 import { useRef, useState } from "react";
-import "./style.css";
+
 import Image from "next/image";
 import axios from "axios";
 import Produto from "../components/Produto/Produto";
+import React from "react";
 
 export async function getData() {
     // Fetch data from your backend
@@ -153,6 +154,7 @@ export default function Gestao() {
             </div>
 
             <div className="produtosListados">
+
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
@@ -162,6 +164,7 @@ export default function Gestao() {
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
+
             </div>
         </div>
     );
