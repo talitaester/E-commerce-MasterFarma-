@@ -33,7 +33,8 @@
 .content {
     display: flex;
     flex-direction: row;
-    gap: 2rem
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .pagTitulo {
@@ -123,7 +124,7 @@ label {
     justify-content: space-between;
 }
 
-#oldPrice {
+#oldPrice, #code {
     max-width: 184px;
 }
 
@@ -185,6 +186,7 @@ label {
     margin: 24px auto;
     justify-content: center;
 }
+
 @media (max-width: 1360px) {
     .menuCriacao {
         width: calc(1224px * 0.8);
@@ -261,10 +263,13 @@ label {
     .menuCriacao {
         padding: 2rem 1rem;
         border-radius: 40px;
+        width: 90%;
+        
     }
     
     .content {
-        width: 520px;
+        display: flex;
+        justify-content: center;
     }
 
     .little-container {
@@ -274,12 +279,25 @@ label {
 
     .images-container {
         width: 100%;
+        justify-content: center;
     }
     
     .produtosListados {
         width: 95%;
     }
-    
+
+    #productName {
+        width: 100%;
+        height: 87px;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+
+    .product-form {
+        gap: 20px;
+        max-width: 440px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -305,5 +323,67 @@ label {
     .produtosListados {
         gap: 16px;;
         margin: 23px auto;
+    }
+
+    label h6, label {
+        font-size: 13px;
+    }
+
+    button h6 {
+        font-size: 17px;
+    }
+
+    .price-input input[type="text"], #code {
+        width: 137px;
+    }
+
+    .form-group input[type="text"]{
+        width: 272px;
+    }
+
+    .prices {
+        width: 272px;
+        gap: 8px;
+    }
+    
+    .botoes button {
+        padding: 15px 21px;
+        border-radius: 15px;
+        width: 132px;
+    }
+
+    .menuCriacao {
+        padding: .5rem;
+        border-radius: 20px;
+        width: 98%;
+        
+    }
+
+    .containerTitulo {
+        font-size:17px;
+    }
+
+    .images-container {
+        padding: 0;
+        align-items: center;
+        height: 230px;
+    }
+
+    .image-placeholder {
+        display: flex;
+        flex-wrap: wrap;
+        align-self: flex-start;
+        height: 216px;
+        width: 216px;
+    }
+
+    .image-upload-container {
+        width: 216px;
+        height: 216px;
+    }
+
+    .product-form {
+        gap: 10px;
+        max-width: 288px;
     }
 }

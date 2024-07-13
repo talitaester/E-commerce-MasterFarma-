@@ -166,7 +166,6 @@ export default function Gestao() {
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
-                <Produto editable={true}/>
                 {!isMenuVisible && (
                     <>
                     <Produto editable={true}/>
