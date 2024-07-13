@@ -1,14 +1,26 @@
 /* style.css */
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
+.adicionar-produto {
+    width: 845px;
+    height: 105px;
+    background-color: var(--c95);
+    border-radius: 30px;
+}
 
+.botaoTitulo {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 60px;
+    color: var(--c05);
+}
 
 .pagina {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
 }
 
 .menuCriacao {
@@ -79,14 +91,14 @@
     gap: 1rem;
 }
 
-button {
+.botoes button {
     padding: 20px 41px;
-    background: none;
     border-radius: 20px;
 }
 
 .cancelar {
-    border: 1px solid var(--c60)
+    border: 1px solid var(--c60);
+    background: none;
 }
 
 .confirmar {
@@ -117,20 +129,28 @@ label {
     max-width: 184px;
 }
 
-#productName {
-    width: 100%; 
-    height: 87px;
-    
-}
-
 .price-input {
     display: flex;
     flex-direction: column;
 }
 
-input[type="text"] {
+.price-input input[type="text"], .form-group input[type="text"] {
     width: 100%;
     padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e0f4f1;
+    color: #053d4e;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+#productName {
+    width: 100%;
+    height: 87px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     background-color: #e0f4f1;
@@ -139,6 +159,8 @@ input[type="text"] {
     font-family: Montserrat;
     font-weight: bold;
     box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
 }
 
 .checkbox-group {
