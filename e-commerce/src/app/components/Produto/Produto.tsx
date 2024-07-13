@@ -1,23 +1,49 @@
+// Em Produto.tsx
+
+import React from "react";
 import Image from "next/image";
 import styles from "./produto.module.css";
 import classNames from "classnames";
+import axios from "axios";
 
-function handleEdit(nome: string) {
-    console.log(`Editing product: ${nome}`);
+interface ProdutoProps {
+    nome: string;
+    precoAntigo?: string;
+    precoAtual?: string;
+    parcelas?: string;
+    imagemSrc?: string;
+    editable?: boolean;
+    code: number;
+    onDelete?: () => void;
 }
 
-function handleDelete(nome: string) {
-    console.log(`Deleted product: ${nome}`);
-}
-
-export default function Produto({
-    nome = "Hidratante Labial Carmed Barbie 65 Pink 10g",
+const Produto: React.FC<ProdutoProps> = ({
+    nome,
     precoAntigo = "R$49,90",
     precoAtual = "R$29,90",
     parcelas = "Ou 3x de 9,99",
     imagemSrc = "/produto.png",
     editable = false,
-}) {
+    code,
+    onDelete, // Função para deletar o produto
+}) => {
+    const handleEdit = (nome: string) => {
+        console.log(`Editing product: ${nome}`);
+        // Lógica de edição se necessário
+    };
+
+    const handleDelete = async (nome: string) => {
+        try {
+            await axios.delete(`http://localhost:8080/products/code/${code}`);
+            console.log(`Deleted product: ${nome}`);
+            if (onDelete) {
+                onDelete(); // Chama a função onDelete para atualizar a lista de produtos
+            }
+        } catch (error) {
+            console.error("Erro ao deletar produto:", error);
+        }
+    };
+
     return (
         <div className={classNames(styles.produto, { [styles.editable]: editable })}>
             <div className={styles.conteudo}>
@@ -28,7 +54,7 @@ export default function Produto({
                     width="258"
                     height="258"
                 />
-                
+
                 <div className={styles.container}>
                     <h6 className={styles.nomeProduto}>{nome}</h6>
 
@@ -47,11 +73,19 @@ export default function Produto({
                             <h6 className={styles.editName}>Edit</h6>
                         </button>
                         <button className={styles.delete} onClick={() => handleDelete(nome)}>
-                            <Image className={styles.lixo} src='/mini-lixeira.svg'alt="deletar" width={24} height={28}/>
+                            <Image
+                                className={styles.lixo}
+                                src='/mini-lixeira.svg'
+                                alt="deletar"
+                                width={24}
+                                height={28}
+                            />
                         </button>
                     </div>
                 )}
             </div>
         </div>
     );
-}
+};
+
+export default Produto;

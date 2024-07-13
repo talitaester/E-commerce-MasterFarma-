@@ -145,6 +145,16 @@ export default function Gestao() {
         );
     };
 
+    const handleDeleteProduct = async (code: number) => {
+        try {
+            const response = await axios.delete(`http://localhost:8080/products/${code}`);
+            console.log(`Deleted product with code ${code}`);
+            setProducts(prevProducts => prevProducts.filter(product => product.code !== code));
+        } catch (error) {
+            console.error(`Error deleting product with code ${code}:`, error);
+        }
+    };
+
     return (
         <div className="pagina">
             <h1 className="pagTitulo">Gestão dos produtos</h1>
@@ -264,6 +274,8 @@ export default function Gestao() {
                         parcelas={`Ou 3x de R$${(product.price / 3).toFixed(2)}`}
                         imagemSrc={product.images[0]?.url || '/produto.png'}
                         editable={true}
+                        code={product.code}
+                        onDelete={() => handleDeleteProduct(product.code)}
                     />
                 ))}
             </div>
