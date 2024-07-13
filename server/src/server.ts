@@ -11,6 +11,7 @@ app.use(cors({
   credentials: true // Permitir cookies e credenciais
 }));
 
+
 // Rota para buscar todos os produtos
 app.get('/products', async (req: Request, res: Response) => {
   try {

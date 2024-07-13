@@ -12,7 +12,7 @@ export const addProduct = async (name: string, code: number, price: number, oldP
       oldPrice,
       category,
       images: {
-        create: images.map(url => ({ url }))
+        create: images.map((imageUrl) => ({ url: imageUrl }))
       }
     },
     include: { images: true }
