@@ -15,8 +15,9 @@
     "@prismicio/react": "^2.8.0",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
+    "icons": "^1.0.0",
     "next": "14.2.4",
-    "react": "^18",
+    "react": "^18.3.1",
     "react-dom": "^18",
     "swiper": "^11.1.4"
   },
