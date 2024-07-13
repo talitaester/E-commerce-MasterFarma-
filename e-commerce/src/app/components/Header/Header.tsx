@@ -47,10 +47,10 @@ export default function Header() {
           Entrar
         </div>
 
-        <div className={styles.headerOption}>
+        <Link href='/carrinho' className={styles.headerOption}>
           <Image className={styles.IconeHeader} src={carrinho} alt='carrinho' width={32} height={32} />
           R$0,00
-        </div>
+        </Link>
       </div>
     </header>
   );
