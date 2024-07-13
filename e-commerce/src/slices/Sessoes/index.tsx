@@ -58,55 +58,55 @@ const Sessoes = ({ slice }: SessoesProps): JSX.Element => {
       >
         <SwiperSlide>
           <div className={styles.sessao}>
-            <Link href="/" className={styles.circle}>
+            <Link href="/pesquisa?category=Medicamentos" className={styles.circle}>
               <img src='/pilula.svg' alt='pílula' className={styles.icon} />
             </Link>
-            <Link href="/" className={styles.title}>Medicamentos</Link>
+            <Link href="/pesquisa?category=Medicamentos" className={styles.title}>Medicamentos</Link>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className={styles.sessao}>
-            <Link href="/" className={styles.circle}>
+            <Link href="/pesquisa?category=Suplementos" className={styles.circle}>
               <img src='/pesos.svg' alt='pesos' className={styles.icon} />
             </Link>
-            <Link href="/" className={styles.title}>Suplementos</Link>
+            <Link href="/pesquisa?category=Suplementos" className={styles.title}>Suplementos</Link>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className={styles.sessao}>
-            <Link href="/" className={styles.circle}>
+            <Link href="/pesquisa?category=Higiene" className={styles.circle}>
               <img src='/maos.svg' alt='maos' className={styles.icon} />
             </Link>
-            <Link href="/" className={styles.title}>Higiene</Link>
+            <Link href="/pesquisa?category=Higiene" className={styles.title}>Higiene</Link>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className={styles.sessao}>
-            <Link href="/" className={styles.circle}>
+            <Link href="/pesquisa?category=Beleza" className={styles.circle}>
               <img src='/batom.svg' alt='batom' className={styles.icon} />
             </Link>
-            <Link href="/" className={styles.title}>Beleza</Link>
+            <Link href="/pesquisa?category=Beleza" className={styles.title}>Beleza</Link>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className={styles.sessao}>
-            <Link href="/" className={styles.circle}>
+            <Link href="/pesquisa?category=Bebes" className={styles.circle}>
               <img src='/bebe.svg' alt='bebe' className={styles.icon} />
             </Link>
-            <Link href="/" className={styles.title}>Bebês</Link>
+            <Link href="/pesquisa?category=Bebes" className={styles.title}>Bebês</Link>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className={styles.sessao}>
-            <Link href="/" className={styles.circle}>
+            <Link href="/pesquisa?category=Perfumaria" className={styles.circle}>
               <img src='/spray.svg' alt='spray' className={styles.icon} />
             </Link>
-            <Link href="/" className={styles.title}>Perfumaria</Link>
+            <Link href="/pesquisa?category=Perfumaria" className={styles.title}>Perfumaria</Link>
           </div>
         </SwiperSlide>
         <div className={styles.swiperPagination}></div>
