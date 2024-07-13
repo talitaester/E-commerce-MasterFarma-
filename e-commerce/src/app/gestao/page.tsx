@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from "react";
+
 import Image from "next/image";
 import axios from "axios";
 import Produto from "../components/Produto/Produto";
@@ -153,6 +154,16 @@ export default function Gestao() {
             </div>
 
             <div className="produtosListados">
+
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                <Produto editable={true}/>
 
             </div>
         </div>

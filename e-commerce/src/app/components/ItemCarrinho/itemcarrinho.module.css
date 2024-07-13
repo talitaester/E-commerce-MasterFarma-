@@ -110,6 +110,7 @@
     display: flex;
     flex-direction: column;
     gap: 9px;
+    align-items: center;
 }
 .subtotal label {
     text-align: center;
@@ -132,6 +133,7 @@
     align-items: center;
 }
 
+
 .lixeira{
     text-decoration: none;
     background: none;
@@ -140,7 +142,108 @@
 }
 
 /*
+
 @media (max-width: 1024px) {
+    .produto {
+        width: 100%;
+    }
+    .conteudo {
+        flex-direction: column;
+    }
+    .editarItem {
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+    .caracteristicasItem {
+        flex-direction: row;
+        align-items:end;
+    }
+}
+
+@media (max-width: 625px) {
+    .produto {
+        border-radius: 15px;
+    }
+    .conteudoOriginal img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+    .conteudoOriginal {
+        gap: 8;
+        height: 60%;
+    }
+    .container {
+        padding: 0;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .corte {
+        width: 90px;
+    }
+    .precoAtual {
+        font-size: 1.75rem;
+    }
+    .parcelas {
+        font-size: 1rem;
+    }
+    .nomeProduto {
+        font-size: 1.25rem;
+    }
+    .editarItem, .caracteristicasItem {
+        justify-content:flex-end;
+        gap: 10%;
+    }
+    /*.caracteristicasItem {
+        width: 60%;
+    }*/
+    .editarItem img{
+        height: 36px;
+    }
+    .editarItem button, .quantidade {
+        height: 30px;
+        width: 30px;
+    }
+    .subtotal {
+        gap: 5%;
+    }
+    .subtotal label {
+        font-size: 1rem;
+    }
+    .subtotalReais {
+        height: 30px;
+        width: 130%;
+    }
+}
+
+@media (max-width: 550px) {
+    .conteudoOriginal img {
+        width: 128px;
+        height:128px;
+    }
+    .nomeProduto {
+        font-size: 13px;
+    }
+    .corte {
+        width: 60px;
+        top: 8px;
+    }
+    .subtotal label {
+        font-size: 14px;
+    }
+    .subtotalReais {
+        font-size: 14px;
+    }
+    .editarItem, .caracteristicasItem {
+        justify-content: flex-end;
+        gap: 32px;
+        padding: 0;
+    }
+}
+
+/*
+@media (max-width: 1290px) {
     
     .produto {
         width: calc(288px * 0.75);

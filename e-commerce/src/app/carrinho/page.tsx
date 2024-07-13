@@ -100,7 +100,7 @@ export default function Carrinho() {
     };
 
     return (
-        <main>
+        <div className="principal">
             <div id="tituloCarrinho">
                 <img src={"CarrinhoPlus.svg"} alt="Carrinho" />
                 <h1>Seu carrinho de compras</h1>
@@ -163,6 +163,7 @@ export default function Carrinho() {
                             <strong>R${calcularTotal().toFixed(2)}</strong>
                         </div>
                     </div>
+
                     <Link href='/'>
                         <button className="btnGrande princi">Continuar comprando</button>
                     </Link>
@@ -208,3 +209,4 @@ export default function Carrinho() {
         </main>
     );
 }
+        

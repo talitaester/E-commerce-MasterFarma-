@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -35,7 +36,13 @@ main {
 h6 {
   color: var(--c05);
   font-size: 24px;
-  font-weight: bolder;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+  color: var(--c95);
+  font-weight: 800;
 }
 
 h2 {
