@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import ImagensProduto from "../components/ImagensProduto/ImagensProduto";
 import Produto from "../components/Produto/Produto";
 import "./style.css"
