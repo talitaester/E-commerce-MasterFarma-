@@ -1,11 +1,10 @@
 'use client';
 
 import { useRef, useState } from "react";
-
+import "./style.css";
 import Image from "next/image";
 import axios from "axios";
 import Produto from "../components/Produto/Produto";
-import React from "react";
 
 export async function getData() {
     // Fetch data from your backend
@@ -37,7 +36,7 @@ export default function Gestao() {
     const handleImageUpload = async () => {
         for (const image of images) {
             if (!image) continue;
-            
+
             const formData = new FormData();
             formData.append('image', image);
 
@@ -149,22 +148,20 @@ export default function Gestao() {
                             <button className="confirmar" onClick={handleImageUpload}><h6>Confirmar</h6></button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
             <div className="produtosListados">
-
-                <Produto editable={true}/>
-                <Produto editable={true}/>
-                <Produto editable={true}/>
-                <Produto editable={true}/>
-                
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
 
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                <Produto editable={true}/>
+                <Produto editable={true}/>
             </div>
         </div>
     );
