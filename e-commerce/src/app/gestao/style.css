@@ -34,7 +34,6 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    flex-wrap: wrap;
 }
 
 .pagTitulo {
@@ -355,12 +354,13 @@ label {
     .menuCriacao {
         padding: .5rem;
         border-radius: 20px;
-        width: 98%;
+        width: 95%;
         
     }
 
     .containerTitulo {
         font-size:17px;
+        margin-bottom: 8px;
     }
 
     .images-container {
