@@ -12,6 +12,7 @@ p {
 }
 #mobile {
     display: none;
+    justify-content: center;
 }
 .produtoTodo {
     display: flex;
@@ -82,7 +83,7 @@ p {
     transform: rotate(-10deg);
     top: 15px;
     left: 0;
-    z-index: 99;
+    z-index: 9999;
 }
 .precoAtual {
     font-size: 3.5rem;
@@ -133,4 +134,52 @@ p {
 }
 .calculaFrete button:hover {
     background-color: var(--c90);
+}
+
+@media (max-width: 1160px) {
+    #desktop {display: none}
+    #mobile {display: flex}
+}
+
+@media (max-width: 630px) {
+    .principal {
+        padding: 16px 24px;
+    }
+    .nomeProduto {
+        gap: 8px;
+    }
+    .nomeProduto h2 {
+        font-size: 20px;
+    }
+    span {
+        font-size: 10px;
+    }
+    .rating img {
+        width: 16px;
+    }
+    .precoAntigo {font-size: 16px;}
+    .precoAtual {font-size: 33px;}
+    .parcelas {font-size: 12px;}
+    .addCarrinho {
+        gap: 8px;
+        width: 136px;
+        height: 47px;
+    }
+    .addCarrinho img {
+        width: 20px;
+    }
+    .addCarrinho p {
+        font-size: 14px;
+    }
+    .calculaFrete {
+        font-size: 1em;
+        font-weight: 800;
+    }
+    .calculaFrete input, .calculaFrete button {
+        height: 26px;
+        font-size: 16px;
+    }
+    .calculaFrete button {
+        width: 60px;
+    }
 }
