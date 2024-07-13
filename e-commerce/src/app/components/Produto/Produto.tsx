@@ -17,7 +17,6 @@ interface ProdutoProps {
     onDelete?: () => void;
     onEdit?: () => void; // Adicionando a prop onEdit
 }
-}
 
 const Produto: React.FC<ProdutoProps> = ({
     nome,
@@ -55,7 +54,7 @@ const Produto: React.FC<ProdutoProps> = ({
                     width={258}
                     height={258}
                 />
-
+                
                 <div className={styles.container}>
                     <h6 className={styles.nomeProduto}>{nome}</h6>
 
@@ -78,18 +77,6 @@ const Produto: React.FC<ProdutoProps> = ({
                                 <Image className={styles.lixo} src='/mini-lixeira.svg' alt="deletar" width={24} height={28} />
                             </button>
                         </>
-                        <button className={styles.editButton} onClick={() => handleEdit(nome)}>
-                            <h6 className={styles.editName}>Edit</h6>
-                        </button>
-                        <button className={styles.delete} onClick={() => handleDelete(nome)}>
-                            <Image
-                                className={styles.lixo}
-                                src='/mini-lixeira.svg'
-                                alt="deletar"
-                                width={24}
-                                height={28}
-                            />
-                        </button>
                     </div>
                 )}
             </div>
@@ -102,7 +89,6 @@ const Produto: React.FC<ProdutoProps> = ({
                             <Image className={styles.lixo} src='/mini-lixeira.svg' alt="deletar" width={24} height={28} />
                             <h6>Sim</h6>
                         </button>
-                        <button className={styles.botaoSim} onClick={() => handleDelete(nome)}><Image className={styles.lixo} src='/mini-lixeira.svg'alt="deletar" width={24} height={28}/><h6>Sim</h6></button>
                     </div>
                 </div>
             )}
