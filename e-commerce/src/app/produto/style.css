@@ -1,0 +1,136 @@
+.principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 72px 108px;
+}
+p {
+    color: var(--c95)
+}
+#desktop {
+    display: block;
+}
+#mobile {
+    display: none;
+}
+.produtoTodo {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+.infoProduto {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.nomeProduto {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.nomeProduto h2{
+    color: var(--c60);
+    font-weight: 800;
+    font-size: 2.5em;
+}
+.ratingMaisCodigo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 300;
+}
+.rating {
+    display: flex;
+    gap: 8px
+}
+.precosMaisBotao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.addCarrinho {
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: var(--c60);
+    height: 128px;
+    width: 288px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 2%;
+}
+.addCarrinho:hover {
+    background-color: var(--c50);
+}
+.addCarrinho img {
+    height: 64px;
+}
+.addCarrinho p {
+    font-family: "Montserrat";
+    color: white;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: left;
+}
+.corte {
+    position: absolute;
+    background-color: black;
+    width: 105px;
+    height: 3px;
+    transform: rotate(-10deg);
+    top: 15px;
+    left: 0;
+    z-index: 99;
+}
+.precoAtual {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+.parcelas {
+    font-size: 1.25rem;
+}
+.precoAntigo, .parcelas {
+    color: var(--c60)
+}
+.calculaFrete {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--c60);
+    border-radius: 15px;
+    padding: 16px 20px;
+    gap: 8px;
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--c95);
+}
+.calculaFrete div {
+    display: flex;
+    gap: 5%;
+}
+.calculaFrete input {
+    border: none;
+    background-color: var(--c60);
+    color: white;
+    border-radius: 15px;
+    width: 50%;
+    height: 54px;
+    font-size: 20px;
+    padding: 0 16px;
+    font-family: "Montserrat";
+}
+.calculaFrete button {
+    border: none;
+    border-radius: 15px;
+    background-color: var(--c95);
+    color: white;
+    font-size: 1em;
+    font-family: "Montserrat";
+    font-weight: 800;
+    width: 128px;
+    cursor: pointer;
+}
+.calculaFrete button:hover {
+    background-color: var(--c90);
+}
