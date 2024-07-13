@@ -75,26 +75,64 @@ export default function Pesquisa() {
 
   return (
     <>
-      <h1>Exibindo resultados para “{query || selectedCategories.join(', ')}”</h1>
       <div className="gradePesquisa">
         <div className="filtros">
           <form>
-            <h2>Filtrar por categoria</h2>
-            <div className="opcoesForm">
-              {['Medicamentos', 'Suplementos', 'Higiene', 'Beleza', 'Bebês', 'Perfumaria'].map(category => (
-                <div key={category}>
-                  <input
-                    type="checkbox"
-                    id={category}
-                    value={category}
-                    checked={selectedCategories.includes(category)}
-                    onChange={() => handleCategoryChange(category)}
-                  />
-                  <label htmlFor={category}>{category}</label>
-                </div>
-              ))}
+            <div className='firstForm'>
+              <h2>Filtrar por categoria</h2>
+              <div className="opcoesForm">
+                {['Medicamentos', 'Suplementos', 'Higiene', 'Beleza', 'Bebês', 'Perfumaria'].map(category => (
+                  <div key={category}>
+                    <input
+                      type="checkbox"
+                      id={category}
+                      value={category}
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                    />
+                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <div className="separateForms">
+              <h2>Filtrar por preço</h2>
+              <div className="opcoesForm">
+                {['Até R$50,00', 'Até R$100,00', 'Até R$200,00', 'Acima de R$200,00'].map(category => (
+                  <div key={category}>
+                    <input
+                      type="checkbox"
+                      id={category}
+                      value={category}
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                      />
+                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                  </div>
+                ))}
+              </div>
+              <div>
+                
+              </div>
+              <h2>Ordenar por</h2>
+              <div className="opcoesForm">
+                {['Relevância', 'Preço'].map(category => (
+                  <div key={category}>
+                    <input
+                      type="checkbox"
+                      id={category}
+                      value={category}
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                      />
+                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                  </div>
+                ))}
+              </div>
+              </div>
           </form>
+
         </div>
         <div className="gradeResultados">
           {products.map(product => (
