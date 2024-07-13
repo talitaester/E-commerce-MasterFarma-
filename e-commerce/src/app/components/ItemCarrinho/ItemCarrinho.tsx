@@ -3,6 +3,7 @@ import styles from "./itemcarrinho.module.css";
 import { useState } from "react";
 import finiimagem from '../../../../public/fini.png';
 import axios from 'axios';
+import Link from "next/link";
 
 interface Produto {
   category: string;
@@ -30,6 +31,15 @@ export default function ItemCarrinho({ produto, onQuantityChange }: ItemCarrinho
       console.error('Erro ao atualizar a quantidade:', error);
     }
   };
+
+  const removerDoCarrinho = async () => {
+    try {
+        await axios.delete(`http://localhost:8080/cart/${produto.id}`);
+        // Aqui você pode chamar uma função de callback se precisar atualizar a lista no componente pai
+    } catch (error) {
+        console.error('Erro ao remover o produto do carrinho:', error);
+    }
+}
 
   const incrementar = async () => {
     const novaQuant = quant + 1;
@@ -92,7 +102,9 @@ export default function ItemCarrinho({ produto, onQuantityChange }: ItemCarrinho
               <div className={styles.subtotalReais}>R${(produto.price * quant).toFixed(2)}</div>
             </div>
           </div>
-          <img src={"/Lixeira.svg"} alt="remover item do carrinho" />
+          <button className={styles.lixeira} onClick={removerDoCarrinho}>
+          <img  src={"/Lixeira.svg"} alt="remover item do carrinho"  />
+          </button>
         </div>
       </div>
     </div>
