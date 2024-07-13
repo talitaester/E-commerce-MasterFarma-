@@ -26,7 +26,7 @@ export default function Produto({
     editable = false,
 }) {
     const [isEditVisible, setIsEditVisible] = useState(false);
-    
+        
     return (
         <div className={classNames(styles.produto, { [styles.editable]: editable })}>
             <div className={styles.conteudo}>
@@ -53,8 +53,8 @@ export default function Produto({
                 {editable && (
                     <div className={styles.edit}>
                             <>
-                            <button className={styles.editButton} onClick={() => handleEdit(nome)}>
-                            <h6 className={styles.editName}>Edit</h6>
+                            <button className={styles.editButton}>
+                            <h6 className={styles.editName}>Editar</h6>
                             </button>
                             <button className={styles.delete} onClick={() => setIsEditVisible(true)}>
                                 <Image className={styles.lixo} src='/mini-lixeira.svg'alt="deletar" width={24} height={28}/>

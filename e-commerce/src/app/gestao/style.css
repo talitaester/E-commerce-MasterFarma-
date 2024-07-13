@@ -1,4 +1,3 @@
-/* style.css */
 .adicionar-produto {
     width: 845px;
     height: 105px;
@@ -19,7 +18,6 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    padding: 0 12px;
     box-sizing: border-box;
 }
 
@@ -68,7 +66,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-right: 1rem;
+    margin-right: .5rem;
 }
 
 .little-container {
@@ -186,4 +184,118 @@ label {
     gap: 24px;
     margin: 24px auto;
     justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .pagTitulo {
+        margin: 4rem auto 2rem;
+        font-size: 40px;
+    }
+
+    .image-upload-container {
+        height: 300px;
+    }
+
+    .adicionar-produto {
+        width: 645px;
+        height: 85px;
+        border-radius: 25px;
+    }
+    
+    .botaoTitulo {
+        font-size: 40px;
+    }
+
+    .menuCriacao {
+        padding: 2rem;
+    }
+    
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .little-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .images-container {
+        width: 80%;
+    }
+    
+    .produtosListados {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .pagTitulo {
+        margin: 3rem auto 2rem;
+        font-size: 30px;
+    }
+
+    .adicionar-produto {
+        width: 450px;
+        height: 65px;
+        border-radius: 20px;
+    }
+    
+    .botaoTitulo {
+        font-size: 30px;
+    }
+
+    .menuCriacao {
+        padding: 2rem 1rem;
+        border-radius: 40px;
+    }
+    
+    .content {
+        width: 520px;
+    }
+
+    .little-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .images-container {
+        width: 80%;
+    }
+    
+    .produtosListados {
+        width: 95%;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .pagTitulo {
+        margin: 2rem auto 1rem;
+        font-size: 20px;
+    }
+
+    .adicionar-produto {
+        width: 288px;
+        height: 61px;
+        border-radius: 20px;
+    }
+
+    .botaoTitulo {
+        font-size: 20px;
+    }
+
+    .produtosListados {
+        gap: 16px;;
+        margin: 23px auto;
+    }
+    
+    .menuCriacao {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--c95);
+        padding: 4rem 6rem;
+        border-radius: 4rem;
+        max-width: 1224px;
+    }
 }

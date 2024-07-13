@@ -12,6 +12,11 @@ export default function Gestao() {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [previews, setPreviews] = useState<(string | undefined)[]>(Array(5).fill(undefined));
     const fileInputRefs = useRef<(HTMLInputElement | null)[]>(Array(5).fill(null));
+    const [isEditOn, setIsEditOn] = useState(false)
+
+    const toggleMenuVisibility = () => {
+        setIsEditOn((prev) => !prev);
+    };
 
     const handleImageChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -157,7 +162,7 @@ export default function Gestao() {
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
-
+                <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
