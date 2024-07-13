@@ -32,7 +32,6 @@ export default function Gestao() {
     const [imageUrl, setImageUrl] = useState("");
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const [editingProductId, setEditingProductId] = useState<number | null>(null);
-    const [selectedCategory, setSelectedCategory] = useState<string>("");
 
     useEffect(() => {
         fetchProducts();
@@ -44,15 +43,6 @@ export default function Gestao() {
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
-        }
-    };
-
-    const fetchProductsByCategory = async (category: string) => {
-        try {
-            const response = await axios.get(`http://localhost:8080/products?category=${category}`);
-            setProducts(response.data);
-        } catch (error) {
-            console.error("Error fetching products by category:", error);
         }
     };
 
@@ -160,13 +150,9 @@ export default function Gestao() {
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        if (e.target.checked) {
-            setCategories(prevCategories => [...prevCategories, value]);
-            fetchProductsByCategory(value); // Filtra por categoria selecionada
-        } else {
-            setCategories(prevCategories => prevCategories.filter(category => category !== value));
-            fetchProducts(); // Recarrega todos os produtos
-        }
+        setCategories(prevCategories =>
+            e.target.checked ? [...prevCategories, value] : prevCategories.filter(category => category !== value)
+        );
     };
 
     const handleDeleteProduct = async (code: number) => {
