@@ -20,6 +20,7 @@ export default function Pesquisa() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
   const category = searchParams.get('category'); // Get category from URL
@@ -34,6 +35,24 @@ export default function Pesquisa() {
     });
   };
 
+  const handlePriceChange = (priceRange: string) => {
+    setSelectedPriceRanges(prev => {
+      if (prev.includes(priceRange)) {
+        return prev.filter(p => p !== priceRange);
+      } else {
+        return [...prev, priceRange];
+      }
+    });
+  };
+
+  const filterByPrice = (price: number): boolean => {
+    if (selectedPriceRanges.includes('Até R$50,00') && price <= 50) return true;
+    if (selectedPriceRanges.includes('Até R$100,00') && price <= 100) return true;
+    if (selectedPriceRanges.includes('Até R$200,00') && price <= 200) return true;
+    if (selectedPriceRanges.includes('Acima de R$200,00') && price > 200) return true;
+    return false;
+  };
+
   const fetchProducts = async () => {
     try {
       let response;
@@ -42,7 +61,8 @@ export default function Pesquisa() {
         response = await axios.get(`/products/name/${query}`);
         if (response.data) {
           const filteredProducts = response.data.filter((product: Product) =>
-            selectedCategories.length === 0 || selectedCategories.includes(product.category)
+            (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
+            (selectedPriceRanges.length === 0 || filterByPrice(product.price))
           );
           setProducts(filteredProducts);
         }
@@ -52,7 +72,7 @@ export default function Pesquisa() {
       } else if (selectedCategories.length > 0) {
         const categories = selectedCategories.join(',');
         response = await axios.get(`/products/category/${categories}`);
-        setProducts(response.data);
+        setProducts(response.data.filter((product: Product) => filterByPrice(product.price)));
       } else {
         setProducts([]);
         return;
@@ -103,41 +123,38 @@ export default function Pesquisa() {
             <div className="separateForms">
               <h2>Filtrar por preço</h2>
               <div className="opcoesForm">
-                {['Até R$50,00', 'Até R$100,00', 'Até R$200,00', 'Acima de R$200,00'].map(category => (
-                  <div key={category}>
+                {['Até R$50,00', 'Até R$100,00', 'Até R$200,00', 'Acima de R$200,00'].map(priceRange => (
+                  <div key={priceRange}>
                     <input
                       type="checkbox"
-                      id={category}
-                      value={category}
-                      checked={selectedCategories.includes(category)}
-                      onChange={() => handleCategoryChange(category)}
-                      />
-                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                      id={priceRange}
+                      value={priceRange}
+                      checked={selectedPriceRanges.includes(priceRange)}
+                      onChange={() => handlePriceChange(priceRange)}
+                    />
+                    <label htmlFor={priceRange}><p className='items'>{priceRange}</p></label>
                   </div>
                 ))}
               </div>
-              <div>
-                
-              </div>
+
               <h2>Ordenar por</h2>
               <div className="opcoesForm">
-                {['Relevância', 'Preço'].map(category => (
-                  <div key={category}>
+                {['Relevância', 'Preço'].map(order => (
+                  <div key={order}>
                     <input
                       type="checkbox"
-                      id={category}
-                      value={category}
-                      checked={selectedCategories.includes(category)}
-                      onChange={() => handleCategoryChange(category)}
-                      />
-                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                      id={order}
+                      value={order}
+                      disabled // Desativa as caixas de seleção
+                    />
+                    <label htmlFor={order}><p className='items'>{order}</p></label>
                   </div>
                 ))}
               </div>
-              </div>
+            </div>
           </form>
-
         </div>
+        
         <div className="gradeResultados">
           {products.map(product => (
             <Produto

@@ -25,7 +25,9 @@
     display: flex;
     gap: 8px;
     align-items: center;
+
 }
+
 
 @media (max-width: 1024px) {
     .filtros form {
