@@ -137,6 +137,7 @@
     background-color: var(--c95);
     border: none;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .produto.editable {
@@ -165,6 +166,7 @@
     padding: 0;
     flex-wrap: wrap;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 
