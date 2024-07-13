@@ -1,0 +1,36 @@
+.imagensDoProduto {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    width: 100%;
+}
+.imagensPequenas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.imagemP {
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    width: 80px;
+    height: auto;
+    opacity: 75%;
+    cursor: pointer;
+}
+.imagemP.selecionada, .imagemG {
+    opacity: 100%;
+    border: 1px solid lightgray;
+}
+.imagemG {
+    width: 500px;
+    height: auto;
+    border-radius: 30px;
+}
+
+@media (max-width: 1160px) {.imagensDoProduto {justify-content: center}}
+
+@media (max-width: 630px) {
+    .imagensDoProduto{gap:4%}
+    .imagemG{width: 236px}
+    .imagemP{width: 48px; border-radius: 10px}
+}

@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // Adicionar um produto
-export const addProduct = async (name: string, code: number, price: number, oldPrice: number, category: string, images: string[]) => {
+export const addProduct = async (name: string, code: number, price: number, oldPrice: number, category: string, images: string[] = []) => {
   return await prisma.product.create({
     data: {
       name,
@@ -12,7 +12,7 @@ export const addProduct = async (name: string, code: number, price: number, oldP
       oldPrice,
       category,
       images: {
-        create: images.map(url => ({ url }))
+        create: images.map((imageUrl) => ({ url: imageUrl }))
       }
     },
     include: { images: true }
@@ -40,7 +40,7 @@ export const removeProduct = async (code: number) => {
 };
 
 // Editar um produto
-export const editProduct = async (id: number, name: string, code: number, price: number, oldPrice: number, category: string, images: string[]) => {
+export const editProduct = async (id: number, name: string, code: number, price: number, oldPrice: number, category: string, images: string[] = []) => {
   return await prisma.product.update({
     where: { id },
     data: {
@@ -81,8 +81,6 @@ export const getProductByCode = async (code: number) => {
   });
 };
 
-
-
 // Remover imagens por índices
 export const removeImagesByIndices = async (productCode: number, indices: number[]) => {
   const product = await prisma.product.findUnique({
@@ -108,11 +106,8 @@ export const removeImagesByIndices = async (productCode: number, indices: number
     }
   });
 
-  
-
   return { message: `${imageIdsToDelete.length} imagens removidas com sucesso` };
 };
-
 
 // Adicionar um produto ao carrinho
 export const addToCart = async (productId: number) => {
@@ -126,11 +121,33 @@ export const addToCart = async (productId: number) => {
     });
   }
 
-  // Adicionar o produto ao carrinho
+  // Verificar se o produto já está no carrinho
+  const existingCartProduct = await prisma.cartProduct.findFirst({
+    where: {
+      cartId: cart.id,
+      productId: productId
+    }
+  });
+
+  // Se o produto já estiver no carrinho, aumentar a quantidade
+  if (existingCartProduct) {
+    return await prisma.cartProduct.update({
+      where: {
+        id: existingCartProduct.id
+      },
+      data: {
+        quant: existingCartProduct.quant + 1
+      },
+      include: { product: true }
+    });
+  }
+
+  // Adicionar o produto ao carrinho com quantidade inicial de 1
   return await prisma.cartProduct.create({
     data: {
       cartId: cart.id,
-      productId: productId
+      productId: productId,
+      quant: 1
     },
     include: { product: true }
   });
@@ -156,7 +173,6 @@ export const removeFromCart = async (productId: number) => {
   });
 };
 
-
 // Verificar itens no carrinho
 export const getCartItems = async () => {
   const cart = await prisma.cart.findFirst({
@@ -173,5 +189,23 @@ export const getCartItems = async () => {
     return [];
   }
 
-  return cart.products.map(cp => cp.product);
+  return cart.products.map(cp => ({
+    ...cp.product,
+    quant: cp.quant
+  }));
+};
+
+
+// Função para atualizar a quantidade de um produto no carrinho
+export const updateCartQuantity = async (cartProductId: number, newQuantity: number) => {
+  return await prisma.cartProduct.update({
+    where: { productId: cartProductId },
+    data: { quant: newQuantity },
+  });
+};
+
+export const getAllProducts = async () => {
+  return await prisma.product.findMany({
+    include: { images: true }
+  });
 };

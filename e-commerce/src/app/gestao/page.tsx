@@ -1,13 +1,12 @@
 'use client';
 
-import { useRef, useState } from "react";
-import "./style.css";
-import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import Produto from "../components/Produto/Produto";
 import Pesquisa from "../pesquisa/page";
 
 export default function Gestao() {
+    const [products, setProducts] = useState<ProdutoType[]>([]);
     const [images, setImages] = useState<(File | null)[]>(Array(5).fill(null));
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [previews, setPreviews] = useState<(string | undefined)[]>(Array(5).fill(undefined));
@@ -28,6 +27,25 @@ export default function Gestao() {
         setPreviews(newPreviews);
     };
 
+    const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setImageUrl(e.target.value);
+    };
+
+    const handleAddImageUrl = () => {
+        if (imageUrl) {
+            setPreviews(prev => {
+                const newPreviews = [...prev];
+                const emptyIndex = newPreviews.findIndex(preview => preview === undefined);
+                if (emptyIndex !== -1) {
+                    newPreviews[emptyIndex] = imageUrl;
+                }
+                return newPreviews;
+            });
+            setImageUrls(prev => [...prev, imageUrl]); // Adiciona o URL à lista de URLs
+            setImageUrl(""); // Limpa o input de URL
+        }
+    };
+
     const handleImageUpload = async () => {
         for (const image of images) {
             if (!image) continue;
@@ -41,12 +59,63 @@ export default function Gestao() {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
-                alert('Image uploaded successfully');
-            } catch (error) {
-                console.error('Error uploading image:', error);
-                alert('Failed to upload image');
+    
+                if (response.status === 200) {
+                    uploadedImages.push(response.data.url);
+                } else {
+                    throw new Error('Erro ao carregar imagem');
+                }
             }
+    
+            const newProductImages = [
+                ...uploadedImages,
+                ...imageUrls,
+            ];
+    
+            const newProduct = {
+                id: Date.now(), // ID temporário
+                name: productName,
+                oldPrice: parseFloat(oldPrice),
+                price: parseFloat(price),
+                code: parseInt(code),
+                category: categories.join(', '),
+                images: newProductImages, // Passa o array de strings diretamente
+                quant: 1,
+            };
+    
+            // Log dos dados do novo produto antes de enviar
+            console.log('Enviando dados do produto:', newProduct);
+    
+            const response = await axios.post('http://localhost:8080/products', newProduct, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            const createdProduct = response.data;
+    
+            alert('Produto criado com sucesso');
+            setProducts(prev => [...prev, createdProduct]); // Atualiza a lista de produtos com o produto criado retornado pelo servidor
+            setProductName("");
+            setOldPrice("");
+            setPrice("");
+            setCode("");
+            setCategories([]);
+            setImages(Array(5).fill(null));
+            setPreviews(Array(5).fill(undefined));
+            setImageUrls([]);
+        } catch (error) {
+            console.error('Erro ao criar produto:', error);
+            alert('Falha ao criar produto');
         }
+    };
+    
+    
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setCategories(prevCategories =>
+            e.target.checked ? [...prevCategories, value] : prevCategories.filter(category => category !== value)
+        );
     };
 
     return (
