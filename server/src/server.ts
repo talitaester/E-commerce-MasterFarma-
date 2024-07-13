@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import {getAllProducts, updateCartQuantity, addProduct, removeProduct, editProduct, getProductsByCategory, getProductsByName, getProductByCode, removeImagesByIndices, addToCart, removeFromCart, getCartItems } from './services';
+import {filterProductsByMaxPrice, getAllProducts, updateCartQuantity, addProduct, removeProduct, editProduct, getProductsByCategory, getProductsByName, getProductByCode, removeImagesByIndices, addToCart, removeFromCart, getCartItems } from './services';
 
 const app = express();
 app.use(express.json());
@@ -147,6 +147,29 @@ app.put('/cart/:cartProductId/quantity', async (req: Request, res: Response) => 
     res.status(500).json({ error: (error as Error).message });
   }
 })
+
+// Rota para filtrar produtos por preço máximo
+app.get('/products/filter', async (req, res) => {
+  const { maxPrice } = req.query;
+
+  // Validação do parâmetro
+  if (typeof maxPrice !== 'string') {
+      return res.status(400).send('Invalid price value');
+  }
+
+  const max = parseFloat(maxPrice);
+
+  if (isNaN(max)) {
+      return res.status(400).send('none');
+  }
+
+  try {
+      const filteredProducts = await filterProductsByMaxPrice(max);
+      return res.json(filteredProducts);
+  } catch (error) {
+      return res.status(500).send('Internal server error');
+  }
+});
 
 
 

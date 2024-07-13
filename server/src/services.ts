@@ -209,3 +209,19 @@ export const getAllProducts = async () => {
     include: { images: true }
   });
 };
+
+export const filterProductsByMaxPrice = async (maxPrice: number) => {
+  try {
+      const products = await prisma.product.findMany({
+          where: {
+              price: {
+                  lte: maxPrice, // Filtrando por preço máximo
+              },
+          },
+      });
+      return products;
+  } catch (error) {
+      console.error('Error filtering products by max price:', error);
+      throw new Error('Failed to filter products');
+  }
+};
