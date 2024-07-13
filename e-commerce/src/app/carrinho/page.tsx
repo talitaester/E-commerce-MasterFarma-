@@ -188,26 +188,24 @@ export default function Carrinho() {
                 ) : (
                     <p>Nenhum produto visto recentemente.</p>
                 )}
-                </div>
-                <h1>Itens Semelhantes</h1>
-                    <div className="produtosSemelhantes">
-                        {itensSemelhantes.length > 0 ? (
-                            itensSemelhantes.map((produto) => (
-                                <Produto
-                                    key={produto.id}
-                                    nome={produto.name}
-                                    precoAntigo={`R$${produto.oldPrice}`}
-                                    precoAtual={`R$${produto.price}`}
-                                    parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
-                                    imagemSrc={produto.images[0]?.url || '/produto.png'}
-                                />
-                            ))
-                        ) : (
-                            <p>Nenhum item semelhante encontrado.</p>
-                        )}
-                    </div>
-
-            
+            </div>
+            <h1>Itens Semelhantes</h1>
+            <div className="produtosSemelhantes">
+                {itensSemelhantes.length > 0 ? (
+                    itensSemelhantes.map((produto) => (
+                        <Produto
+                            key={produto.id}
+                            nome={produto.name}
+                            precoAntigo={`R$${produto.oldPrice}`}
+                            precoAtual={`R$${produto.price}`}
+                            parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
+                            imagemSrc={produto.images[0]?.url || '/produto.png'}
+                        />
+                    ))
+                ) : (
+                    <p>Nenhum item semelhante encontrado.</p>
+                )}
+            </div>
         </div>
     );
 }

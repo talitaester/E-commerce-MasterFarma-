@@ -36,7 +36,7 @@ export default function Gestao() {
     const handleImageUpload = async () => {
         for (const image of images) {
             if (!image) continue;
-            
+
             const formData = new FormData();
             formData.append('image', image);
 
@@ -148,7 +148,7 @@ export default function Gestao() {
                             <button className="confirmar" onClick={handleImageUpload}><h6>Confirmar</h6></button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -157,7 +157,7 @@ export default function Gestao() {
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>
-                
+
                 <Produto editable={true}/>
                 <Produto editable={true}/>
                 <Produto editable={true}/>

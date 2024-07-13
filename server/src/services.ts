@@ -199,7 +199,7 @@ export const getCartItems = async () => {
 // Função para atualizar a quantidade de um produto no carrinho
 export const updateCartQuantity = async (cartProductId: number, newQuantity: number) => {
   return await prisma.cartProduct.update({
-    where: { id: cartProductId },
+    where: { productId: cartProductId },
     data: { quant: newQuantity },
   });
 };
