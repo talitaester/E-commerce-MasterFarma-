@@ -116,10 +116,10 @@ export default function Carrinho() {
                             />
                         ))
                     ) : (
-                        <p>Nenhum produto no carrinho.</p>
+                        <p style={{color: "var(--c95)", fontSize:"2.5em"}}>Nenhum produto no carrinho.</p>
                     )}
                 </div>
-                <div className="moduloPedido">
+                <div className="moduloPedido" style={{display: produtos.length > 0 ? "flex" : "none"}}>
                     <form onSubmit={(e) => e.preventDefault()}>
                         <div>
                             <label htmlFor="cep">Calcule o valor do frete</label>

@@ -20,11 +20,13 @@ p {
     gap: 24px;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 .infoProduto {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    width: 100%;
 }
 .nomeProduto {
     display: flex;
