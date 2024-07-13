@@ -22,7 +22,7 @@ export default function Pesquisa() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
-  const category = searchParams.get('category'); // Get category from URL
+  const category = searchParams.get('category');
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => {

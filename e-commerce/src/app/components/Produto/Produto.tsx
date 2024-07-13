@@ -19,10 +19,6 @@ interface ProdutoProps {
     onDelete?: () => void;
 }
 
-function excluirProduto() {
-    
-}
-
 const Produto: React.FC<ProdutoProps> = ({
     nome,
     precoAntigo = "R$49,90",
@@ -92,7 +88,7 @@ const Produto: React.FC<ProdutoProps> = ({
                     <h6>Tem certeza que<br/>quer excluir?</h6>
                     <div className={styles.botoesEdit}>
                         <button className={styles.botaoNao} onClick={() => setIsEditVisible(false)}><h6>Não</h6></button>
-                        <button className={styles.botaoSim} onClick={() => excluirProduto()}><Image className={styles.lixo} src='/mini-lixeira.svg'alt="deletar" width={24} height={28}/><h6>Sim</h6></button>
+                        <button className={styles.botaoSim} onClick={() => handleDelete(nome)}><Image className={styles.lixo} src='/mini-lixeira.svg'alt="deletar" width={24} height={28}/><h6>Sim</h6></button>
                     </div>
                 </div>
             )}
