@@ -42,6 +42,8 @@ export default function Produto () {
                     </div>
                 </div>
             </div>
+            <h1>Itens semelhantes</h1>
+            <h1>Você também pode gostar</h1>
         </div>
     )
 }
