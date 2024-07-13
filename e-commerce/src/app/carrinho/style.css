@@ -37,6 +37,11 @@ h1 {
     padding: 24px;
     gap: 21px;
 }
+
+.produtosVistos,.produtosSemelhantes{
+    display: flex;
+    gap: 4rem;
+}
 label {
     font-size: 1.4rem;
 }

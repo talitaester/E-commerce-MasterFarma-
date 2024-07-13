@@ -194,3 +194,18 @@ export const getCartItems = async () => {
     quant: cp.quant
   }));
 };
+
+
+// Função para atualizar a quantidade de um produto no carrinho
+export const updateCartQuantity = async (cartProductId: number, newQuantity: number) => {
+  return await prisma.cartProduct.update({
+    where: { id: cartProductId },
+    data: { quant: newQuantity },
+  });
+};
+
+export const getAllProducts = async () => {
+  return await prisma.product.findMany({
+    include: { images: true }
+  });
+};
