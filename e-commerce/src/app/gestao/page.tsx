@@ -254,16 +254,17 @@ export default function Gestao() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="imageUrl"><h6>URL da imagem</h6></label>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                                 <input
                                     type="text"
                                     id="imageUrl"
                                     placeholder="Insira o URL da imagem"
                                     value={imageUrl}
                                     onChange={handleImageUrlChange}
+                                    className="price-input"
                                 />
-                                <button type="button" onClick={handleAddImageUrl} className="check-button" style={{ color: '#EBFFFE', background: 'transparent', border: 'none', cursor: 'pointer' }}>
-                                    adicionar
+                                <button type="button" onClick={handleAddImageUrl} className="check-button">
+                                    Adicionar
                                 </button>
                             </div>
                         </div>

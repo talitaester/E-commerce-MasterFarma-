@@ -94,14 +94,21 @@
     border-radius: 20px;
 }
 
+.check-button {
+    padding: 10px 5px;
+    border-radius: 15px;
+    border: none;
+    color: var(--c05;)
+    
+}
+
 .cancelar {
     border: 1px solid var(--c60);
     background: none;
 }
 
-.confirmar {
+.confirmar, .check-button {
     background-color: var(--c60);
-    border: none;
 }
 
 .product-form {
@@ -125,6 +132,22 @@ label {
 
 #oldPrice, #code {
     max-width: 184px;
+}
+
+.check-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    background-color: var(--c60);
+    color: var(--c05);
+    border: none;
+    cursor: pointer;
+}
+
+.price-input {
+    width: calc(100% - 100px);
 }
 
 .price-input {

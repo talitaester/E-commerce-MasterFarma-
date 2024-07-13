@@ -154,6 +154,8 @@
 .edit {
     display: flex;
     gap: 5px;
+    position: absolute;
+    bottom: 10px
 }
 
 .delete {
