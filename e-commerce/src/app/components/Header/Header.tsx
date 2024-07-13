@@ -42,10 +42,10 @@ export default function Header() {
           </button>
         </form>
 
-        <div className={styles.headerOption}>
+        <Link href='/gestao' className={styles.headerOption}>
           <Image className={styles.IconeHeader} src={entrar} alt='entrar' width={32} height={32} />
           Entrar
-        </div>
+        </Link>
 
         <Link href='/carrinho' className={styles.headerOption}>
           <Image className={styles.IconeHeader} src={carrinho} alt='carrinho' width={32} height={32} />

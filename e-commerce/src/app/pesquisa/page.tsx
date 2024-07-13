@@ -23,6 +23,7 @@ export default function Pesquisa() {
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
+  const category = searchParams.get('category'); // Get category from URL
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => {
@@ -65,6 +66,9 @@ export default function Pesquisa() {
           );
           setProducts(filteredProducts);
         }
+      } else if (category) {
+        response = await axios.get(`/products/category/${category}`);
+        setProducts(response.data);
       } else if (selectedCategories.length > 0) {
         const categories = selectedCategories.join(',');
         response = await axios.get(`/products/category/${categories}`);
@@ -88,7 +92,7 @@ export default function Pesquisa() {
 
   useEffect(() => {
     fetchProducts();
-  }, [query, selectedCategories, selectedPriceRanges]);
+  }, [query, category, selectedCategories]); 
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
@@ -160,7 +164,6 @@ export default function Pesquisa() {
               precoAtual={`R$${product.price.toFixed(2)}`}
               parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
               imagemSrc={product.images[0]?.url}
-              editable={false}
               code={product.code}
             />
           ))}

@@ -202,7 +202,7 @@ export default function Carrinho() {
                             precoAtual={`R$${produto.price}`}
                             parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
                             imagemSrc={produto.images[0]?.url || '/produto.png'}
-                            code={produto.code} 
+                            code={produto.code}
                         />
                     ))
                 ) : (
