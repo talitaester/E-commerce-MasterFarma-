@@ -15,6 +15,10 @@
     font-weight: 800;
 }
 
+.filtros p {
+    color: var(--c05);
+}
+
 .opcoesForm {
     display: flex;
     flex-direction: column;
@@ -26,6 +30,17 @@
     gap: 8px;
     align-items: center;
 }
+
+.gradePesquisa {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 1rem;
+}
+
+
 
 @media (max-width: 1024px) {
     .filtros form {

@@ -188,13 +188,13 @@ export default function Carrinho() {
                         />
                     ))
                 ) : (
-                    <p>Nenhum produto visto recentemente.</p>
+                    <h1>Nenhum produto visto recentemente.</h1>
                 )}
             </div>
             <h1>Itens Semelhantes</h1>
             <div className="produtosSemelhantes">
                 {itensSemelhantes.length > 0 ? (
-                    itensSemelhantes.map((produto) => (
+                    itensSemelhantes.slice(0, 4).map((produto) => (
                         <Produto
                             key={produto.id}
                             nome={produto.name}
@@ -206,7 +206,7 @@ export default function Carrinho() {
                         />
                     ))
                 ) : (
-                    <p>Nenhum item semelhante encontrado.</p>
+                    <h2>Nenhum item semelhante encontrado.</h2>
                 )}
             </div>
         </div>
