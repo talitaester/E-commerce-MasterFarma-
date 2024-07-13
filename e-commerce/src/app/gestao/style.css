@@ -1,14 +1,24 @@
-/* style.css */
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
+.adicionar-produto {
+    width: 845px;
+    height: 105px;
+    background-color: var(--c95);
+    border-radius: 30px;
+}
 
+.botaoTitulo {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 60px;
+    color: var(--c05);
+}
 
 .pagina {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .menuCriacao {
@@ -17,13 +27,13 @@
     background-color: var(--c95);
     padding: 4rem 6rem;
     border-radius: 4rem;
-    max-width: 1224px;
+    width: 1224px;
 }
 
 .content {
     display: flex;
     flex-direction: row;
-    gap: 2rem
+    gap: 2rem;
 }
 
 .pagTitulo {
@@ -48,15 +58,15 @@
 }
 
 .image-placeholder, .image-preview {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .line {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-right: 1rem;
+    margin-right: .5rem;
 }
 
 .little-container {
@@ -79,14 +89,14 @@
     gap: 1rem;
 }
 
-button {
+.botoes button {
     padding: 20px 41px;
-    background: none;
     border-radius: 20px;
 }
 
 .cancelar {
-    border: 1px solid var(--c60)
+    border: 1px solid var(--c60);
+    background: none;
 }
 
 .confirmar {
@@ -113,14 +123,8 @@ label {
     justify-content: space-between;
 }
 
-#oldPrice {
+#oldPrice, #code {
     max-width: 184px;
-}
-
-#productName {
-    width: 100%; 
-    height: 87px;
-
 }
 
 .price-input {
@@ -128,9 +132,23 @@ label {
     flex-direction: column;
 }
 
-input[type="text"] {
+.price-input input[type="text"], .form-group input[type="text"] {
     width: 100%;
     padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e0f4f1;
+    color: #053d4e;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+#productName {
+    width: 100%;
+    height: 87px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     background-color: #e0f4f1;
@@ -139,6 +157,8 @@ input[type="text"] {
     font-family: Montserrat;
     font-weight: bold;
     box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
 }
 
 .checkbox-group {
@@ -164,4 +184,206 @@ input[type="text"] {
     gap: 24px;
     margin: 24px auto;
     justify-content: center;
+}
+
+@media (max-width: 1360px) {
+    .menuCriacao {
+        width: calc(1224px * 0.8);
+        padding: 4rem 2rem;
+    }
+
+    .image-upload-container {
+        height: 350px;
+    }
+    
+}
+@media (max-width: 1024px) {
+    .pagTitulo {
+        margin: 4rem auto 2rem;
+        font-size: 40px;
+    }
+
+    .image-upload-container {
+        height: 300px;
+        width: 300px;
+    }
+
+    .adicionar-produto {
+        width: 645px;
+        height: 85px;
+        border-radius: 25px;
+    }
+    
+    .botaoTitulo {
+        font-size: 40px;
+    }
+
+    .menuCriacao {
+        width: calc(1224px * 0.5);
+        padding: 2rem;
+    }
+    
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .little-container {
+        width: 68px;
+        height: 68px;
+    }
+
+    .images-container {
+        padding: 2rem;
+        width: 80%;
+    }
+    
+    .produtosListados {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .pagTitulo {
+        margin: 3rem auto 2rem;
+        font-size: 30px;
+    }
+
+    .adicionar-produto {
+        width: 450px;
+        height: 65px;
+        border-radius: 20px;
+    }
+    
+    .botaoTitulo {
+        font-size: 30px;
+    }
+
+    .menuCriacao {
+        padding: 2rem 1rem;
+        border-radius: 40px;
+        width: 90%;
+        
+    }
+    
+    .content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .little-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .images-container {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .produtosListados {
+        width: 95%;
+    }
+
+    #productName {
+        width: 100%;
+        height: 87px;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+
+    .product-form {
+        gap: 20px;
+        max-width: 440px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagTitulo {
+        margin: 2rem auto 1rem;
+        font-size: 20px;
+    }
+
+    .menuCriacao {
+        width: calc(1224px * 0.4);
+    }
+
+    .adicionar-produto {
+        width: 288px;
+        height: 61px;
+        border-radius: 20px;
+    }
+
+    .botaoTitulo {
+        font-size: 20px;
+    }
+
+    .produtosListados {
+        gap: 16px;;
+        margin: 23px auto;
+    }
+
+    label h6, label {
+        font-size: 13px;
+    }
+
+    button h6 {
+        font-size: 17px;
+    }
+
+    .price-input input[type="text"], #code {
+        width: 137px;
+    }
+
+    .form-group input[type="text"]{
+        width: 272px;
+    }
+
+    .prices {
+        width: 272px;
+        gap: 8px;
+    }
+    
+    .botoes button {
+        padding: 15px 21px;
+        border-radius: 15px;
+        width: 132px;
+    }
+
+    .menuCriacao {
+        padding: .5rem;
+        border-radius: 20px;
+        width: 95%;
+        
+    }
+
+    .containerTitulo {
+        font-size:17px;
+        margin-bottom: 8px;
+    }
+
+    .images-container {
+        padding: 0;
+        align-items: center;
+        height: 230px;
+    }
+
+    .image-placeholder {
+        display: flex;
+        flex-wrap: wrap;
+        align-self: flex-start;
+        height: 216px;
+        width: 216px;
+    }
+
+    .image-upload-container {
+        width: 216px;
+        height: 216px;
+    }
+
+    .product-form {
+        gap: 10px;
+        max-width: 288px;
+    }
 }

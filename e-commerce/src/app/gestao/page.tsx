@@ -1,9 +1,11 @@
 'use client';
 
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import "./style.css";
+import Image from "next/image";
 import axios from "axios";
 import Produto from "../components/Produto/Produto";
-import "./style.css";
+import Pesquisa from "../pesquisa/page";
 
 interface ProdutoType {
     category: string;
@@ -16,12 +18,14 @@ interface ProdutoType {
     quant: number;
 }
 
+
 export default function Gestao() {
     const [products, setProducts] = useState<ProdutoType[]>([]);
     const [images, setImages] = useState<(File | null)[]>(Array(5).fill(null));
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [previews, setPreviews] = useState<(string | undefined)[]>(Array(5).fill(undefined));
     const fileInputRefs = useRef<(HTMLInputElement | null)[]>(Array(5).fill(null));
-
+    
     const [productName, setProductName] = useState("");
     const [oldPrice, setOldPrice] = useState("");
     const [price, setPrice] = useState("");
@@ -158,7 +162,13 @@ export default function Gestao() {
     return (
         <div className="pagina">
             <h1 className="pagTitulo">Gestão dos produtos</h1>
-            <div className="menuCriacao">
+            {!isMenuVisible && (
+                <button className="adicionar-produto" onClick={() => setIsMenuVisible(true)}>
+                    <h1 className="botaoTitulo">Adicionar Produto</h1>
+                </button>
+            )}
+            {isMenuVisible && (
+                <div className="menuCriacao">
                 <h4 className="containerTitulo">Criar Produto</h4>
                 <div className="content">
                     <div className="images-container">
@@ -257,14 +267,20 @@ export default function Gestao() {
                             </div>
                         </div>
                         <div className="botoes">
-                            <button className="cancelar"><h6>Cancelar</h6></button>
+                            <button className="cancelar" onClick={() => setIsMenuVisible(false)}><h6>Cancelar</h6></button>
                             <button className="confirmar" onClick={handleImageUpload}><h6>Confirmar</h6></button>
                         </div>
                     </div>
                 </div>
             </div>
+            )}
 
             <div className="produtosListados">
+                {!isMenuVisible && (
+                    <div className="pesquisa">
+                    <Pesquisa />
+                    </div>
+                )}
                 {products.map((product) => (
                     <Produto
                         key={product.id}

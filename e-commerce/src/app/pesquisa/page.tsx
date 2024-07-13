@@ -22,6 +22,7 @@ export default function Pesquisa() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
+  const category = searchParams.get('category'); // Get category from URL
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => {
@@ -45,6 +46,9 @@ export default function Pesquisa() {
           );
           setProducts(filteredProducts);
         }
+      } else if (category) {
+        response = await axios.get(`/products/category/${category}`);
+        setProducts(response.data);
       } else if (selectedCategories.length > 0) {
         const categories = selectedCategories.join(',');
         response = await axios.get(`/products/category/${categories}`);
@@ -68,33 +72,71 @@ export default function Pesquisa() {
 
   useEffect(() => {
     fetchProducts();
-  }, [query, selectedCategories]);
+  }, [query, category, selectedCategories]); 
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <>
-      <h1>Exibindo resultados para “{query || selectedCategories.join(', ')}”</h1>
       <div className="gradePesquisa">
         <div className="filtros">
           <form>
-            <h2>Filtrar por categoria</h2>
-            <div className="opcoesForm">
-              {['Medicamentos', 'Suplementos', 'Higiene', 'Beleza', 'Bebês', 'Perfumaria'].map(category => (
-                <div key={category}>
-                  <input
-                    type="checkbox"
-                    id={category}
-                    value={category}
-                    checked={selectedCategories.includes(category)}
-                    onChange={() => handleCategoryChange(category)}
-                  />
-                  <label htmlFor={category}>{category}</label>
-                </div>
-              ))}
+            <div className='firstForm'>
+              <h2>Filtrar por categoria</h2>
+              <div className="opcoesForm">
+                {['Medicamentos', 'Suplementos', 'Higiene', 'Beleza', 'Bebês', 'Perfumaria'].map(category => (
+                  <div key={category}>
+                    <input
+                      type="checkbox"
+                      id={category}
+                      value={category}
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                    />
+                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <div className="separateForms">
+              <h2>Filtrar por preço</h2>
+              <div className="opcoesForm">
+                {['Até R$50,00', 'Até R$100,00', 'Até R$200,00', 'Acima de R$200,00'].map(category => (
+                  <div key={category}>
+                    <input
+                      type="checkbox"
+                      id={category}
+                      value={category}
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                      />
+                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                  </div>
+                ))}
+              </div>
+              <div>
+                
+              </div>
+              <h2>Ordenar por</h2>
+              <div className="opcoesForm">
+                {['Relevância', 'Preço'].map(category => (
+                  <div key={category}>
+                    <input
+                      type="checkbox"
+                      id={category}
+                      value={category}
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                      />
+                    <label htmlFor={category}><p className='items'>{category}</p></label>
+                  </div>
+                ))}
+              </div>
+              </div>
           </form>
+
         </div>
         <div className="gradeResultados">
           {products.map(product => (
@@ -105,6 +147,7 @@ export default function Pesquisa() {
               precoAtual={`R$${product.price.toFixed(2)}`}
               parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
               imagemSrc={product.images[0]?.url}
+              code={product.code}
             />
           ))}
         </div>

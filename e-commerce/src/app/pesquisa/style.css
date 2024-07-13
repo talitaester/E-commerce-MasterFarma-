@@ -3,15 +3,14 @@
     background-color: var(--c95);
     color: var(--c05);
     padding: 26px 16px;
-    width: 236px;
+    width: 288px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 20px;
+    font-weight: 600;
 }
 
 .filtros h2{
-    font-size: 1em;
+    font-size: 1.2em;
     color: var(--c05);
     font-weight: 800;
 }
@@ -19,9 +18,51 @@
 .opcoesForm {
     display: flex;
     flex-direction: column;
+    margin: 8px 0;
 }
+
 .opcoesForm div{
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .filtros form {
+        flex-direction: row;
+        width: 600px;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 768px) {
+    .filtros form {
+        width: 420px;
+        justify-content: space-around;
+    }
+
+    .filtros h2{
+        font-size: .9em;
+    }
+
+    .items {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .filtros form {
+        width: 288px;
+        justify-content: space-around;
+        padding: 21px 26px;
+        gap: 16px;
+    }
+
+    .filtros h2{
+        font-size: 10px;
+    }
+
+    .items {
+        font-size: 12px;
+    }
 }

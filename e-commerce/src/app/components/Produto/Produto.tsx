@@ -1,6 +1,8 @@
 // Em Produto.tsx
 
-import React from "react";
+'use client'
+
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./produto.module.css";
 import classNames from "classnames";
@@ -58,7 +60,7 @@ const Produto: React.FC<ProdutoProps> = ({
                 <div className={styles.container}>
                     <h6 className={styles.nomeProduto}>{nome}</h6>
 
-                    <div className={styles.precos}>
+                        <div className={styles.precos}>
                         <span className={styles.corte}></span>
                         <h6 className={styles.nomeProduto}>{precoAntigo}</h6>
 
@@ -84,6 +86,15 @@ const Produto: React.FC<ProdutoProps> = ({
                     </div>
                 )}
             </div>
+            {isEditVisible && (
+                <div className={styles.excluirCerteza}>
+                    <h6>Tem certeza que<br/>quer excluir?</h6>
+                    <div className={styles.botoesEdit}>
+                        <button className={styles.botaoNao} onClick={() => setIsEditVisible(false)}><h6>Não</h6></button>
+                        <button className={styles.botaoSim} onClick={() => excluirProduto()}><Image className={styles.lixo} src='/mini-lixeira.svg'alt="deletar" width={24} height={28}/><h6>Sim</h6></button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
