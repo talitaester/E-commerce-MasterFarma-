@@ -188,13 +188,13 @@ export default function Carrinho() {
                         />
                     ))
                 ) : (
-                    <p>Nenhum produto visto recentemente.</p>
+                    <h1>Nenhum produto visto recentemente.</h1>
                 )}
             </div>
             <h1>Itens Semelhantes</h1>
             <div className="produtosSemelhantes">
                 {itensSemelhantes.length > 0 ? (
-                    itensSemelhantes.map((produto) => (
+                    itensSemelhantes.slice(0, 4).map((produto) => (
                         <Produto
                             key={produto.id}
                             nome={produto.name}
@@ -202,11 +202,11 @@ export default function Carrinho() {
                             precoAtual={`R$${produto.price}`}
                             parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
                             imagemSrc={produto.images[0]?.url || '/produto.png'}
-                            code={produto.code}
+                            code={produto.code} 
                         />
                     ))
                 ) : (
-                    <p>Nenhum item semelhante encontrado.</p>
+                    <h2>Nenhum item semelhante encontrado.</h2>
                 )}
             </div>
         </div>

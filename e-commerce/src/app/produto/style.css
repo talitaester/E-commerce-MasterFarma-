@@ -8,10 +8,6 @@ h1 {font-size: 60px;}
 p {
     color: var(--c95)
 }
-.produtosSemelhantes{
-    display: flex;
-    gap: 4rem;
-}
 #desktop {
     display: block;
 }
@@ -84,10 +80,9 @@ p {
     text-align: left;
 }
 .corte {
-    position: relative;
-    display: inline-block;
+    position: absolute;
     background-color: black;
-    width: 85px;
+    width: 105px;
     height: 3px;
     transform: rotate(-10deg);
     top: 15px;
@@ -196,8 +191,5 @@ p {
     }
     h1 {
         font-size: 29px;
-    }
-    .corte {
-        width: 75px;
     }
 }

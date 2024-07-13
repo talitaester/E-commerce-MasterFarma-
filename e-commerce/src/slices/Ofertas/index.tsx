@@ -35,7 +35,7 @@ const Ofertas = ({ slice }: OfertasProps): JSX.Element => {
 
   const fetchProducts = async () => {
     try {
-      let response = await axios.get(`http://localhost:8080//products/filter`);
+      let response = await axios.get(`http://localhost:8080/products`);
       setProducts(response.data);
     } catch (error) {
       if (error instanceof Error) {

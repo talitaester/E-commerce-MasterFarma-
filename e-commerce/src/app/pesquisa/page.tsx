@@ -23,7 +23,7 @@ export default function Pesquisa() {
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
-  const category = searchParams.get('category'); // Get category from URL
+  const category = searchParams.get('category');
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => {
@@ -92,7 +92,7 @@ export default function Pesquisa() {
 
   useEffect(() => {
     fetchProducts();
-  }, [query, category, selectedCategories]); 
+  }, [query, selectedCategories, selectedPriceRanges]);
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;

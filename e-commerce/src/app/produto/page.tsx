@@ -3,37 +3,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import ImagensProduto from "../components/ImagensProduto/ImagensProduto";
-import Produto from "../components/Produto/Produto";
 import "./style.css"
-import axios from "axios";
 
-interface ProdutoType {
-    category: string;
-    code: number;
-    id: number;
-    name: string;
-    price: number;
-    oldPrice: number;
-    images: { url: string }[];
-    quant: number;
-}
-
-export default function ProdutoSingular () {
-    const [itensSemelhantes, setItensSemelhantes] = useState<ProdutoType[]>([]);
-    useEffect(() => {
-        const categoria = "Beleza";
-        fetchItensSemelhantes(categoria);
-    }, []);
-
-    const fetchItensSemelhantes = async (categoria: string) => {
-        try {
-            const response = await axios.get(`http://localhost:8080/products/category/${categoria}`);
-            setItensSemelhantes(response.data || []);
-            console.log('Itens semelhantes:', response.data);
-        } catch (error) {
-            console.error('Erro ao buscar itens semelhantes:', error);
-        }
-    };
+export default function Produto () {
     return (
         <div className="principal">
             <div className="produtoTodo">
@@ -75,24 +47,7 @@ export default function ProdutoSingular () {
                 </div>
             </div>
             <h1>Itens semelhantes</h1>
-            <div className="produtosSemelhantes">
-                {itensSemelhantes.length > 0 ? (
-                    itensSemelhantes.map((produto) => (
-                        <Produto
-                            key={produto.id}
-                            nome={produto.name}
-                            precoAntigo={`R$${produto.oldPrice}`}
-                            precoAtual={`R$${produto.price}`}
-                            parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
-                            imagemSrc={produto.images[0]?.url || '/produto.png'}
-                            code={produto.code}
-                        />
-                    ))
-                ) : (
-                    <p>Nenhum item semelhante encontrado.</p>
-                )}
-            </div>
-            <h1>Outros produtos</h1>
+            <h1>Você também pode gostar</h1>
         </div>
     )
 }
