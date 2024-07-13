@@ -1,0 +1,27 @@
+.imagensDoProduto {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    width: 100%;
+}
+.imagensPequenas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.imagemP {
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    width: 80px;
+    height: auto;
+    opacity: 75%;
+}
+.imagemP.selecionada, .imagemG {
+    opacity: 100%;
+    border: 1px solid lightgray;
+}
+.imagemG {
+    height: 500px;
+    width: auto;
+    border-radius: 30px;
+}
