@@ -23,11 +23,11 @@ const MaisVendidos = ({ slice }: MaisVendidosProps): JSX.Element => {
 
       <div className={styles.produtos}>
         <div className={`${alternative.produtos} ${alternative.horizontal}`}>
-          <Produto />
+          <Produto nome={""} code={0} />
         </div>
 
         <div className={`${alternative.produtos} ${alternative.horizontal}`}>
-          <Produto />
+          <Produto nome={""} code={0} />
         </div>
       </div>
 
