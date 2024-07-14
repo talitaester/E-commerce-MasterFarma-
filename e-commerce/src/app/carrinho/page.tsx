@@ -187,7 +187,7 @@ export default function Carrinho() {
                         />
                     ))
                 ) : (
-                    <h1>Nenhum produto visto recentemente.</h1>
+                    <p style={{color: "var(--c95)", fontSize:"2.5em"}}>Nenhum produto visto recentemente.</p>
                 )}
             </div>
             <h1>Itens Semelhantes</h1>

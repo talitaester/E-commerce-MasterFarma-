@@ -64,7 +64,15 @@ const ProdutoPage = () => {
         }
         if (produto?.category) fetchItensSemelhantes(produto.category)
     }, [produto])
-
+    const handleAddToCart = async () => {
+        try {
+            await axios.post('http://localhost:8080/cart', { productId: produto?.id });
+            alert('Produto adicionado ao carrinho com sucesso!');
+        } catch (error) {
+            console.error('Erro ao adicionar produto ao carrinho:', error);
+            alert('Erro ao adicionar produto ao carrinho.')
+        }
+    }
     if (!produto) {
         return <div>Carregando...</div>;
     }
@@ -95,7 +103,7 @@ const ProdutoPage = () => {
                             <h2 className="precoAtual">R${produto.price.toFixed(2)}</h2>
                             <p className="parcelas">Ou 3x de R${(produto.price / 3).toFixed(2)}</p>
                         </div>
-                        <button className="addCarrinho">
+                        <button className="addCarrinho" onClick={handleAddToCart}>
                             <img src="../CarrinhoPlus.svg" />
                             <p>Adicionar ao carrinho</p>
                         </button>
