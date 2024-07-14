@@ -43,8 +43,11 @@ h1 {
 
 .produtosVistos,.produtosSemelhantes{
     display: flex;
-    gap: 4rem;
-
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2%;
+    width: 100%;
+    padding-bottom: 3rem;
 }
 label {
     font-size: 1.4rem;
