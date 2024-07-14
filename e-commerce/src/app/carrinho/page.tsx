@@ -166,7 +166,7 @@ export default function Carrinho() {
                     
                     <div className="botoezoes">
                             <Link href='/'>
-    <button className="btnGrande princi">Continuar comprando</button>
+                                <button className="btnGrande princi">Continuar comprando</button>
                             </Link>
                         <button className="btnGrande secund">Finalizar compra</button>
                     </div>
@@ -205,7 +205,7 @@ export default function Carrinho() {
                         />
                     ))
                 ) : (
-                    <p style={{color: "var(--c95)", fontSize:"2.5em"}}>Nenhum item semelhante encontrado.</h2>
+                    <p style={{color: "var(--c95)", fontSize:"2.5em"}}>Nenhum item semelhante encontrado.</p>
                 )}
             </div>
         </div>
