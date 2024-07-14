@@ -59,7 +59,7 @@ form div {
     flex-direction: column;
     gap: 8px;
 }
-.principal input {
+.inputMaisOK input {
     background-color: var(--c05);
     height: 54px;
     width: 70%;

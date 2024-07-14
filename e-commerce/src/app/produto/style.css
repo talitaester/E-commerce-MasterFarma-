@@ -18,9 +18,12 @@ p {
 .produtoTodo {
     display: flex;
     gap: 24px;
-    align-items: center;
     justify-content: center;
     width: 100%;
+}
+.produtosSemelhantes, .produtosVistos{
+    display: flex;
+    gap: 4rem;
 }
 .infoProduto {
     display: flex;
@@ -80,9 +83,10 @@ p {
     text-align: left;
 }
 .corte {
-    position: absolute;
+    display: inline-block;
+    position: relative;
     background-color: black;
-    width: 105px;
+    width: 75px;
     height: 3px;
     transform: rotate(-10deg);
     top: 15px;
@@ -143,9 +147,8 @@ p {
 @media (max-width: 1160px) {
     #desktop {display: none}
     #mobile {display: flex}
-    .principal{
-        padding: 36px 50px;
-    }
+    .principal{padding: 36px 50px}
+    .produtoTodo{align-items: center}
 }
 
 @media (max-width: 680px) {
@@ -160,6 +163,9 @@ p {
     }
     span {
         font-size: 10px;
+    }
+    .corte {
+        width: 64px;
     }
     .rating img {
         width: 16px;

@@ -7,36 +7,21 @@ import finiimagem from '../../../../public/fini.png';
   }
 
 export default function ImagensProduto({images}:ImagensProdutoProps) {
-    {/** Recebe array de urls */}
+    const imagensLimitadas = images.slice(0, 6)
     return (
         <div className={styles.imagensDoProduto}>
             <div className={styles.imagensPequenas}>
-                {/** Mapeia cada url do array */}
-                <Image
-                    className={`${styles.imagemP} ${styles.selecionada}`}
-                    src={finiimagem}
-                    /** ^^^ URL mapeada */
+                {imagensLimitadas.map((imagem)=>
+                    <img
+                    className={imagem === images[0] ? `${styles.imagemP} ${styles.selecionada}` : `${styles.imagemP}`}
+                    src={imagem.url}
                     alt={"produto"}
                 />
-                <Image
-                    className={`${styles.imagemP}`}
-                    src={finiimagem}
-                    alt={"produto"}
-                />
-                <Image
-                    className={`${styles.imagemP}`}
-                    src={finiimagem}
-                    alt={"produto"}
-                />
-                <Image
-                    className={`${styles.imagemP}`}
-                    src={finiimagem}
-                    alt={"produto"}
-                />
+                )}
             </div>
-            <Image
+            <img
                 className={`${styles.imagemG}`}
-                src={finiimagem}
+                src={images.length > 0 ? images[0].url : "../fini.png"}
                 alt={"produto"}
             />
         </div>
