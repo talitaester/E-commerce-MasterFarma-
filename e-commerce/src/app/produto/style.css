@@ -80,9 +80,10 @@ p {
     text-align: left;
 }
 .corte {
-    position: absolute;
+    display: inline-block;
+    position: relative;
     background-color: black;
-    width: 105px;
+    width: 75px;
     height: 3px;
     transform: rotate(-10deg);
     top: 15px;
@@ -160,6 +161,9 @@ p {
     }
     span {
         font-size: 10px;
+    }
+    .corte {
+        width: 64px;
     }
     .rating img {
         width: 16px;
