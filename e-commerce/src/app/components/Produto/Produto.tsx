@@ -16,7 +16,7 @@ interface ProdutoProps {
     editable?: boolean;
     code: number;
     onDelete?: () => void;
-    onEdit?: () => void; // Adicionando a prop onEdit
+    onEdit?: () => void;
 }
 
 const Produto: React.FC<ProdutoProps> = ({
@@ -37,9 +37,9 @@ const Produto: React.FC<ProdutoProps> = ({
             await axios.delete(`http://localhost:8080/products/code/${code}`);
             console.log(`Deleted product: ${nome}`);
             if (onDelete) {
-                onDelete(); // Chama a função onDelete para atualizar a lista de produtos
+                onDelete(); // Chamando a função onDelete após exclusão bem-sucedida
             }
-            setIsEditVisible(false); // Fecha o formulário de confirmação
+            setIsEditVisible(false);
         } catch (error) {
             console.error("Erro ao deletar produto:", error);
         }
@@ -59,7 +59,7 @@ const Produto: React.FC<ProdutoProps> = ({
                 </Link>
 
                 <div className={styles.container}>
-                    <h6 className={styles.nomeProduto}><Link href={`/produto/${code}`}>{nome}</Link></h6>
+                    <h6 className={styles.nomeProduto}><Link className={styles.nomeProduto} href={`/produto/${code}`}>{nome}</Link></h6>
 
                     <div className={styles.precos}>
                         <span className={styles.corte}></span>
