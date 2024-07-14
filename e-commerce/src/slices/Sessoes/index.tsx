@@ -1,13 +1,12 @@
 'use client';
 
-
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import styles from "./sessoes.module.css";
-import Link from "next/link";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
+import Link from "next/link";
 
 /**
  * Props for `Sessoes`.
@@ -18,7 +17,6 @@ export type SessoesProps = SliceComponentProps<Content.SessoesSlice>;
  * Component for "Sessoes" Slices.
  */
 const Sessoes = ({ slice }: SessoesProps): JSX.Element => {
-
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -30,22 +28,10 @@ const Sessoes = ({ slice }: SessoesProps): JSX.Element => {
         spaceBetween={8}
         slidesPerView={2}
         breakpoints={{
-          320: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          480: {
-            slidesPerView: 4,
-            spaceBetween: 12,
-          },
-          768: {
-            slidesPerView: 5,
-            spaceBetween: 14,
-          },
-          1300: {
-            slidesPerView: 6,
-            spaceBetween: 16,
-          },
+          320: { slidesPerView: 3, spaceBetween: 10 },
+          480: { slidesPerView: 4, spaceBetween: 12 },
+          768: { slidesPerView: 5, spaceBetween: 14 },
+          1300: { slidesPerView: 6, spaceBetween: 16 },
         }}
         pagination={{
           clickable: true,
@@ -53,61 +39,55 @@ const Sessoes = ({ slice }: SessoesProps): JSX.Element => {
           bulletClass: styles.swiperPaginationBullet,
           bulletActiveClass: styles.swiperPaginationBulletActive,
         }}
-        
         className={styles.carrosselSessoes}
       >
         <SwiperSlide>
-          <div className={styles.sessao}>
-            <Link href="/pesquisa?category=Medicamentos" className={styles.circle}>
+          <Link href='/categoria/Medicamentos' className={styles.sessao}>
+            <div className={styles.circle}>
               <img src='/pilula.svg' alt='pílula' className={styles.icon} />
-            </Link>
-            <Link href="/pesquisa?category=Medicamentos" className={styles.title}>Medicamentos</Link>
-          </div>
+            </div>
+            <div className={styles.title}>Medicamentos</div>
+          </Link>
         </SwiperSlide>
-
         <SwiperSlide>
-          <div className={styles.sessao}>
-            <Link href="/pesquisa?category=Suplementos" className={styles.circle}>
+          <Link href='/categoria/Suplementos' className={styles.sessao}>
+            <div className={styles.circle}>
               <img src='/pesos.svg' alt='pesos' className={styles.icon} />
-            </Link>
-            <Link href="/pesquisa?category=Suplementos" className={styles.title}>Suplementos</Link>
-          </div>
+            </div>
+            <div className={styles.title}>Suplementos</div>
+          </Link>
         </SwiperSlide>
-
         <SwiperSlide>
-          <div className={styles.sessao}>
-            <Link href="/pesquisa?category=Higiene" className={styles.circle}>
+          <Link href='/categoria/Higiene' className={styles.sessao}>
+            <div className={styles.circle}>
               <img src='/maos.svg' alt='maos' className={styles.icon} />
-            </Link>
-            <Link href="/pesquisa?category=Higiene" className={styles.title}>Higiene</Link>
-          </div>
+            </div>
+            <div className={styles.title}>Higiene</div>
+          </Link>
         </SwiperSlide>
-
         <SwiperSlide>
-          <div className={styles.sessao}>
-            <Link href="/pesquisa?category=Beleza" className={styles.circle}>
+          <Link href='/categoria/Beleza' className={styles.sessao}>
+            <div className={styles.circle}>
               <img src='/batom.svg' alt='batom' className={styles.icon} />
-            </Link>
-            <Link href="/pesquisa?category=Beleza" className={styles.title}>Beleza</Link>
-          </div>
+            </div>
+            <div className={styles.title}>Beleza</div>
+          </Link>
         </SwiperSlide>
-
         <SwiperSlide>
-          <div className={styles.sessao}>
-            <Link href="/pesquisa?category=Bebes" className={styles.circle}>
+          <Link href='/categoria/Bebes' className={styles.sessao}>
+            <div className={styles.circle}>
               <img src='/bebe.svg' alt='bebe' className={styles.icon} />
-            </Link>
-            <Link href="/pesquisa?category=Bebes" className={styles.title}>Bebês</Link>
-          </div>
+            </div>
+            <div className={styles.title}>Bebês</div>
+          </Link>
         </SwiperSlide>
-
         <SwiperSlide>
-          <div className={styles.sessao}>
-            <Link href="/pesquisa?category=Perfumaria" className={styles.circle}>
+          <Link href='/categoria/Perfumaria' className={styles.sessao}>
+            <div className={styles.circle}>
               <img src='/spray.svg' alt='spray' className={styles.icon} />
-            </Link>
-            <Link href="/pesquisa?category=Perfumaria" className={styles.title}>Perfumaria</Link>
-          </div>
+            </div>
+            <div className={styles.title}>Perfumaria</div>
+          </Link>
         </SwiperSlide>
         <div className={styles.swiperPagination}></div>
       </Swiper>

@@ -65,6 +65,22 @@ export const getProductsByCategory = async (category: string) => {
   });
 };
 
+// In services.ts
+export const getProductsByCategories = async (categories: string[]) => {
+  const products = await prisma.product.findMany({
+    where: {
+      category: {
+        in: categories,
+      },
+    },
+    include: {
+      images: true,
+    },
+  });
+  return products;
+};
+
+
 // Pesquisar produtos por nome
 export const getProductsByName = async (name: string) => {
   return await prisma.product.findMany({
