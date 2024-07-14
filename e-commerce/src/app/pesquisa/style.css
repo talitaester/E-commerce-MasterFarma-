@@ -34,12 +34,10 @@
 .gradePesquisa {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 2vw;
     margin: 1rem;
 }
-
 
 
 @media (max-width: 1024px) {
@@ -47,12 +45,13 @@
         flex-direction: row;
         width: 600px;
         justify-content: space-around;
+        width: 100%;
     }
+    .filtros { width: 100% }
 }
 
 @media (max-width: 768px) {
     .filtros form {
-        width: 420px;
         justify-content: space-around;
     }
 
@@ -66,6 +65,9 @@
 }
 
 @media (max-width: 480px) {
+    .filtros { 
+        display: flex;
+        justify-content: center; }
     .filtros form {
         width: 288px;
         justify-content: space-around;
