@@ -21,7 +21,7 @@ export default function ImagensProduto({images}:ImagensProdutoProps) {
             </div>
             <img
                 className={`${styles.imagemG}`}
-                src={images[0].url}
+                src={images.length > 0 ? images[0].url : "../fini.png"}
                 alt={"produto"}
             />
         </div>

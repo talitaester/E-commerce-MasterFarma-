@@ -21,6 +21,10 @@ p {
     justify-content: center;
     width: 100%;
 }
+.produtosSemelhantes, .produtosVistos{
+    display: flex;
+    gap: 4rem;
+}
 .infoProduto {
     display: flex;
     flex-direction: column;

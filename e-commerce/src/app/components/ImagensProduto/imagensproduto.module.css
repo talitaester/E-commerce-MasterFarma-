@@ -31,6 +31,6 @@
 
 @media (max-width: 630px) {
     .imagensDoProduto{gap:4%}
-    .imagemG{width: 236px}
+    .imagemG{width: 236px; height: 236px;}
     .imagemP{width: 48px; border-radius: 10px}
 }

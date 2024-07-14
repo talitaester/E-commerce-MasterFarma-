@@ -175,7 +175,7 @@ export default function Carrinho() {
             <h1>Vistos recentemente</h1>
             <div className="produtosVistos">
                 {vistosRecentemente.length > 0 ? (
-                    vistosRecentemente.map((produto) => (
+                    vistosRecentemente.slice(0, 5).map((produto) => (
                         <Produto
                             key={produto.id}
                             nome={produto.name}
@@ -184,7 +184,6 @@ export default function Carrinho() {
                             parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
                             imagemSrc={produto.images[0]?.url || '/produto.png'}
                             code={produto.code}
-                            
                         />
                     ))
                 ) : (

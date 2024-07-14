@@ -23,6 +23,20 @@ const ProdutoPage = () => {
     const { code } = useParams()
     const [produto, setProduto] = useState<ProdutoType | null>(null)
     const [itensSemelhantes, setItensSemelhantes] = useState<ProdutoType[]>([])
+    const [outrosProdutos, setOutrosProdutos] = useState<ProdutoType[]>([])
+
+    useEffect(() => {
+        const fetchOutrosProdutos = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/products');
+                setOutrosProdutos(response.data || []);
+                console.log('Produtos:', response.data);
+            } catch (error) {
+                console.error('Erro ao buscar produtos:', error);
+            }
+        };
+        fetchOutrosProdutos();
+    }, []);
 
     useEffect(() => {
         if (code) {
@@ -114,6 +128,23 @@ const ProdutoPage = () => {
                 )}
             </div>
             <h1>Outros produtos</h1>
+            <div className="produtosVistos">
+                {outrosProdutos.length > 0 ? (
+                    outrosProdutos.slice(0, 5).map((produto) => (
+                        <Produto
+                            key={produto.id}
+                            nome={produto.name}
+                            precoAntigo={`R$${produto.oldPrice}`}
+                            precoAtual={`R$${produto.price}`}
+                            parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
+                            imagemSrc={produto.images[0]?.url || '/produto.png'}
+                            code={produto.code}
+                        />
+                    ))
+                ) : (
+                    <h1>Nenhum produto no banco de dados.</h1>
+                )}
+            </div>
         </div>
     )
 }
