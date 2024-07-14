@@ -243,14 +243,34 @@ export default function Gestao() {
                                 <label htmlFor="code"><h6>Código do produto</h6></label>
                                 <input type="text" id="code" placeholder="Código" value={code} onChange={(e) => setCode(e.target.value)} />
                             </div>
-                            <div className="form-group">
-                                <h6>Categorias</h6>
-                                {["medicamentos", "suplementos", "higiene", "beleza", "bebes", "saude"].map(category => (
-                                    <div key={category}>
-                                        <input type="checkbox" value={category} checked={categories.includes(category)} onChange={handleCategoryChange} />
-                                        <label>{category}</label>
-                                    </div>
-                                ))}
+                            <div className="form-group ">
+                                <label><h6>Categoria</h6></label>
+                                <div className="checkbox-group">
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="medicamentos" checked={categories.includes('medicamentos')} onChange={handleCategoryChange} />
+                                        Medicamentos
+                                    </label>
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="suplementos" checked={categories.includes('suplementos')} onChange={handleCategoryChange} />
+                                        Suplementos
+                                    </label>
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="higiene" checked={categories.includes('higiene')} onChange={handleCategoryChange} />
+                                        Higiene
+                                    </label>
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="beleza" checked={categories.includes('beleza')} onChange={handleCategoryChange} />
+                                        Beleza
+                                    </label>
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="bebes" checked={categories.includes('bebes')} onChange={handleCategoryChange} />
+                                        Bebês
+                                    </label>
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="saude" checked={categories.includes('saude')} onChange={handleCategoryChange} />
+                                        Saúde
+                                    </label>
+                                </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="imageUrl"><h6>URL da Imagem</h6></label>

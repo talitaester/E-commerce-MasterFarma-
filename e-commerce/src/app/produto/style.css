@@ -56,6 +56,7 @@ p {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .addCarrinho {
     border: none;
@@ -86,10 +87,10 @@ p {
     display: inline-block;
     position: relative;
     background-color: black;
-    width: 75px;
-    height: 3px;
+    width: 70px;
+    height: 2px;
     transform: rotate(-10deg);
-    top: 15px;
+    top: 10px;
     left: 0;
     z-index: 9999;
 }
