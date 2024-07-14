@@ -23,6 +23,20 @@ const ProdutoPage = () => {
     const { code } = useParams()
     const [produto, setProduto] = useState<ProdutoType | null>(null)
     const [itensSemelhantes, setItensSemelhantes] = useState<ProdutoType[]>([])
+    const [outrosProdutos, setOutrosProdutos] = useState<ProdutoType[]>([])
+
+    useEffect(() => {
+        const fetchOutrosProdutos = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/products');
+                setOutrosProdutos(response.data || []);
+                console.log('Produtos:', response.data);
+            } catch (error) {
+                console.error('Erro ao buscar produtos:', error);
+            }
+        };
+        fetchOutrosProdutos();
+    }, []);
 
     useEffect(() => {
         if (code) {
@@ -55,16 +69,6 @@ const ProdutoPage = () => {
         return <div>Carregando...</div>;
     }
     
-/*    return (
-        <div>
-            <h1>{produto.name}</h1>
-            <img src={produto.images[0]?.url || '/produto.png'} alt={produto.name} />
-            <p>Preço: R${produto.price.toFixed(2)}</p>
-            <p>Preço Antigo: R${produto.oldPrice.toFixed(2)}</p>
-            <p>Categoria: {produto.category}</p>
-
-        </div>
-    );;*/
     return (
         <div className="principal">
             <div className="produtoTodo">
@@ -83,7 +87,7 @@ const ProdutoPage = () => {
                             <span>Código: {produto.code}</span>
                         </div>
                     </div>
-                    <div id="mobile"><ImagensProduto images={[]} /></div>
+                    <div id="mobile"><ImagensProduto images={produto.images} /></div>
                     <div className="precosMaisBotao">
                         <div className="precos">
                             <span className="corte"></span>
@@ -124,6 +128,23 @@ const ProdutoPage = () => {
                 )}
             </div>
             <h1>Outros produtos</h1>
+            <div className="produtosVistos">
+                {outrosProdutos.length > 0 ? (
+                    outrosProdutos.slice(0, 5).map((produto) => (
+                        <Produto
+                            key={produto.id}
+                            nome={produto.name}
+                            precoAntigo={`R$${produto.oldPrice}`}
+                            precoAtual={`R$${produto.price}`}
+                            parcelas={`Ou 3x de R$${(produto.price / 3).toFixed(2)}`}
+                            imagemSrc={produto.images[0]?.url || '/produto.png'}
+                            code={produto.code}
+                        />
+                    ))
+                ) : (
+                    <h1>Nenhum produto no banco de dados.</h1>
+                )}
+            </div>
         </div>
     )
 }
