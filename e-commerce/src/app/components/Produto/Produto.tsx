@@ -59,7 +59,7 @@ const Produto: React.FC<ProdutoProps> = ({
                 </Link>
 
                 <div className={styles.container}>
-                    <h6 className={styles.nomeProduto}><Link href={`/produto/${code}`}>{nome}</Link></h6>
+                    <h6 className={styles.nomeProduto}><Link className={styles.nomeProduto} href={`/produto/${code}`}>{nome}</Link></h6>
 
                     <div className={styles.precos}>
                         <span className={styles.corte}></span>

@@ -99,6 +99,8 @@
 
 .nomeProduto {
     font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--c05);
 }
 
 .precoAtual {
