@@ -155,7 +155,7 @@ export default function Pesquisa() {
           </form>
         </div>
         
-        <div className="gradeResultados">
+        
           {products.map(product => (
             <Produto
               key={product.id}
@@ -167,7 +167,7 @@ export default function Pesquisa() {
               code={product.code}
             />
           ))}
-        </div>
+        
       </div>
     </>
   );
