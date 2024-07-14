@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import {filterProductsByMaxPrice, getAllProducts, updateCartQuantity, addProduct, removeProduct, editProduct, getProductsByCategory, getProductsByName, getProductByCode, removeImagesByIndices, addToCart, removeFromCart, getCartItems } from './services';
+import {filterProductsByMaxPrice, getAllProducts, updateCartQuantity, addProduct, removeProduct, editProduct, getProductsByCategory, getProductsByName, getProductByCode, removeImagesByIndices, addToCart, removeFromCart, getCartItems, getProductsByCategories } from './services';
+import { Product } from '@prisma/client';
 
 const app = express();
 app.use(express.json());
@@ -149,25 +150,31 @@ app.put('/cart/:cartProductId/quantity', async (req: Request, res: Response) => 
 })
 
 // Rota para filtrar produtos por preço máximo
-app.get('/products/filter', async (req, res) => {
-  const { maxPrice } = req.query;
-
-  // Validação do parâmetro
-  if (typeof maxPrice !== 'string') {
-      return res.status(400).send('Invalid price value');
-  }
-
-  const max = parseFloat(maxPrice);
-
-  if (isNaN(max)) {
-      return res.status(400).send('none');
-  }
+app.get('/products/filter', async (req: Request, res: Response) => {
+  const { categories, minPrice, maxPrice } = req.query;
 
   try {
-      const filteredProducts = await filterProductsByMaxPrice(max);
-      return res.json(filteredProducts);
+    let products;
+
+    if (categories) {
+      const categoryArray = (categories as string).split(',');
+      products = await getProductsByCategories(categoryArray);
+    } else {
+      products = await getAllProducts(); // Or any other method to get all products
+    }
+
+    if (minPrice || maxPrice) {
+      const min = parseFloat(minPrice as string) || 0;
+      const max = parseFloat(maxPrice as string) || Infinity;
+
+      products = products.filter((product: Product) =>
+        product.price >= min && product.price <= max
+      );
+    }
+
+    res.status(200).json(products);
   } catch (error) {
-      return res.status(500).send('Internal server error');
+    res.status(500).json({ error: (error as Error).message });
   }
 });
 

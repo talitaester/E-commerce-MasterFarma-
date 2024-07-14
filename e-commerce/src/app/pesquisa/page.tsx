@@ -13,14 +13,19 @@ interface Product {
   oldPrice: number;
   category: string;
   images: { url: string }[];
+  editable?: boolean;
+}
+interface Pesquisa {
+  editable?: boolean;
 }
 
-export default function Pesquisa() {
+const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
   const category = searchParams.get('category');
@@ -45,38 +50,31 @@ export default function Pesquisa() {
     });
   };
 
-  const filterByPrice = (price: number): boolean => {
-    if (selectedPriceRanges.includes('Até R$50,00') && price <= 50) return true;
-    if (selectedPriceRanges.includes('Até R$100,00') && price <= 100) return true;
-    if (selectedPriceRanges.includes('Até R$200,00') && price <= 200) return true;
-    if (selectedPriceRanges.includes('Acima de R$200,00') && price > 200) return true;
-    return false;
+  const handleSortChange = (sortOption: string) => {
+    setSortBy(sortOption);
   };
 
   const fetchProducts = async () => {
     try {
       let response;
 
-      if (query && query.trim()) {
-        response = await axios.get(`/products/name/${query}`);
-        if (response.data) {
-          const filteredProducts = response.data.filter((product: Product) =>
-            (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
-            (selectedPriceRanges.length === 0 || filterByPrice(product.price))
-          );
-          setProducts(filteredProducts);
+      const categoryString = selectedCategories.join(',');
+      const minPrice = selectedPriceRanges.includes('Até R$50,00') ? 0 : undefined;
+      const maxPrice = selectedPriceRanges.includes('Até R$50,00') ? 50 : 
+                        selectedPriceRanges.includes('Até R$100,00') ? 100 :
+                        selectedPriceRanges.includes('Até R$200,00') ? 200 :
+                        selectedPriceRanges.includes('Acima de R$200,00') ? undefined : undefined;
+
+      response = await axios.get('/products/filter', {
+        params: {
+          categories: categoryString,
+          minPrice,
+          maxPrice,
+          sortBy
         }
-      } else if (category) {
-        response = await axios.get(`/products/category/${category}`);
-        setProducts(response.data);
-      } else if (selectedCategories.length > 0) {
-        const categories = selectedCategories.join(',');
-        response = await axios.get(`/products/category/${categories}`);
-        setProducts(response.data.filter((product: Product) => filterByPrice(product.price)));
-      } else {
-        setProducts([]);
-        return;
-      }
+      });
+
+      setProducts(response.data);
     } catch (error) {
       if (error instanceof Error) {
         console.error('Erro ao buscar produtos:', error);
@@ -92,7 +90,7 @@ export default function Pesquisa() {
 
   useEffect(() => {
     fetchProducts();
-  }, [query, selectedCategories, selectedPriceRanges]);
+  }, [query, selectedCategories, selectedPriceRanges, sortBy]);
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
@@ -142,10 +140,11 @@ export default function Pesquisa() {
                 {['Relevância', 'Preço'].map(order => (
                   <div key={order}>
                     <input
-                      type="checkbox"
+                      type="radio"
                       id={order}
+                      name="sortOrder"
                       value={order}
-                      disabled // Desativa as caixas de seleção
+                      onChange={() => handleSortChange(order.toLowerCase())}
                     />
                     <label htmlFor={order}><p className='items'>{order}</p></label>
                   </div>
@@ -155,7 +154,7 @@ export default function Pesquisa() {
           </form>
         </div>
         
-        
+        <div className="gradeResultados">
           {products.map(product => (
             <Produto
               key={product.id}
@@ -165,10 +164,13 @@ export default function Pesquisa() {
               parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
               imagemSrc={product.images[0]?.url}
               code={product.code}
+              editable={true}
             />
           ))}
-        
+        </div>
       </div>
     </>
   );
 }
+
+export default Pesquisa;

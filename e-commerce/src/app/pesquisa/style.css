@@ -39,6 +39,13 @@
     margin: 1rem;
 }
 
+.gradeResultados {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 1224px;
+    gap: 1rem;
+}
 
 @media (max-width: 1024px) {
     .filtros form {

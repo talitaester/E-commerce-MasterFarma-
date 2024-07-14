@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./style.css";
 import axios from "axios";
-import Produto from "../components/Produto/Produto";
 import Pesquisa from "../pesquisa/page";
 
 interface ProdutoType {
@@ -247,36 +246,51 @@ export default function Gestao() {
                                 <label><h6>Categoria</h6></label>
                                 <div className="checkbox-group">
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="medicamentos" checked={categories.includes('medicamentos')} onChange={handleCategoryChange} />
+                                        <input type="checkbox" name="category" value="Medicamentos" checked={categories.includes('Medicamentos')} onChange={handleCategoryChange} />
                                         Medicamentos
                                     </label>
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="suplementos" checked={categories.includes('suplementos')} onChange={handleCategoryChange} />
+                                        <input type="checkbox" name="category" value="Suplementos" checked={categories.includes('Suplementos')} onChange={handleCategoryChange} />
                                         Suplementos
                                     </label>
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="higiene" checked={categories.includes('higiene')} onChange={handleCategoryChange} />
+                                        <input type="checkbox" name="category" value="Higiene" checked={categories.includes('Higiene')} onChange={handleCategoryChange} />
                                         Higiene
                                     </label>
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="beleza" checked={categories.includes('beleza')} onChange={handleCategoryChange} />
+                                        <input type="checkbox" name="category" value="Beleza" checked={categories.includes('Beleza')} onChange={handleCategoryChange} />
                                         Beleza
                                     </label>
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="bebes" checked={categories.includes('bebes')} onChange={handleCategoryChange} />
+                                        <input type="checkbox" name="category" value="Bebês" checked={categories.includes('Bebês')} onChange={handleCategoryChange} />
                                         Bebês
                                     </label>
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="saude" checked={categories.includes('saude')} onChange={handleCategoryChange} />
+                                        <input type="checkbox" name="category" value="Saude" checked={categories.includes('Saude')} onChange={handleCategoryChange} />
                                         Saúde
+                                    </label>
+                                    <label className="input">
+                                        <input type="checkbox" name="category" value="Perfumaria" checked={categories.includes('Perfumaria')} onChange={handleCategoryChange} />
+                                        Perfumaria
                                     </label>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="imageUrl"><h6>URL da Imagem</h6></label>
-                                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} placeholder="Adicione URL da imagem" />
-                                <button onClick={handleAddImageUrl}>Adicionar URL</button>
-                            </div>
+                                    <label htmlFor="imageUrl"><h6>URL da imagem</h6></label>
+                                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                                        <input
+                                            type="text"
+                                            id="imageUrl"
+                                            placeholder="Insira o URL da imagem"
+                                            value={imageUrl}
+                                            onChange={handleImageUrlChange}
+                                            className="price-input"
+                                        />
+                                        <button type="button" onClick={handleAddImageUrl} className="check-button">
+                                            Adicionar
+                                        </button>
+                                    </div>
+                                </div>
                             <div className="botoes">
                                 <button className="cancelar" onClick={resetForm}><h6>Cancelar</h6></button>
                                 <button className="confirmar" onClick={handleImageUpload}><h6>{editingProductId ? 'Atualizar Produto' : 'Criar Produto'}</h6></button>
@@ -289,23 +303,9 @@ export default function Gestao() {
             <div className="produtosListados">
                 {!isMenuVisible && (
                     <div className="pesquisa">
-                        <Pesquisa />
+                        <Pesquisa editable={true} />
                     </div>
                 )}
-                {products.map((product) => (
-                    <Produto
-                        key={product.id}
-                        nome={product.name}
-                        precoAntigo={`R$${product.oldPrice}`}
-                        precoAtual={`R$${product.price}`}
-                        parcelas={`Ou 3x de R$${(product.price / 3).toFixed(2)}`}
-                        imagemSrc={product.images[0]?.url || '/produto.png'}
-                        editable={true}
-                        code={product.code}
-                        onDelete={() => handleDeleteProduct(product.code)}
-                        onEdit={() => handleEditProduct(product)}
-                    />
-                ))}
             </div>
         </div>
     );

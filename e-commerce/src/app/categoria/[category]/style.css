@@ -1,0 +1,9 @@
+.gradeResultados {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 1224px;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem;
+}
