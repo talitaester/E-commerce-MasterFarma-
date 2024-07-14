@@ -308,7 +308,7 @@ export default function Gestao() {
                         imagemSrc={product.images[0]?.url || '/produto.png'}
                         editable={true}
                         code={product.code}
-                        onDelete={() => handleDeleteProduct(product.code)}
+                        onDelete={fetchProducts}
                         onEdit={() => handleEditProduct(product)} // Chama a função de edição
                     />
                 ))}
