@@ -166,7 +166,7 @@ export default function Carrinho() {
                     
                     <div className="botoezoes">
                             <Link href='/'>
-    <button className="btnGrande princi">Continuar comprando</button>
+                                <button className="btnGrande princi">Continuar comprando</button>
                             </Link>
                         <button className="btnGrande secund">Finalizar compra</button>
                     </div>
