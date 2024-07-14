@@ -37,13 +37,23 @@ export default function Gestao() {
         fetchProducts();
     }, []);
 
-    const fetchProducts = async () => {
+    const fetchProducts = async (selectedCategories?: string[]) => {
         try {
-            const response = await axios.get("http://localhost:8080/products");
+            const response = await axios.get("http://localhost:8080/products", {
+                params: { categories: selectedCategories },
+            });
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
+    };
+
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setCategories(prevCategories =>
+            e.target.checked ? [...prevCategories, value] : prevCategories.filter(category => category !== value)
+        );
+        fetchProducts(e.target.checked ? [...categories, value] : categories.filter(category => category !== value));
     };
 
     const handleImageChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +85,7 @@ export default function Gestao() {
         }
     };
 
+    
     const handleImageUpload = async () => {
         try {
             const uploadedImages = [];
@@ -103,7 +114,7 @@ export default function Gestao() {
             ];
 
             const newProduct = {
-                id: editingProductId || Date.now(), // Usa o ID do produto sendo editado ou gera um novo
+                id: editingProductId || Date.now(),
                 name: productName,
                 oldPrice: parseFloat(oldPrice),
                 price: parseFloat(price),
@@ -116,7 +127,7 @@ export default function Gestao() {
             if (editingProductId) {
                 await axios.put(`http://localhost:8080/products/${editingProductId}`, newProduct);
                 alert('Produto atualizado com sucesso');
-                fetchProducts(); // Atualiza a lista de produtos após edição
+                fetchProducts();
             } else {
                 const response = await axios.post('http://localhost:8080/products', newProduct, {
                     headers: {
@@ -148,13 +159,6 @@ export default function Gestao() {
         setIsMenuVisible(false);
     };
 
-    const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setCategories(prevCategories =>
-            e.target.checked ? [...prevCategories, value] : prevCategories.filter(category => category !== value)
-        );
-    };
-
     const handleDeleteProduct = async (code: number) => {
         try {
             await axios.delete(`http://localhost:8080/products/${code}`);
@@ -171,9 +175,9 @@ export default function Gestao() {
         setCode(product.code.toString());
         setImageUrls(product.images.map(img => img.url));
         setPreviews(product.images.map(img => img.url));
-        setCategories(product.category.split(', ').filter(Boolean)); // Preenche categorias
-        setEditingProductId(product.id); // Armazena ID do produto sendo editado
-        setIsMenuVisible(true); // Mostra o formulário de adicionar produto
+        setCategories(product.category.split(', ').filter(Boolean));
+        setEditingProductId(product.id);
+        setIsMenuVisible(true);
     };
 
     return (
@@ -236,8 +240,8 @@ export default function Gestao() {
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="code"><h6>Código</h6></label>
-                                <input type="text" id="code" placeholder="00000000" value={code} onChange={(e) => setCode(e.target.value)} />
+                                <label htmlFor="code"><h6>Código do produto</h6></label>
+                                <input type="text" id="code" placeholder="Código" value={code} onChange={(e) => setCode(e.target.value)} />
                             </div>
                             <div className="form-group ">
                                 <label><h6>Categoria</h6></label>
@@ -269,25 +273,13 @@ export default function Gestao() {
                                 </div>
                             </div>
                             <div className="form-group">
-                                    <label htmlFor="imageUrl"><h6>URL da imagem</h6></label>
-                                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                                        <input
-                                            type="text"
-                                            id="imageUrl"
-                                            placeholder="Insira o URL da imagem"
-                                            value={imageUrl}
-                                            onChange={handleImageUrlChange}
-                                            className="price-input"
-                                        />
-                                        <button type="button" onClick={handleAddImageUrl} className="check-button">
-                                            Adicionar
-                                        </button>
-                                    </div>
-                                </div>
-
+                                <label htmlFor="imageUrl"><h6>URL da Imagem</h6></label>
+                                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} placeholder="Adicione URL da imagem" />
+                                <button onClick={handleAddImageUrl}>Adicionar URL</button>
+                            </div>
                             <div className="botoes">
                                 <button className="cancelar" onClick={resetForm}><h6>Cancelar</h6></button>
-                                <button className="confirmar" onClick={handleImageUpload}><h6>{editingProductId ? 'Atualizar' : 'Confirmar'}</h6></button>
+                                <button className="confirmar" onClick={handleImageUpload}><h6>{editingProductId ? 'Atualizar Produto' : 'Criar Produto'}</h6></button>
                             </div>
                         </div>
                     </div>
@@ -297,7 +289,7 @@ export default function Gestao() {
             <div className="produtosListados">
                 {!isMenuVisible && (
                     <div className="pesquisa">
-                    <Pesquisa />
+                        <Pesquisa />
                     </div>
                 )}
                 {products.map((product) => (
@@ -311,7 +303,7 @@ export default function Gestao() {
                         editable={true}
                         code={product.code}
                         onDelete={() => handleDeleteProduct(product.code)}
-                        onEdit={() => handleEditProduct(product)} // Chama a função de edição
+                        onEdit={() => handleEditProduct(product)}
                     />
                 ))}
             </div>
