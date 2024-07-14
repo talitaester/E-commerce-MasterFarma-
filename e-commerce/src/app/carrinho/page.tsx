@@ -206,7 +206,7 @@ export default function Carrinho() {
                         />
                     ))
                 ) : (
-                    <h2>Nenhum item semelhante encontrado.</h2>
+                    <p style={{color: "var(--c95)", fontSize:"2.5em"}}>Nenhum item semelhante encontrado.</h2>
                 )}
             </div>
         </div>

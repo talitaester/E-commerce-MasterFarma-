@@ -239,7 +239,7 @@ export default function Gestao() {
                                 <label htmlFor="code"><h6>Código</h6></label>
                                 <input type="text" id="code" placeholder="00000000" value={code} onChange={(e) => setCode(e.target.value)} />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group ">
                                 <label><h6>Categoria</h6></label>
                                 <div className="checkbox-group">
                                     <label className="input">
