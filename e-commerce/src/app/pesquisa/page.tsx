@@ -164,7 +164,8 @@ const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
               parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
               imagemSrc={product.images[0]?.url}
               code={product.code}
-              editable={true}
+              editable={editable}
+              onDelete={fetchProducts}
             />
           ))}
         </div>
