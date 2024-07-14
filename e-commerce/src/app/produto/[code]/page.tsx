@@ -55,16 +55,6 @@ const ProdutoPage = () => {
         return <div>Carregando...</div>;
     }
     
-/*    return (
-        <div>
-            <h1>{produto.name}</h1>
-            <img src={produto.images[0]?.url || '/produto.png'} alt={produto.name} />
-            <p>Preço: R${produto.price.toFixed(2)}</p>
-            <p>Preço Antigo: R${produto.oldPrice.toFixed(2)}</p>
-            <p>Categoria: {produto.category}</p>
-
-        </div>
-    );;*/
     return (
         <div className="principal">
             <div className="produtoTodo">
@@ -83,7 +73,7 @@ const ProdutoPage = () => {
                             <span>Código: {produto.code}</span>
                         </div>
                     </div>
-                    <div id="mobile"><ImagensProduto images={[]} /></div>
+                    <div id="mobile"><ImagensProduto images={produto.images} /></div>
                     <div className="precosMaisBotao">
                         <div className="precos">
                             <span className="corte"></span>
