@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./produto.module.css";
 import classNames from "classnames";
 import axios from "axios";
@@ -71,18 +70,16 @@ interface ProdutoProps {
     return (
         <div className={classNames(styles.produto, { [styles.editable]: editable })}>
             <div className={styles.conteudo}>
-                <Link href={`/produto/${code}`}>
-                    <Image
-                        className={styles.imagemProduto}
-                        src={imagemSrc}
-                        alt={nome}
-                        width="258"
-                        height="258"
-                    />
-                </Link>
-
+                <Image
+                    className={styles.imagemProduto}
+                    src={imagemSrc}
+                    alt={nome}
+                    width={258}
+                    height={258}
+                />
+                
                 <div className={styles.container}>
-                    <h6 className={styles.nomeProduto}><Link className={styles.nomeProduto} href={`/produto/${code}`}>{nome}</Link></h6>
+                    <h6 className={styles.nomeProduto}>{nome}</h6>
 
                     <div className={styles.precos}>
                         <span className={styles.corte}></span>
@@ -122,4 +119,4 @@ interface ProdutoProps {
     );
 };
 
-export default Produto;
+export default Produto
