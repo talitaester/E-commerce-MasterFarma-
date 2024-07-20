@@ -10,11 +10,11 @@ interface ProdutoType {
     code: number;
     id: number;
     name: string;
-    price: number;
-    oldPrice: number;
+    price: string;
+    oldPrice: string;
     images: { url: string }[];
-    quant: number;
-}
+    quant?: number;
+  }
 
 export default function Gestao() {
     const [products, setProducts] = useState<ProdutoType[]>([]);
@@ -169,7 +169,7 @@ export default function Gestao() {
 
     const handleEditProduct = (product: ProdutoType) => {
         setProductName(product.name);
-        setOldPrice(product.oldPrice.toString());
+        setOldPrice(product.oldPrice?.toString() || '');
         setPrice(product.price.toString());
         setCode(product.code.toString());
         setImageUrls(product.images.map(img => img.url));
@@ -177,7 +177,7 @@ export default function Gestao() {
         setCategories(product.category.split(', ').filter(Boolean));
         setEditingProductId(product.id);
         setIsMenuVisible(true);
-    };
+      };
 
     return (
         <div className="pagina">
@@ -266,10 +266,6 @@ export default function Gestao() {
                                         Bebês
                                     </label>
                                     <label className="input">
-                                        <input type="checkbox" name="category" value="Saude" checked={categories.includes('Saude')} onChange={handleCategoryChange} />
-                                        Saúde
-                                    </label>
-                                    <label className="input">
                                         <input type="checkbox" name="category" value="Perfumaria" checked={categories.includes('Perfumaria')} onChange={handleCategoryChange} />
                                         Perfumaria
                                     </label>
@@ -303,7 +299,7 @@ export default function Gestao() {
             <div className="produtosListados">
                 {!isMenuVisible && (
                     <div className="pesquisa">
-                        <Pesquisa editable={true} />
+                        <Pesquisa editable={true} onEdit={handleEditProduct} />
                     </div>
                 )}
             </div>

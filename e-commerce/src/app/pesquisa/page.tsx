@@ -9,17 +9,18 @@ interface Product {
   id: number;
   name: string;
   code: number;
-  price: number;
-  oldPrice: number;
+  price: string;
+  oldPrice: string;
   category: string;
   images: { url: string }[];
   editable?: boolean;
 }
-interface Pesquisa {
+interface PesquisaProps {
   editable?: boolean;
+  onEdit?: (product: Product) => void;
 }
 
-const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
+const Pesquisa: React.FC<PesquisaProps> = ({ editable = false, onEdit }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,6 +30,12 @@ const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
   const category = searchParams.get('category');
+
+  const handleEdit = (product: Product) => {
+    if (onEdit) {
+      onEdit(product);
+    }
+  };
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => {
@@ -59,11 +66,11 @@ const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
       let response;
 
       const categoryString = selectedCategories.join(',');
-      const minPrice = selectedPriceRanges.includes('Até R$50,00') ? 0 : undefined;
+      const minPrice = selectedPriceRanges.includes('Até R$50,00') ? 0 :
+                        selectedPriceRanges.includes('Acima de R$200,00') ? 200 : undefined;
       const maxPrice = selectedPriceRanges.includes('Até R$50,00') ? 50 : 
                         selectedPriceRanges.includes('Até R$100,00') ? 100 :
-                        selectedPriceRanges.includes('Até R$200,00') ? 200 :
-                        selectedPriceRanges.includes('Acima de R$200,00') ? undefined : undefined;
+                        selectedPriceRanges.includes('Até R$200,00') ? 200 : undefined;
 
       response = await axios.get('/products/filter', {
         params: {
@@ -74,7 +81,14 @@ const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
         }
       });
 
-      setProducts(response.data);
+      if (query) {
+        const produtosFiltrados = response.data.filter((product: Product) =>
+          product.name.toLowerCase().includes(query.toLowerCase())
+        )
+        setProducts(produtosFiltrados)
+      }
+      else setProducts(response.data);
+
     } catch (error) {
       if (error instanceof Error) {
         console.error('Erro ao buscar produtos:', error);
@@ -159,13 +173,14 @@ const Pesquisa: React.FC<Pesquisa> = ({ editable = false }) => {
             <Produto
               key={product.id}
               nome={product.name}
-              precoAntigo={`R$${product.oldPrice.toFixed(2)}`}
-              precoAtual={`R$${product.price.toFixed(2)}`}
-              parcelas={`Ou 3x de ${(product.price / 3).toFixed(2)}`}
+              precoAntigo={`R$${Number(product.oldPrice).toFixed(2)}`}
+              precoAtual={`R$${Number(product.price).toFixed(2)}`}
+              parcelas={`Ou 3x de ${(Number(product.price) / 3).toFixed(2)}`}
               imagemSrc={product.images[0]?.url}
               code={product.code}
               editable={editable}
               onDelete={fetchProducts}
+              onEdit={() => handleEdit(product)}
             />
           ))}
         </div>

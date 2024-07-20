@@ -7,6 +7,7 @@ import styles from "./produto.module.css";
 import classNames from "classnames";
 import axios from "axios";
 
+
 interface ProdutoProps {
     nome: string;
     precoAntigo?: string;
@@ -16,10 +17,18 @@ interface ProdutoProps {
     editable?: boolean;
     code: number;
     onDelete?: () => void;
-    onEdit?: () => void;
-}
-
-const Produto: React.FC<ProdutoProps> = ({
+    onEdit?: (product: {
+      id: number;
+      name: string;
+      oldPrice: number;
+      price: number;
+      code: number;
+      category: string;
+      images: { url: string }[];
+    }) => void;
+  }
+  
+  const Produto: React.FC<ProdutoProps> = ({
     nome,
     precoAntigo = "R$49,90",
     precoAtual = "R$29,90",
@@ -29,7 +38,21 @@ const Produto: React.FC<ProdutoProps> = ({
     code,
     onDelete,
     onEdit,
-}) => {
+  }) => {
+    const handleEdit = () => {
+      if (onEdit) {
+        onEdit({
+          id: code,
+          name: nome,
+          oldPrice: parseFloat(precoAntigo.replace('R$', '').replace(',', '.')),
+          price: parseFloat(precoAtual.replace('R$', '').replace(',', '.')),
+          code,
+          category: '', 
+          images: [{ url: imagemSrc }],
+        });
+      }
+    };
+
     const [isEditVisible, setIsEditVisible] = useState(false);
 
     const handleDelete = async () => {
@@ -73,7 +96,7 @@ const Produto: React.FC<ProdutoProps> = ({
                 {editable && (
                     <div className={styles.edit}>
                         <>
-                            <button className={styles.editButton} onClick={onEdit}>
+                            <button className={styles.editButton} onClick={handleEdit}>
                                 <h6 className={styles.editName}>Editar</h6>
                             </button>
                             <button className={styles.delete} onClick={() => setIsEditVisible(true)}>
